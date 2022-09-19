@@ -1,6 +1,6 @@
 ## Overviews
 
-- Studying project for "algorithm and data structures"
+- Project to study "algorithm and data structures"
 - Code by C++
 
 ## Script
