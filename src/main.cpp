@@ -10,8 +10,14 @@ int main()
 {
   auto start = std::chrono::system_clock::now();
 
-  int n = fibo(6);
-  std::cout << n << std::endl;
+  std::vector<long long> memo;
+  memo.assign(50, -1);
+
+  fibo(50, memo);
+
+  for(int i = 0; i < memo.size(); ++i){
+    std::cout << i << " 項目: " << memo[i] << std::endl;
+  }
 
   auto end = std::chrono::system_clock::now();
   auto dur = end - start;

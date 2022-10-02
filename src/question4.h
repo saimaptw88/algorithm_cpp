@@ -5,6 +5,6 @@
 
 int func(int N);
 int GCD(int m, int n);
-int fibo(int N);
+long long fibo(int N, std::vector<long long> memo);
 
 #endif  // _QUESTUION4_H_
