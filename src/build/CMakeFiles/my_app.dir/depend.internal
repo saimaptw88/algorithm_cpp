@@ -3,3 +3,11 @@
 
 CMakeFiles/my_app.dir/main.cpp.o
  /cpp-dev/src/main.cpp
+ /cpp-dev/src/question3.h
+ /cpp-dev/src/question4.h
+CMakeFiles/my_app.dir/question3.cpp.o
+ /cpp-dev/src/question3.cpp
+ /cpp-dev/src/question3.h
+CMakeFiles/my_app.dir/question4.cpp.o
+ /cpp-dev/src/question4.cpp
+ /cpp-dev/src/question4.h

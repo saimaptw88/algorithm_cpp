@@ -1,23 +1,23 @@
 // Copyright 2022 saito
-#include <iostream>
-#include <vector>
 #include <algorithm>
+#include <chrono>
+#include <iostream>
+#include <random>
+#include <map>
+#include <vector>
+#include "question3.h"
+#include "question4.h"
+
 
 int main()
 {
-  int N = rand() % 10 + 2;
-  N = 10;
+  int N = 6;
+  std::vector<int> memo(N+1, -1);
+  memo[0] = 0;
+  memo[1] = 0;
+  memo[2] = 1;
 
-  std::vector<int> a(N);
-
-  for (int i = 0; i < N; ++i)
-  {
-    a[i] = rand();
-  }
-
-  std::sort(a.begin(), a.end());
-
-  std::cout << a[1] << std::endl;
+  std::cout << section_4::tribo(N, &memo) << std::endl;
 
   return 0;
 }
