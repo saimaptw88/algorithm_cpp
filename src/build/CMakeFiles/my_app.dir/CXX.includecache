@@ -13,6 +13,10 @@ chrono
 -
 iostream
 -
+random
+-
+map
+-
 vector
 -
 question3.h
@@ -42,5 +46,9 @@ question4.h
 
 /cpp-dev/src/question4.h
 iostream
+-
+map
+-
+vector
 -
 
