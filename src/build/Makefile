@@ -123,6 +123,33 @@ my_app/fast:
 	$(MAKE) -f CMakeFiles/my_app.dir/build.make CMakeFiles/my_app.dir/build
 .PHONY : my_app/fast
 
+chapter1.o: chapter1.cpp.o
+
+.PHONY : chapter1.o
+
+# target to build an object file
+chapter1.cpp.o:
+	$(MAKE) -f CMakeFiles/my_app.dir/build.make CMakeFiles/my_app.dir/chapter1.cpp.o
+.PHONY : chapter1.cpp.o
+
+chapter1.i: chapter1.cpp.i
+
+.PHONY : chapter1.i
+
+# target to preprocess a source file
+chapter1.cpp.i:
+	$(MAKE) -f CMakeFiles/my_app.dir/build.make CMakeFiles/my_app.dir/chapter1.cpp.i
+.PHONY : chapter1.cpp.i
+
+chapter1.s: chapter1.cpp.s
+
+.PHONY : chapter1.s
+
+# target to generate assembly for a file
+chapter1.cpp.s:
+	$(MAKE) -f CMakeFiles/my_app.dir/build.make CMakeFiles/my_app.dir/chapter1.cpp.s
+.PHONY : chapter1.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... my_app"
 	@echo "... edit_cache"
+	@echo "... chapter1.o"
+	@echo "... chapter1.i"
+	@echo "... chapter1.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
