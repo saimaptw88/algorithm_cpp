@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/cpp-dev/src/chapter1.cpp
+chapter1.h
+/cpp-dev/src/chapter1.h
+
+/cpp-dev/src/chapter1.h
+iostream
+-
+string
+-
+vector
+-
+
 /cpp-dev/src/main.cpp
 algorithm
 -
@@ -19,6 +31,8 @@ map
 -
 vector
 -
+chapter1.h
+/cpp-dev/src/chapter1.h
 question3.h
 /cpp-dev/src/question3.h
 question4.h
