@@ -1,6 +1,6 @@
 #include "chapter1.h"
 
-int chapter_1::question_1(){
+void chapter_1::question_1(){
   const int kminAge = 20;
   const int kmaxAge = 36;
 
@@ -17,11 +17,9 @@ int chapter_1::question_1(){
     std::cout << "あなたの年齢は " << half_age << " 未満ですか？(y/n) >>";
     std::cin >> input;
 
-    if (input == "y" || input == "Y") {
-      max_age = half_age;
-    } else {
-      min_age = half_age;
-    }
+    if (input == "y" || input == "Y") max_age = half_age;
+    else min_age = half_age;
+
     half_age = (max_age + min_age) / 2;
   }
   std::cout << "あなたの年齢は " << half_age << " です." << std::endl;
@@ -137,8 +135,8 @@ void chapter_1::question_4() {
     if (finish) break;
   }
   if (!finish) {
-    return;
     std::cout << "解なし" << std::endl;
+    return;
   }
 
   std::cout << " .   " << A << std::endl;
