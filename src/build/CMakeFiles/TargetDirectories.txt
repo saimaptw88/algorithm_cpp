@@ -1,3 +1,0 @@
-/cpp-dev/src/build/CMakeFiles/rebuild_cache.dir
-/cpp-dev/src/build/CMakeFiles/my_app.dir
-/cpp-dev/src/build/CMakeFiles/edit_cache.dir

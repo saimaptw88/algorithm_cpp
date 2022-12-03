@@ -1,18 +1,14 @@
 // Copyright 2022 saito
-#include <algorithm>
-#include <chrono>
-#include <iostream>
-#include <random>
-#include <map>
-#include <vector>
+
 #include "chapter1.h"
-#include "question3.h"
+#include "chapter2.h"
+#include "chapter3.h"
 #include "question4.h"
 
 
 int main()
 {
-  chapter_1::question_3();
+  chapter_3::question_7();
 
   return 0;
 }
