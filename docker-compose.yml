@@ -7,4 +7,4 @@ services:
         source: .
         target: /cpp-dev
     tty: true
-    working_dir: /cpp-dev/src/build
+    working_dir: /cpp-dev/build
