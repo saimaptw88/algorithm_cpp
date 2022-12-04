@@ -7,6 +7,7 @@
 #include <functional>
 #include <iostream>
 #include <iterator>
+#include <numeric>
 #include <random>
 #include <string>
 #include <vector>

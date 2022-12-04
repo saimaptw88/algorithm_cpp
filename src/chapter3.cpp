@@ -1,5 +1,6 @@
 #include "chapter3.h"
 
+
 void chapter_3::full_search() {
   std::random_device rnd;
 
@@ -150,6 +151,8 @@ void chapter_3::question_5() {
   // 配列の要素全てが偶数かを判別する関数を定義
   std::function <bool(std::vector<unsigned int>)> is_eval_vector;
   is_eval_vector = [](std::vector<unsigned int> v) {
+    if (std::accumulate(v.begin(), v.end(), 0) == 0) return false;
+
     for (int i = 0; i < v.size(); ++i) {
       if(v[i] % 2 != 0) return false;
     }
@@ -157,10 +160,24 @@ void chapter_3::question_5() {
   };
 
   int count = 0;
+
   while(is_eval_vector(a)) {
     for (int i = 0; i < kN; ++i) { a[i] /= 2; }
     ++count;
   }
+
+  // int count = 0;
+  // for (;;) {
+  //   bool not_eval = std::any_of(a.begin(), a.end(), [](int x){
+  //     return x % 2 != 0;
+  //   });
+
+  //   if (std::accumulate(a.begin(), a.end(), 0) == 0) break;
+  //   if (not_eval) break;
+
+  //   for (int i = 0; i < kN; ++i) { a[i] /= 2; }
+  //   ++count;
+  // }
 
   std::cout << count << std::endl;
 }
