@@ -43,6 +43,8 @@ iostream
 -
 iterator
 -
+numeric
+-
 random
 -
 string
@@ -51,6 +53,10 @@ vector
 -
 
 /cpp-dev/src/main.cpp
+iostream
+-
+string_view
+-
 chapter1.h
 /cpp-dev/src/chapter1.h
 chapter2.h
