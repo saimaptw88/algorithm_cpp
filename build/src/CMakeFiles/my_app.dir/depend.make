@@ -10,9 +10,13 @@ src/CMakeFiles/my_app.dir/chapter2.cpp.o: ../src/chapter2.h
 src/CMakeFiles/my_app.dir/chapter3.cpp.o: ../src/chapter3.cpp
 src/CMakeFiles/my_app.dir/chapter3.cpp.o: ../src/chapter3.h
 
+src/CMakeFiles/my_app.dir/chapter5.cpp.o: ../src/chapter5.cpp
+src/CMakeFiles/my_app.dir/chapter5.cpp.o: ../src/chapter5.h
+
 src/CMakeFiles/my_app.dir/main.cpp.o: ../src/chapter1.h
 src/CMakeFiles/my_app.dir/main.cpp.o: ../src/chapter2.h
 src/CMakeFiles/my_app.dir/main.cpp.o: ../src/chapter3.h
+src/CMakeFiles/my_app.dir/main.cpp.o: ../src/chapter5.h
 src/CMakeFiles/my_app.dir/main.cpp.o: ../src/main.cpp
 src/CMakeFiles/my_app.dir/main.cpp.o: ../src/question4.h
 
