@@ -52,11 +52,21 @@ string
 vector
 -
 
-/cpp-dev/src/main.cpp
+/cpp-dev/src/chapter5.cpp
+chapter5.h
+/cpp-dev/src/chapter5.h
+
+/cpp-dev/src/chapter5.h
+algorithm
+-
 iostream
 -
-string_view
+random
 -
+vector
+-
+
+/cpp-dev/src/main.cpp
 chapter1.h
 /cpp-dev/src/chapter1.h
 chapter2.h
@@ -65,6 +75,8 @@ chapter3.h
 /cpp-dev/src/chapter3.h
 question4.h
 /cpp-dev/src/question4.h
+chapter5.h
+/cpp-dev/src/chapter5.h
 
 /cpp-dev/src/question4.cpp
 question4.h

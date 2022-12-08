@@ -4,73 +4,67 @@
 void chapter_3::full_search() {
   std::random_device rnd;
 
-  const unsigned int N = rnd() % 10;
-  const unsigned int v = rnd() % 10;
+  const int kN = rnd() % 10;
+  const int kV = rnd() % 10;
 
-  std::vector<int> a(N, 0);
+  std::vector<int> a(kN, 0);
 
-  for (int i = 0; i < N; ++i) {
-    a[i] = i;
-  }
+  for (int i = 0; i < kN; ++i) { a[i] = i; }
 
-  bool exist = false;
-  for (int i = 0; i < N; ++i) {
-    if (a[i] == v) {
+  for (int i = 0; i < kN; ++i) {
+    if (a[i] == kV) {
       std::cout << "True & index:  " << i << std::endl;
-      exist = true;
+      return;
     }
   }
-  if (exist) return;
 
   std::cout << "False" << std::endl;
 }
 void chapter_3::min() {
   std::random_device rnd;
-  const unsigned int N = rnd() % 100;
+  const int kN = rnd() % 100;
 
-  std::vector<unsigned int> v(N, 0);
+  std::vector<unsigned int> v(kN, 0);
 
-  for (int i = 0; i < N; ++i) {
-    v[i] = rnd();
-  }
+  for (int i = 0; i < kN; ++i) { v[i] = rnd(); }
 
   std::cout << "min: " << *std::min_element(v.begin(), v.end()) << std::endl;
 }
 void chapter_3::pair_additional_min() {
   std::random_device rnd;
 
-  const unsigned int N = rnd() % 100;
-  const unsigned int k = 299;
+  const int kN = rnd() % 100;
+  const int kK = 299;
 
-  std::vector<unsigned int> a(N, 0);
-  std::vector<unsigned int> b(N, 0);
+  std::vector<unsigned int> a(kN, 0);
+  std::vector<unsigned int> b(kN, 0);
 
-  for(int i = 0; i < N; ++i) {
+  for(int i = 0; i < kN; ++i) {
     a[i] = rnd() % 100;
     b[i] = rnd() % 100;
   }
 
-  int min = k + 1;
-  for(int i = 0; i < N; ++i) {
-    for (int j = 0; j < N; ++j) {
+  int min = kK + 1;
+  for(int i = 0; i < kN; ++i) {
+    for (int j = 0; j < kN; ++j) {
       int sum = a[i] + b[j];
 
-      if (sum > k && sum < min) {
+      if (sum > kK && sum < min) {
         min = sum;
       }
     }
   }
 
-  std::cout << "min: " << min << ", k: " << k << std::endl;
+  std::cout << "min: " << min << ", k: " << kK << std::endl;
 }
 void chapter_3::partial_sum() {
   std::random_device rnd;
 
-  const unsigned int N = rnd() % 10;
-  const unsigned int W = rnd() % 10;
+  const int kN = rnd() % 10;
+  const int kW = rnd() % 10;
 
-  std::vector<unsigned int> a(N, 0);
-  for(int i = 0; i < N; ++i) { a[i] = rnd()%10; }
+  std::vector<unsigned int> a(kN, 0);
+  for(int i = 0; i < kN; ++i) { a[i] = rnd()%10; }
 
   /*
    * NOTE:
@@ -78,14 +72,14 @@ void chapter_3::partial_sum() {
    *   例：N=4 の場合、1000で10進数では8を表す
    *   この場合は、N-1桁の２進数の各桁を a の各要素と紐付け、それぞれの要素が存在するかを確認する
    */
-  for (int bit = 0; bit < (1 << N); ++bit) {
+  for (int bit = 0; bit < (1 << kN); ++bit) {
     int sum = 0;
 
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i < kN; ++i) {
       if (bit & (1 << i)) sum += a[i];
     }
 
-    if (sum == W) {
+    if (sum == kW) {
       std::cout << "True" << std::endl;
       return;
     }
@@ -96,7 +90,7 @@ void chapter_3::partial_sum() {
 void chapter_3::question_2() {
   std::random_device rnd;
 
-  const unsigned int kN = rnd() % 10;
+  const int kN = rnd() % 10;
   const int kV = rnd() % 10;
 
   std::vector<int> a(kN, 0);
@@ -113,7 +107,7 @@ void chapter_3::question_2() {
 void chapter_3::question_3() {
   std::random_device rnd;
 
-  const unsigned int kN = rnd() % 10 + 2;
+  const int kN = rnd() % 10 + 2;
   std::vector<int> a(kN, 0);
 
   for (int i = 0; i < kN; ++i) { a[i] = rnd() % 100; }
@@ -130,7 +124,7 @@ void chapter_3::question_3() {
 void chapter_3::question_4() {
   std::random_device rnd;
 
-  const unsigned int kN = rnd() % 10 + 2;
+  const int kN = rnd() % 10 + 2;
   std::vector<int> a(kN, 0);
 
   for (int i = 0; i < kN; ++i) { a[i] = rnd() % 100; }
@@ -143,49 +137,35 @@ void chapter_3::question_4() {
 void chapter_3::question_5() {
   std::random_device rnd;
 
-  const unsigned int kN = rnd() % 10;
+  const int kN = rnd() % 10;
   std::vector<unsigned int> a(kN, 0);
 
   for (int i = 0; i < kN; ++i) { a[i] = rnd() % 100 * 2; }
 
   // 配列の要素全てが偶数かを判別する関数を定義
-  std::function <bool(std::vector<unsigned int>)> is_eval_vector;
-  is_eval_vector = [](std::vector<unsigned int> v) {
+  std::function <bool(std::vector<unsigned int>)> is_even_vector;
+  is_even_vector = [](std::vector<unsigned int> v) {
     if (std::accumulate(v.begin(), v.end(), 0) == 0) return false;
 
-    for (int i = 0; i < v.size(); ++i) {
-      if(v[i] % 2 != 0) return false;
-    }
-    return true;
+    return std::all_of(v.begin(), v.end(), [](int x){
+      return x % 2 == 0;
+    });
   };
 
   int count = 0;
 
-  while(is_eval_vector(a)) {
+  while(is_even_vector(a)) {
     for (int i = 0; i < kN; ++i) { a[i] /= 2; }
     ++count;
   }
-
-  // int count = 0;
-  // for (;;) {
-  //   bool not_eval = std::any_of(a.begin(), a.end(), [](int x){
-  //     return x % 2 != 0;
-  //   });
-
-  //   if (std::accumulate(a.begin(), a.end(), 0) == 0) break;
-  //   if (not_eval) break;
-
-  //   for (int i = 0; i < kN; ++i) { a[i] /= 2; }
-  //   ++count;
-  // }
 
   std::cout << count << std::endl;
 }
 void chapter_3::question_6() {
   std::random_device rnd;
 
-  const unsigned int kN = rnd() % 10;
-  const unsigned int kK = rnd() % 10;
+  const int kN = rnd() % 10;
+  const int kK = rnd() % 10;
 
   int count = 0;
   for (int x = 0; x <= kK; ++x) {
@@ -203,8 +183,8 @@ void chapter_3::question_6() {
 void chapter_3::question_7() {
   std::random_device rnd;
 
-  const unsigned int kN = 3;//rnd() % 10 + 2;  // NOTE: 桁数 N
-  const unsigned int kS = 125;//rnd() % static_cast<int>(std::pow(10, kN+1));  // NOTE: 文字列S
+  const int kN = 3;//rnd() % 10 + 2;  // NOTE: 桁数 N
+  const int kS = 125;//rnd() % static_cast<int>(std::pow(10, kN+1));  // NOTE: 文字列S
 
   /*
    * NOTE:

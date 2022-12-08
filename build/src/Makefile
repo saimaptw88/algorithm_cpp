@@ -206,6 +206,33 @@ chapter3.cpp.s:
 	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/chapter3.cpp.s
 .PHONY : chapter3.cpp.s
 
+chapter5.o: chapter5.cpp.o
+
+.PHONY : chapter5.o
+
+# target to build an object file
+chapter5.cpp.o:
+	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/chapter5.cpp.o
+.PHONY : chapter5.cpp.o
+
+chapter5.i: chapter5.cpp.i
+
+.PHONY : chapter5.i
+
+# target to preprocess a source file
+chapter5.cpp.i:
+	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/chapter5.cpp.i
+.PHONY : chapter5.cpp.i
+
+chapter5.s: chapter5.cpp.s
+
+.PHONY : chapter5.s
+
+# target to generate assembly for a file
+chapter5.cpp.s:
+	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/chapter5.cpp.s
+.PHONY : chapter5.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -278,6 +305,9 @@ help:
 	@echo "... chapter3.o"
 	@echo "... chapter3.i"
 	@echo "... chapter3.s"
+	@echo "... chapter5.o"
+	@echo "... chapter5.i"
+	@echo "... chapter5.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
