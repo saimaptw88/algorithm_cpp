@@ -206,6 +206,33 @@ chapter3.cpp.s:
 	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/chapter3.cpp.s
 .PHONY : chapter3.cpp.s
 
+chapter4.o: chapter4.cpp.o
+
+.PHONY : chapter4.o
+
+# target to build an object file
+chapter4.cpp.o:
+	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/chapter4.cpp.o
+.PHONY : chapter4.cpp.o
+
+chapter4.i: chapter4.cpp.i
+
+.PHONY : chapter4.i
+
+# target to preprocess a source file
+chapter4.cpp.i:
+	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/chapter4.cpp.i
+.PHONY : chapter4.cpp.i
+
+chapter4.s: chapter4.cpp.s
+
+.PHONY : chapter4.s
+
+# target to generate assembly for a file
+chapter4.cpp.s:
+	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/chapter4.cpp.s
+.PHONY : chapter4.cpp.s
+
 chapter5.o: chapter5.cpp.o
 
 .PHONY : chapter5.o
@@ -260,33 +287,6 @@ main.cpp.s:
 	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-question4.o: question4.cpp.o
-
-.PHONY : question4.o
-
-# target to build an object file
-question4.cpp.o:
-	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/question4.cpp.o
-.PHONY : question4.cpp.o
-
-question4.i: question4.cpp.i
-
-.PHONY : question4.i
-
-# target to preprocess a source file
-question4.cpp.i:
-	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/question4.cpp.i
-.PHONY : question4.cpp.i
-
-question4.s: question4.cpp.s
-
-.PHONY : question4.s
-
-# target to generate assembly for a file
-question4.cpp.s:
-	cd /cpp-dev/build && $(MAKE) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/question4.cpp.s
-.PHONY : question4.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -305,15 +305,15 @@ help:
 	@echo "... chapter3.o"
 	@echo "... chapter3.i"
 	@echo "... chapter3.s"
+	@echo "... chapter4.o"
+	@echo "... chapter4.i"
+	@echo "... chapter4.s"
 	@echo "... chapter5.o"
 	@echo "... chapter5.i"
 	@echo "... chapter5.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... question4.o"
-	@echo "... question4.i"
-	@echo "... question4.s"
 .PHONY : help
 
 
