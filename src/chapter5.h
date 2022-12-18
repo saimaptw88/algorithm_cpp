@@ -9,11 +9,35 @@ namespace chapter_5 {
 
   namespace relaxation {
     template<class T> void chmin(T& a, T b) {
-      if (a > b) a= b;
+      if (a>b) a = b;
     }
-    void get_transition();
-    void hand_out_transition();
-    long long rec(int, std::vector<long long>, std::vector<long long>*);
-    void recursion();
+    void flog_move();
+    void flog_move_deliver();
+    long long recursion_search(int i, std::vector<long long>h, std::vector<long long>*dp);
+  }
+
+  namespace knapsack {
+    template<class T>T chmax(T a, T b) {
+      if (a < b) return b;
+      return a;
+    }
+
+    void execute();
+  }
+
+  namespace edit_distance {
+    template<class T> void chmin(T& a, T b) {
+      if (a > b) a = b;
+    }
+
+    void execute();
+  }
+
+  namespace section_division {
+    template<class T> void chmin(T &a, T b) {
+      if (a > b) a = b;
+    }
+
+    void execute();
   }
 }
