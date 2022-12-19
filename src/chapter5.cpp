@@ -215,3 +215,106 @@ void chapter_5::section_division::execute() {
 
   std::cout << dp[kN] << std::endl;
 }
+void chapter_5::question_1() {
+  /*
+   * i日目の幸福度は、i-1日目の幸福度 + Max(ai, bi, ci)
+   */
+
+  std::random_device rnd;
+  const int kN = rnd() % 10;
+
+  std::vector<int> a(kN), b(kN), c(kN);
+  for (int i = 0; i < kN; ++i) {
+    a[i] = rnd() % 10;
+    b[i] = rnd() % 10;
+    c[i] = rnd() % 10;
+  }
+
+  int previous_activity = -1;
+
+  std::function<int(int, int, int)> activity;
+  activity = [&previous_activity](int a_i, int b_i, int c_i) {
+    std::vector<int> i {a_i, b_i, c_i};
+
+    decltype(i)::iterator max_itr = std::max_element(i.begin(), i.end());
+    int max_index = std::distance(i.begin(), max_itr);
+
+    if (previous_activity != max_index) {
+      previous_activity = max_index;
+
+      return *max_itr;
+    }
+
+    // 前回同じ行動をとった場合、今回分の行動を削除し最大値を再探索
+    i[max_index] = -1;
+
+    max_itr = std::max_element(i.begin(), i.end());
+    max_index = std::distance(i.begin(), max_itr);
+
+    previous_activity = max_index;
+
+    return *max_itr;
+  };
+
+  std::vector<int> dp(kN, 0);
+  dp[0] = 0;
+
+  for (int i = 1; i < kN; ++i) {
+    dp[i] = dp[i-1] + activity(a[i], b[i], c[i]);
+  }
+
+  std::cout << dp[kN-1] << std::endl;
+}
+void chapter_5::question_2::execute() {
+  // 普通にやったらO(2^N)
+  std::random_device rnd;
+
+  const int kN = rnd() % 10 + 2;
+  const int kW = rnd() % 10 + 10;
+
+  std::cout << "N: " << kN << ", W: " << kW << std::endl;
+
+  std::vector<int> a(kN, 0);
+  for (int i = 0; i < kN; ++i) { a[i] = rnd() % 10; std::cout << a[i] << std::endl;}
+
+  std::vector<std::vector<int>>dp(kN+1, std::vector<int>(kW+1, -1));
+
+  if (func(kN, kW, a, &dp)) std::cout << "Yes" << std::endl;
+  else std::cout << "No" << std::endl;
+}
+bool chapter_5::question_2::func(int i, int w, std::vector<int>a, std::vector<std::vector<int>>* dp) {
+  if (i == 0) {
+    if (w == 0) return true;
+    else return false;
+  }
+
+  if (w < 0) return false;
+
+  if (dp->at(i).at(w) != -1) return dp->at(i).at(w);
+  if (func(i-1, w, a, dp)) return dp->at(i).at(w) = true;
+
+  if (func(i-1, w-a[i-1], a, dp)) return dp->at(i).at(w) = true;
+
+  return false;
+}
+void chapter_5::question_3::execute() {
+  std::random_device rnd;
+
+  const int kN = rnd() % 10 + 2;
+  const int kW = rnd() % 10 + 3;
+
+  std::vector<int>a(kN, 0);
+  for (int i = 0; i < kN; ++i) { a[i] = rnd() % 10; }
+
+  int count = 0;
+  std::vector<std::vector<int>> dp(kN+1, std::vector<int>(kW+1, -1));
+  func(kN, kW, a, &dp, &count);
+
+  std::cout << count << std::endl;
+}
+void chapter_5::question_3::func(int i, int w, std::vector<int>a, std::vector<std::vector<int>>* dp, int* count) {
+  if (w <= 0) { count++; return;}
+
+  func(i-1, w, a, dp, count);
+  func(i-1, w-a[i-1], a, dp, count);
+}

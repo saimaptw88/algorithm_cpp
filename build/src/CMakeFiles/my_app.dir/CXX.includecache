@@ -81,6 +81,8 @@ chapter5.h
 /cpp-dev/src/chapter5.h
 algorithm
 -
+functional
+-
 iostream
 -
 random

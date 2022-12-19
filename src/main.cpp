@@ -10,7 +10,7 @@
 
 int main()
 {
-  chapter_5::section_division::execute();
+  chapter_5::question_3::execute();
 
   return 0;
 }
