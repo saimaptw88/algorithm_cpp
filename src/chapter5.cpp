@@ -122,14 +122,14 @@ void chapter_5::knapsack::execute() {
   /*
    * i番目の品物を選んだ場合
    */
-  for (int i = 0; i < kN; ++i) {
+  for (int i = 1; i < kN+1; ++i) {
     for (int w = 0; w < kW+1; ++w) {
       // i+1番目の品物を選ばない場合、価値はi番目までの価値と等価
-      dp[i+1][w] = std::max(dp[i+1][w], dp[i][w]);
+      dp[i][w] = std::max(dp[i][w], dp[i-1][w]);
 
       // i+1番目の品物を選んだ場合、価値はi番目までの価値と、i番目の価値にi+1番目の価値を追加したものの大きい方
-      if (w - weight[i] >= 0) {  // NOTE: 不等号なのは、複数の品物を選んでいた場合も含みたいから
-        dp[i+1][w] = std::max(dp[i+1][w], dp[i][w - weight[i]] + value[i]);
+      if (w - weight[i-1] >= 0) {  // NOTE: 不等号なのは、複数の品物を選んでいた場合も含みたいから
+        dp[i][w] = std::max(dp[i][w], dp[i-1][w - weight[i-1]] + value[i-1]);
       }
     }
   }
