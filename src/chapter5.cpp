@@ -109,46 +109,46 @@ void chapter_5::knapsack::execute() {
    * 品物を番号i, 重さw, 価値vで管理する
    * 品物i番まで選んだ場合のそれぞれの重さw にて価値の最大値を更新する
    */
-  std::random_device rnd;
-  const int kN = 7;//rnd() % 10 + 2;
-  const int kW = 1000;//rnd() % 10 + 5;
+  const int kN = 6;
+  const int kW = 15;
 
-  std::vector<long long> weight(kN), value(kN);
+  std::vector<int> weight(kN), value(kN);
 
-  //for (int i = 0; i < kN; ++i) {
-  //  weight[i] = rnd() % 10;
-  //  value[i] = rnd() % 10;
-  //}
-  weight.assign({2,1,3,2,1,5});
-  value.assign({3,2,6,1,3,85});
+  weight.assign({2, 1, 3, 2, 1, 5});
+  value.assign({3, 2, 6, 1, 3, 85});
 
-  std::vector<std::vector<long long>>dp;
-  dp.assign(kN+1, std::vector<long long>(kW+1, 0LL));
+  std::vector<std::vector<int>> dp(kN+1, std::vector<int>(kW+1, 0));
 
+  /*
+   * i番目の品物を選んだ場合
+   */
   for (int i = 0; i < kN; ++i) {
-    for (int w = 0; w < kW; ++w) {
-      if (weight[i] <= w && value[i] > dp[i][w]) dp[i][w] = value[i];
+    for (int w = 0; w < kW+1; ++w) {
+      // i+1番目の品物を選ばない場合、価値はi番目までの価値と等価
+      dp[i+1][w] = std::max(dp[i+1][w], dp[i][w]);
+
+      // i+1番目の品物を選んだ場合、価値はi番目までの価値と、i番目の価値にi+1番目の価値を追加したものの大きい方
+      if (w - weight[i] >= 0) {  // NOTE: 不等号なのは、複数の品物を選んでいた場合も含みたいから
+        dp[i+1][w] = std::max(dp[i+1][w], dp[i][w - weight[i]] + value[i]);
+      }
     }
   }
 
-  // NOTE: 品物番号i 番までを選んだ場合
-  for (int i = 0; i < kN; ++i) {
+  for (int i = 0; i < kN+1; ++i) {
+    if(i==0)
+      for(int w = 0; w < kW+1; ++w) {
+        if (w == 0) std::cout << "\t";
+        std::cout << w << "\t";
 
-    // NOTE: ナップザック重量上限値までの全重量を探索
-    for (int w = 0; w <= kW; ++w) {
-
-      /*
-       * NOTE:
-       *   i+1番, 重さwの時の価値が最大になる場合を求める
-       *   i番目までの品物から重さwになるように選んだ場合の最大価値
-       *     i+1番目の品物を選んだ場合、i+1番目の価値とi番目までの価値を比較する
-       *     i+1番目の品物を選ばなかった場合、i番目までの価値を比較する
-       */
-      if (w-weight[i] >= 0) {
-        dp[i+1][w] = chmax(dp[i+1][w], dp[i][w-weight[i]]+value[i]);
+        if (w == kW) std::cout << "\n";
       }
 
-      dp[i+1][w] = chmax(dp[i+1][w], dp[i][w]);
+    for (int w = 0; w < kW+1; ++w) {
+      if (w == 0) std::cout << i << "\t";
+
+      std::cout << dp[i][w] << "\t";
+
+      if (w == kW) std::cout << std::endl;;
     }
   }
 
