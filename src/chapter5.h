@@ -40,12 +40,4 @@ namespace chapter_5 {
   }
 
   void question_1();
-  namespace question_2 {
-    void execute();
-    bool func(int i, int W, std::vector<int>a, std::vector<std::vector<int>>*dp);
-  }
-  namespace question_3 {
-    void execute();
-    void func(int, int, std::vector<int>, std::vector<std::vector<int>>*, int*);
-  }
 }

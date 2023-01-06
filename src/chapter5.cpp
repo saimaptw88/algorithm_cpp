@@ -217,104 +217,118 @@ void chapter_5::section_division::execute() {
 }
 void chapter_5::question_1() {
   /*
-   * i日目の幸福度は、i-1日目の幸福度 + Max(ai, bi, ci)
+   * NOTE: 初日の行動次第で最大値が変わる
+   * 実装方針：前日の行動タイプを保持し、今日の幸福度が最大値になるよう更新する。初期値は３種類与える
    */
-
   std::random_device rnd;
-  const int kN = rnd() % 10;
 
+  const int kN = 3; //rnd() % 10 + 3;
+
+  // NOTE: ターミナル表示部分
   std::vector<int> a(kN), b(kN), c(kN);
   for (int i = 0; i < kN; ++i) {
-    a[i] = rnd() % 10;
-    b[i] = rnd() % 10;
-    c[i] = rnd() % 10;
+    a[i] = rnd() % 100;
+    b[i] = rnd() % 100;
+    c[i] = rnd() % 100;
+  }
+  std::cout << "\t";
+  for (int i = 0; i < kN; ++i) {
+    std::cout << i << "\t";
+  }
+  std::cout << "\n";
+  for (int i = 0; i < 3; ++i) {
+    if (i == 0) std::cout << "a\t";
+    else if(i==1) std::cout << "b\t";
+    else std::cout << "c\t";
+
+    for (int j = 0; j < kN; ++j) {
+      if (i == 0) {
+        std::cout << a[j] << "\t";
+      }else if(i==1){
+        std::cout << b[j] << "\t";
+      }else{
+        std::cout << c[j] << "\t";
+      }
+    }
+    std::cout << "\n";
   }
 
-  int previous_activity = -1;
 
-  std::function<int(int, int, int)> activity;
-  activity = [&previous_activity](int a_i, int b_i, int c_i) {
-    std::vector<int> i {a_i, b_i, c_i};
+  std::function<int(int, int, int, int)> max_action;
+  max_action = [](int pre_action, int a_i, int b_i, int c_i) {
+    std::vector<int> acts{a_i, b_i, c_i};
+    std::sort(acts.begin(), acts.end(), std::greater<int>{});
 
-    decltype(i)::iterator max_itr = std::max_element(i.begin(), i.end());
-    int max_index = std::distance(i.begin(), max_itr);
+    int max = 0;
 
-    if (previous_activity != max_index) {
-      previous_activity = max_index;
+    // 前回の行動と今回の行動の最大値が等しい場合
+    if (pre_action == 0 && acts[0] == a_i) {
+      max = acts[1];
+    } else if (pre_action == 1 && acts[0] == b_i) {
+      max = acts[1];
+    } else if (pre_action == 2 && acts[0] == c_i){
+      max = acts[1];
 
-      return *max_itr;
+    // 前回の行動と今回の行動の最大値が異なる場合
+    }else{
+      max = acts[0];
     }
 
-    // 前回同じ行動をとった場合、今回分の行動を削除し最大値を再探索
-    i[max_index] = -1;
-
-    max_itr = std::max_element(i.begin(), i.end());
-    max_index = std::distance(i.begin(), max_itr);
-
-    previous_activity = max_index;
-
-    return *max_itr;
+    if (max == a_i) return 0;
+    else if (max == b_i) return 1;
+    else return 2;
   };
 
-  std::vector<int> dp(kN, 0);
-  dp[0] = 0;
+  std::vector<std::vector<int>> dp(3, std::vector<int>(kN+1, 0));
+  dp[0][0] = 0;
+  dp[1][0] = 1;
+  dp[2][0] = 2;
 
   for (int i = 1; i < kN; ++i) {
-    dp[i] = dp[i-1] + activity(a[i], b[i], c[i]);
+    dp[0][i] = max_action(dp[0][i-1], a[i], b[i], c[i]);
+    dp[1][i] = max_action(dp[1][i-1], a[i], b[i], c[i]);
+    dp[2][i] = max_action(dp[2][i-1], a[i], b[i], c[i]);
   }
 
-  std::cout << dp[kN-1] << std::endl;
-}
-void chapter_5::question_2::execute() {
-  // 普通にやったらO(2^N)
-  std::random_device rnd;
+  // NOTE: ターミナル表示部分
+  std::cout << "\n";
+  std::cout << "\t";
+  for (int i = 0; i < kN; ++i) {
+    std::cout << i << "\t";
+  }
+  std::cout << "\n";
+  for (int i = 0; i < 3; ++i) {
+    for (int j = 0; j < kN; ++j) {
+      int num;
+      if (i == 0) { num = dp[0][j]; if(j==0)std::cout << "a\t"; }
+      else if(i == 1) { num = dp[1][j]; if(j==0)std::cout << "b\t"; }
+      else { num = dp[2][j]; if(j==0)std::cout << "c\t"; }
 
-  const int kN = rnd() % 10 + 2;
-  const int kW = rnd() % 10 + 10;
+      std::cout << num << "\t";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
 
-  std::cout << "N: " << kN << ", W: " << kW << std::endl;
 
-  std::vector<int> a(kN, 0);
-  for (int i = 0; i < kN; ++i) { a[i] = rnd() % 10; std::cout << a[i] << std::endl;}
+  int sum_a = 0;
+  int sum_b = 0;
+  int sum_c = 0;
 
-  std::vector<std::vector<int>>dp(kN+1, std::vector<int>(kW+1, -1));
+  std::function<int(int, int, std::vector<int>, std::vector<int>, std::vector<int>)> sum;
+  sum = [](int i, int type, std::vector<int>x0, std::vector<int>x1, std::vector<int>x2) {
+    switch (type) {
+      case 0: return x0[i];
+      case 1: return x1[i];
+      case 2: return x2[i];
+    }
+  };
 
-  if (func(kN, kW, a, &dp)) std::cout << "Yes" << std::endl;
-  else std::cout << "No" << std::endl;
-}
-bool chapter_5::question_2::func(int i, int w, std::vector<int>a, std::vector<std::vector<int>>* dp) {
-  if (i == 0) {
-    if (w == 0) return true;
-    else return false;
+  for (int i = 0; i < kN; ++i) {
+    sum_a += sum(i, dp[0][i], a, b, c);
+    sum_b += sum(i, dp[1][i], a, b, c);
+    sum_c += sum(i, dp[2][i], a, b, c);
   }
 
-  if (w < 0) return false;
-
-  if (dp->at(i).at(w) != -1) return dp->at(i).at(w);
-  if (func(i-1, w, a, dp)) return dp->at(i).at(w) = true;
-
-  if (func(i-1, w-a[i-1], a, dp)) return dp->at(i).at(w) = true;
-
-  return false;
-}
-void chapter_5::question_3::execute() {
-  std::random_device rnd;
-
-  const int kN = rnd() % 10 + 2;
-  const int kW = rnd() % 10 + 3;
-
-  std::vector<int>a(kN, 0);
-  for (int i = 0; i < kN; ++i) { a[i] = rnd() % 10; }
-
-  int count = 0;
-  std::vector<std::vector<int>> dp(kN+1, std::vector<int>(kW+1, -1));
-  func(kN, kW, a, &dp, &count);
-
-  std::cout << count << std::endl;
-}
-void chapter_5::question_3::func(int i, int w, std::vector<int>a, std::vector<std::vector<int>>* dp, int* count) {
-  if (w <= 0) { count++; return;}
-
-  func(i-1, w, a, dp, count);
-  func(i-1, w-a[i-1], a, dp, count);
+  std::cout << std::max(std::max(sum_a, sum_b), sum_c) << std::endl;
 }

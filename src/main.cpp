@@ -10,7 +10,7 @@
 
 int main()
 {
-  chapter_5::knapsack::execute();
+  chapter_5::question_1();
 
   return 0;
 }
