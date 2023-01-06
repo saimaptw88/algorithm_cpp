@@ -332,3 +332,53 @@ void chapter_5::question_1() {
 
   std::cout << std::max(std::max(sum_a, sum_b), sum_c) << std::endl;
 }
+void chapter_5::question_2() {
+  /*
+   * knapsack
+   * cache 0~W, and a1 ~ an
+   * i+1番目の整数を選ばなかった場合、iまでの合計をi番目のキャッシュに登録
+   * i+1番目の整数を選んだ場合、i番目の合計とi番目の合計の和をキャッシュに登録
+   */
+
+  std::random_device rnd;
+  const int kN = 3;//rnd() % 10 + 2;
+  const int kW = 10;//rnd() % 100 + 2;
+
+  std::vector<int> a(kN, 0);
+  for (int i = 0; i < kN; ++i) { a[i] = rnd() % kW; }
+
+  // NOTE: 描画用コード
+  std::cout << "N = " << kN << std::endl;
+  std::cout << "W = " << kW << std::endl;
+  std::cout << "a = " << std::endl;
+  for (int i = 0; i < kN; ++i) {
+    std::cout << "a[" << i << "] = " << a[i] << std::endl; }
+
+
+  std::vector<std::vector<int>> dp;
+  dp.assign(kN+1, std::vector<int>(kW+1, 0));
+
+  bool exist = false;
+
+  for (int i = 0; i < kN; ++i) {
+    for (int w = 0; w < kW+1; ++w) {
+      dp[i+1][w] = std::max(dp[i+1][w], dp[i][w]);
+
+      if (w-a[i] >= 0)
+        dp[i+1][w] = std::max(dp[i+1][w], dp[i][w-a[i]]+a[i]);
+
+      if (dp[i+1][w] == kW) { exist = true; }
+    }
+  }
+
+  // NOTE: 描画用コード
+  for (int i = 0; i < kN+1; ++i) {
+    for (int w = 0; w < kW+1; ++w) {
+      std::cout << dp[i][w] << " ";
+    }
+    std::cout << "\n";
+  }
+
+  if (exist) { std::cout << "True" << std::endl; return;}
+  std::cout << "False" << std::endl;
+}
