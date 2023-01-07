@@ -19,3 +19,6 @@
 
 ### Unit test
 - `docker-compose exec dev src/ch05_test`
+
+### Cpplint
+- `docker-compose exec dev cpplint ../src/ch05/chapter5.cpp`
