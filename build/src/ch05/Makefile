@@ -141,18 +141,18 @@ ch05/fast:
 .PHONY : ch05/fast
 
 # Convenience name for target.
-src/ch05/CMakeFiles/ch05TEST.dir/rule:
-	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch05/CMakeFiles/ch05TEST.dir/rule
-.PHONY : src/ch05/CMakeFiles/ch05TEST.dir/rule
+src/ch05/CMakeFiles/ch05_test.dir/rule:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch05/CMakeFiles/ch05_test.dir/rule
+.PHONY : src/ch05/CMakeFiles/ch05_test.dir/rule
 
 # Convenience name for target.
-ch05TEST: src/ch05/CMakeFiles/ch05TEST.dir/rule
-.PHONY : ch05TEST
+ch05_test: src/ch05/CMakeFiles/ch05_test.dir/rule
+.PHONY : ch05_test
 
 # fast build rule for target.
-ch05TEST/fast:
-	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/build
-.PHONY : ch05TEST/fast
+ch05_test/fast:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05_test.dir/build.make src/ch05/CMakeFiles/ch05_test.dir/build
+.PHONY : ch05_test/fast
 
 chapter5.o: chapter5.cpp.o
 .PHONY : chapter5.o
@@ -183,7 +183,7 @@ chapter5_test.o: chapter5_test.cpp.o
 
 # target to build an object file
 chapter5_test.cpp.o:
-	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/chapter5_test.cpp.o
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05_test.dir/build.make src/ch05/CMakeFiles/ch05_test.dir/chapter5_test.cpp.o
 .PHONY : chapter5_test.cpp.o
 
 chapter5_test.i: chapter5_test.cpp.i
@@ -191,7 +191,7 @@ chapter5_test.i: chapter5_test.cpp.i
 
 # target to preprocess a source file
 chapter5_test.cpp.i:
-	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/chapter5_test.cpp.i
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05_test.dir/build.make src/ch05/CMakeFiles/ch05_test.dir/chapter5_test.cpp.i
 .PHONY : chapter5_test.cpp.i
 
 chapter5_test.s: chapter5_test.cpp.s
@@ -199,7 +199,7 @@ chapter5_test.s: chapter5_test.cpp.s
 
 # target to generate assembly for a file
 chapter5_test.cpp.s:
-	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/chapter5_test.cpp.s
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05_test.dir/build.make src/ch05/CMakeFiles/ch05_test.dir/chapter5_test.cpp.s
 .PHONY : chapter5_test.cpp.s
 
 # Help Target
@@ -212,7 +212,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... ch05"
-	@echo "... ch05TEST"
+	@echo "... ch05_test"
 	@echo "... chapter5.o"
 	@echo "... chapter5.i"
 	@echo "... chapter5.s"

@@ -18,4 +18,4 @@
 - `docker-compose exec dev src/my_app`
 
 ### Unit test
-- `docker-compose exec dev src/ch05TEST`
+- `docker-compose exec dev src/ch05_test`

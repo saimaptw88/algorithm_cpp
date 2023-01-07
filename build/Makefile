@@ -153,17 +153,17 @@ ch05/fast:
 .PHONY : ch05/fast
 
 #=============================================================================
-# Target rules for targets named ch05TEST
+# Target rules for targets named ch05_test
 
 # Build rule for target.
-ch05TEST: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ch05TEST
-.PHONY : ch05TEST
+ch05_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ch05_test
+.PHONY : ch05_test
 
 # fast build rule for target.
-ch05TEST/fast:
-	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/build
-.PHONY : ch05TEST/fast
+ch05_test/fast:
+	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05_test.dir/build.make src/ch05/CMakeFiles/ch05_test.dir/build
+.PHONY : ch05_test/fast
 
 # Help Target
 help:
@@ -175,7 +175,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... ch05"
-	@echo "... ch05TEST"
+	@echo "... ch05_test"
 	@echo "... my_app"
 .PHONY : help
 
