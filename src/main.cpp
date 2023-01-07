@@ -10,7 +10,7 @@
 
 int main()
 {
-  chapter_5::question_3();
+  chapter_5::question_4();
 
   return 0;
 }

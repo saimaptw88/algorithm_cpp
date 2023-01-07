@@ -421,3 +421,100 @@ void chapter_5::question_3() {
 
   std::cout << "count = " << count << std::endl;
 }
+void chapter_5::question_4() {
+  /*
+   * 実装方針：
+   * 基本はナップザック、更新中に使用する値をキャッシュし計算中に可否を判定する
+   * 計算量: O(2 * NW) = O(NW)
+   *
+   * 値が更新される場合のカウント更新：
+   *     0. 初期値が一つの値に更新される場合、countを１追加する
+   *         dp[i][w]=0 -> dp[i][w]=a[i]
+   *         count[i][w]++
+   *
+   *     1. 初期値が複数の値の和に置き換えられる場合、countを要素の数だけ追加する
+   *         dp[i][w]=0 -> dp[i][w]=a[i]+a[i-1]
+   *         count[i][w]+=2
+   *
+   *     2. dp[i][w] が一つの値に置き換えられる場合、countの小さい方を保持する
+   *         dp[i-1][w]=a[i-1] -> dp[i][w]=a[i], a[i-1]=a[i]
+   *         count[i][w]=min(count[i-1][w], 1)
+   *
+   *     3. dp[i][w] が複数の値の和に置き換えられる場合、countが小さい方を保持する
+   *         dp[i-1][w]=a[i-1] -> dp[i][w]=a[i-2]+a[i]
+   *         count[i][w]=min(count[i-1][w], 2)
+   */
+  std::random_device rnd;
+  const int kN = 4;//rnd() % 10 + 2;
+  const int kW = 10;//rnd() % 30 + 2;
+  const int kK = 2;//rnd() % kN + 1;
+
+  std::vector<int> a(kN, 0);
+  for (int i = 0; i < kN; ++i) { a[i] = rnd() % 10 + 1; }
+  a[0] = 3;
+  a[1] = 6;
+  a[2] = 1;
+  a[3] = 4;
+
+  // NOTE: 確認用コード
+  std::cout << "N = " << kN << std::endl;
+  std::cout << "W = " << kW << std::endl;
+  std::cout << "k = " << kK << std::endl;
+  for (int i = 0; i < kN; ++i) {
+    std::cout << "a[" << i << "] = " << a[i] << std::endl; }
+
+  std::vector<std::vector<int>> dp, count;
+  dp.assign(kN+1, std::vector<int>(kW+1, 0));
+  count.assign(kN+1, std::vector<int>(kW+1, 0));
+
+  bool possibility = false;
+
+  for (int i = 0; i < kN; ++i) {
+    for (int w = 0; w < kW+1; ++w) {
+      dp[i+1][w] = std::max(dp[i+1][w], dp[i][w]);
+      count[i+1][w] = std::max(count[i+1][w], count[i][w]);
+
+      const int kWeight = w - a[i];
+      if (kWeight >= 0) {
+        bool not_same = dp[i+1][w] != dp[i][kWeight]+a[i];
+
+        dp[i+1][w] = std::max(dp[i+1][w], dp[i][kWeight]+a[i]);
+
+        if (dp[i+1][w] == dp[i][kWeight]+a[i]) {
+          // NOTE: dp[i+1][w]が更新されたら,count[i+1][w]も更新
+          if (not_same)
+            count[i+1][w] = count[i][kWeight]+1;
+
+          // NOTE: dp[i+1][w]を複数の組み合わせで作成できる場合、
+          //       最小要素数でcount[i+1][w]を更新
+          else
+            count[i+1][w] = std::min(count[i][w], count[i+1][w]);
+        }
+      }
+
+      if (dp[i+1][w] == kW && count[i+1][w] < kK+1) possibility = true;
+    }
+  }
+
+  // NOTE: 確認用コード
+  std::cout << "\n";
+  std::cout << "--- dp ---" << std::endl;
+  for (int i = 1; i < kN+1; ++i) {
+    for (int w = 0; w < kW+1; ++w) {
+      std::cout << dp[i][w] << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
+  std::cout << "--- count ---" << std::endl;
+  for (int i = 1; i < kN+1; ++i) {
+    for (int w = 0; w < kW+1; ++w) {
+      std::cout << count[i][w] << " ";
+    }
+    std::cout << "\n";
+  }
+
+  if (possibility) std::cout << "True" << std::endl;
+  else
+    std::cout << "False" << std::endl;
+}

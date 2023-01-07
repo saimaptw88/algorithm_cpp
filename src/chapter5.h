@@ -42,4 +42,5 @@ namespace chapter_5 {
   void question_1();
   void question_2();
   void question_3();
+  void question_4();
 }
