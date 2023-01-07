@@ -1,6 +1,5 @@
 #include "chapter5.h"
 
-
 void chapter_5::flog_move() {
   std::random_device rnd;
 
@@ -17,18 +16,18 @@ void chapter_5::flog_move() {
   dp[0] = 0LL;
 
   for (int i = 1; i < kN; ++i) {
-    if(i == 1) {
-      dp[i] = std::abs(h[i] - h[i-1]);
+    if (i == 1) {
+      dp[i] = std::abs(h[i] - h[i - 1]);
       continue;
     } else {
-      const long long kHminusOne = dp[i-1] + std::abs(h[i] - h[i-1]);
-      const long long kHminusTwo = dp[i-2] + std::abs(h[i] - h[i-2]);
+      const long long kHminusOne = dp[i - 1] + std::abs(h[i] - h[i - 1]);
+      const long long kHminusTwo = dp[i - 2] + std::abs(h[i] - h[i - 2]);
 
       dp[i] = std::min(kHminusOne, kHminusTwo);
     }
   }
 
-  std::cout << dp[kN-1] << std::endl;
+  std::cout << dp[kN - 1] << std::endl;
 }
 void chapter_5::relaxation::flog_move() {
   const long long kINF = 1LL << 60;
@@ -37,23 +36,25 @@ void chapter_5::relaxation::flog_move() {
   const int kN = rnd() % 10 + 2;
 
   std::vector<long long> h(kN, 0LL);
-  for (int i = 0; i < kN; ++i) { h[i] = rnd() % 10; }
+  for (int i = 0; i < kN; ++i) {
+    h[i] = rnd() % 10;
+  }
 
   std::vector<long long> dp(kN, kINF);
   dp[0] = 0LL;
 
   for (int i = 1; i < kN; ++i) {
-    const long long kHMinusOne = dp[i-1] + std::abs(h[i] - h[i-1]);
+    const long long kHMinusOne = dp[i - 1] + std::abs(h[i] - h[i - 1]);
 
     chmin(dp[i], kHMinusOne);
 
     if (i > 1) {
-      const long long kHminusTwo = dp[i-2] + std::abs(h[i] - h[i-2]);
+      const long long kHminusTwo = dp[i - 2] + std::abs(h[i] - h[i - 2]);
       chmin(dp[i], kHminusTwo);
     }
   }
 
-  std::cout << dp[kN-1] << std::endl;
+  std::cout << dp[kN - 1] << std::endl;
 }
 void chapter_5::relaxation::flog_move_deliver() {
   const long long kINF = 1LL << 60;
@@ -62,26 +63,30 @@ void chapter_5::relaxation::flog_move_deliver() {
   const int kN = rnd() % 10 + 2;
 
   std::vector<long long> h(kN, 0LL);
-  for (int i = 0; i < kN; ++i) { h[i] = rnd() % 10; }
+  for (int i = 0; i < kN; ++i) {
+    h[i] = rnd() % 10;
+  }
 
   std::vector<long long> dp(kN, kINF);
   dp[0] = 0LL;
 
   for (int i = 1; i < kN; ++i) {
-    if (i < kN-1) {
-      const long long kHPlusOne = dp[i] + std::abs(h[i] - h[i+1]);
-      chmin(dp[i+1], kHPlusOne);
+    if (i < kN - 1) {
+      const long long kHPlusOne = dp[i] + std::abs(h[i] - h[i + 1]);
+      chmin(dp[i + 1], kHPlusOne);
     }
 
-    if (i < kN-2) {
-      const long long kHPlusTwo = dp[i] + std::abs(h[i] - h[i+2]);
-      chmin(dp[i+2], kHPlusTwo);
+    if (i < kN - 2) {
+      const long long kHPlusTwo = dp[i] + std::abs(h[i] - h[i + 2]);
+      chmin(dp[i + 2], kHPlusTwo);
     }
   }
 
-  std::cout << dp[kN-1] << std::endl;
+  std::cout << dp[kN - 1] << std::endl;
 }
-long long chapter_5::relaxation::recursion_search(int i, std::vector<long long>h, std::vector<long long>*dp) {
+long long chapter_5::relaxation::recursion_search(int i,
+                                                  std::vector<long long> h,
+                                                  std::vector<long long> *dp) {
   const long long kINF = 1LL << 60;
   if (dp->at(i) < kINF) return dp->at(i);
 
@@ -89,11 +94,13 @@ long long chapter_5::relaxation::recursion_search(int i, std::vector<long long>h
 
   long long res = kINF;
 
-  const long long kHMinusOne = recursion_search(i-1, h, dp) + std::abs(h[i]-h[i-1]);
+  const long long kHMinusOne =
+      recursion_search(i - 1, h, dp) + std::abs(h[i] - h[i - 1]);
   chmin(res, kHMinusOne);
 
   if (i > 1) {
-    const long long kHMinusTwo = recursion_search(i-2, h, dp) + std::abs(h[i]-h[i-2]);
+    const long long kHMinusTwo =
+        recursion_search(i - 2, h, dp) + std::abs(h[i] - h[i - 2]);
     chmin(res, kHMinusTwo);
   }
 
@@ -117,38 +124,41 @@ void chapter_5::knapsack::execute() {
   weight.assign({2, 1, 3, 2, 1, 5});
   value.assign({3, 2, 6, 1, 3, 85});
 
-  std::vector<std::vector<int>> dp(kN+1, std::vector<int>(kW+1, 0));
+  std::vector<std::vector<int>> dp(kN + 1, std::vector<int>(kW + 1, 0));
 
   /*
    * i番目の品物を選んだ場合
    */
-  for (int i = 1; i < kN+1; ++i) {
-    for (int w = 0; w < kW+1; ++w) {
+  for (int i = 1; i < kN + 1; ++i) {
+    for (int w = 0; w < kW + 1; ++w) {
       // i+1番目の品物を選ばない場合、価値はi番目までの価値と等価
-      dp[i][w] = std::max(dp[i][w], dp[i-1][w]);
+      dp[i][w] = std::max(dp[i][w], dp[i - 1][w]);
 
       // i+1番目の品物を選んだ場合、価値はi番目までの価値と、i番目の価値にi+1番目の価値を追加したものの大きい方
-      if (w - weight[i-1] >= 0) {  // NOTE: 不等号なのは、複数の品物を選んでいた場合も含みたいから
-        dp[i][w] = std::max(dp[i][w], dp[i-1][w - weight[i-1]] + value[i-1]);
+      if (w - weight[i - 1] >=
+          0) {  // NOTE: 不等号なのは、複数の品物を選んでいた場合も含みたいから
+        dp[i][w] =
+            std::max(dp[i][w], dp[i - 1][w - weight[i - 1]] + value[i - 1]);
       }
     }
   }
 
-  for (int i = 0; i < kN+1; ++i) {
-    if(i==0)
-      for(int w = 0; w < kW+1; ++w) {
+  for (int i = 0; i < kN + 1; ++i) {
+    if (i == 0)
+      for (int w = 0; w < kW + 1; ++w) {
         if (w == 0) std::cout << "\t";
         std::cout << w << "\t";
 
         if (w == kW) std::cout << "\n";
       }
 
-    for (int w = 0; w < kW+1; ++w) {
+    for (int w = 0; w < kW + 1; ++w) {
       if (w == 0) std::cout << i << "\t";
 
       std::cout << dp[i][w] << "\t";
 
-      if (w == kW) std::cout << std::endl;;
+      if (w == kW) std::cout << std::endl;
+      ;
     }
   }
 
@@ -161,31 +171,31 @@ void chapter_5::edit_distance::execute() {
   S = "logistic";
   T = "algorithm";
 
-  std::vector<std::vector<int>> dp(S.size()+1, std::vector<int>(T.size()+1, kINF));
+  std::vector<std::vector<int>> dp(S.size() + 1,
+                                   std::vector<int>(T.size() + 1, kINF));
   dp[0][0] = 0;
 
   for (int i = 0; i <= S.size(); ++i) {
     for (int j = 0; j <= T.size(); ++j) {
-
       // 変更操作
       if (i > 0 && j > 0) {
-        if (S[i-1] == T[j-1]) {
+        if (S[i - 1] == T[j - 1]) {
           // NOTE: 同じ文字の場合、操作不要
-          chmin(dp[i][j], dp[i-1][j-1]);
+          chmin(dp[i][j], dp[i - 1][j - 1]);
         } else {
           // NOTE: 同じ文字でない場合、変更操作
-          chmin(dp[i][j], dp[i-1][j-1]+1);
+          chmin(dp[i][j], dp[i - 1][j - 1] + 1);
         }
       }
 
       // 削除操作
       // NOTE: 文字列Sのiになるために要素削除を実行する場合、i-1番目の類似度+1
-      if (i > 0) chmin(dp[i][j], dp[i-1][j]+1);
+      if (i > 0) chmin(dp[i][j], dp[i - 1][j] + 1);
 
       // 挿入操作
       // NOTE: 文字列Sに一文字挿入= 文字列Tから一文字削除
       // 文字列Tのi番目になるために要素削除を実行する場合、j-1番目の類似度+1
-      if (j > 0) chmin(dp[i][j], dp[i][j-1]+1);
+      if (j > 0) chmin(dp[i][j], dp[i][j - 1] + 1);
     }
   }
 
@@ -195,21 +205,21 @@ void chapter_5::section_division::execute() {
   std::random_device rnd;
 
   const int kN = rnd() % 10 + 10;
-  std::vector<std::vector<long long>> c(kN+1, std::vector<long long>(kN+1));
+  std::vector<std::vector<long long>> c(kN + 1, std::vector<long long>(kN + 1));
 
-  for (int i = 0; i < kN+1; ++i) {
-    for (int j = 0; j < kN+1; ++j) {
+  for (int i = 0; i < kN + 1; ++i) {
+    for (int j = 0; j < kN + 1; ++j) {
       c[j][i] = rnd() % 10 + 1;
     }
   }
 
   const long long kINF = 1LL << 60;
-  std::vector<long long> dp(kN+1, kINF);
+  std::vector<long long> dp(kN + 1, kINF);
   dp[0] = 0LL;
 
   for (int i = 0; i <= kN; ++i) {
     for (int j = 0; j < i; ++j) {
-      chmin(dp[i], dp[j]+c[j][i]);
+      chmin(dp[i], dp[j] + c[j][i]);
     }
   }
 
@@ -222,7 +232,7 @@ void chapter_5::question_1() {
    */
   std::random_device rnd;
 
-  const int kN = 3; //rnd() % 10 + 3;
+  const int kN = 3;  // rnd() % 10 + 3;
 
   // NOTE: ターミナル表示部分
   std::vector<int> a(kN), b(kN), c(kN);
@@ -237,22 +247,24 @@ void chapter_5::question_1() {
   }
   std::cout << "\n";
   for (int i = 0; i < 3; ++i) {
-    if (i == 0) std::cout << "a\t";
-    else if(i==1) std::cout << "b\t";
-    else std::cout << "c\t";
+    if (i == 0)
+      std::cout << "a\t";
+    else if (i == 1)
+      std::cout << "b\t";
+    else
+      std::cout << "c\t";
 
     for (int j = 0; j < kN; ++j) {
       if (i == 0) {
         std::cout << a[j] << "\t";
-      }else if(i==1){
+      } else if (i == 1) {
         std::cout << b[j] << "\t";
-      }else{
+      } else {
         std::cout << c[j] << "\t";
       }
     }
     std::cout << "\n";
   }
-
 
   std::function<int(int, int, int, int)> max_action;
   max_action = [](int pre_action, int a_i, int b_i, int c_i) {
@@ -266,28 +278,31 @@ void chapter_5::question_1() {
       max = acts[1];
     } else if (pre_action == 1 && acts[0] == b_i) {
       max = acts[1];
-    } else if (pre_action == 2 && acts[0] == c_i){
+    } else if (pre_action == 2 && acts[0] == c_i) {
       max = acts[1];
 
-    // 前回の行動と今回の行動の最大値が異なる場合
-    }else{
+      // 前回の行動と今回の行動の最大値が異なる場合
+    } else {
       max = acts[0];
     }
 
-    if (max == a_i) return 0;
-    else if (max == b_i) return 1;
-    else return 2;
+    if (max == a_i)
+      return 0;
+    else if (max == b_i)
+      return 1;
+    else
+      return 2;
   };
 
-  std::vector<std::vector<int>> dp(3, std::vector<int>(kN+1, 0));
+  std::vector<std::vector<int>> dp(3, std::vector<int>(kN + 1, 0));
   dp[0][0] = 0;
   dp[1][0] = 1;
   dp[2][0] = 2;
 
   for (int i = 1; i < kN; ++i) {
-    dp[0][i] = max_action(dp[0][i-1], a[i], b[i], c[i]);
-    dp[1][i] = max_action(dp[1][i-1], a[i], b[i], c[i]);
-    dp[2][i] = max_action(dp[2][i-1], a[i], b[i], c[i]);
+    dp[0][i] = max_action(dp[0][i - 1], a[i], b[i], c[i]);
+    dp[1][i] = max_action(dp[1][i - 1], a[i], b[i], c[i]);
+    dp[2][i] = max_action(dp[2][i - 1], a[i], b[i], c[i]);
   }
 
   // NOTE: ターミナル表示部分
@@ -300,9 +315,16 @@ void chapter_5::question_1() {
   for (int i = 0; i < 3; ++i) {
     for (int j = 0; j < kN; ++j) {
       int num;
-      if (i == 0) { num = dp[0][j]; if(j==0)std::cout << "a\t"; }
-      else if(i == 1) { num = dp[1][j]; if(j==0)std::cout << "b\t"; }
-      else { num = dp[2][j]; if(j==0)std::cout << "c\t"; }
+      if (i == 0) {
+        num = dp[0][j];
+        if (j == 0) std::cout << "a\t";
+      } else if (i == 1) {
+        num = dp[1][j];
+        if (j == 0) std::cout << "b\t";
+      } else {
+        num = dp[2][j];
+        if (j == 0) std::cout << "c\t";
+      }
 
       std::cout << num << "\t";
     }
@@ -310,17 +332,22 @@ void chapter_5::question_1() {
   }
   std::cout << "\n";
 
-
   int sum_a = 0;
   int sum_b = 0;
   int sum_c = 0;
 
-  std::function<int(int, int, std::vector<int>, std::vector<int>, std::vector<int>)> sum;
-  sum = [](int i, int type, std::vector<int>x0, std::vector<int>x1, std::vector<int>x2) {
+  std::function<int(int, int, std::vector<int>, std::vector<int>,
+                    std::vector<int>)>
+      sum;
+  sum = [](int i, int type, std::vector<int> x0, std::vector<int> x1,
+           std::vector<int> x2) {
     switch (type) {
-      case 0: return x0[i];
-      case 1: return x1[i];
-      case 2: return x2[i];
+      case 0:
+        return x0[i];
+      case 1:
+        return x1[i];
+      case 2:
+        return x2[i];
     }
   };
 
@@ -341,79 +368,89 @@ void chapter_5::question_2() {
    */
 
   std::random_device rnd;
-  const int kN = 3;//rnd() % 10 + 2;
-  const int kW = 10;//rnd() % 100 + 2;
+  const int kN = 3;   // rnd() % 10 + 2;
+  const int kW = 10;  // rnd() % 100 + 2;
 
   std::vector<int> a(kN, 0);
-  for (int i = 0; i < kN; ++i) { a[i] = rnd() % kW; }
+  for (int i = 0; i < kN; ++i) {
+    a[i] = rnd() % kW;
+  }
 
   // NOTE: 描画用コード
   std::cout << "N = " << kN << std::endl;
   std::cout << "W = " << kW << std::endl;
   std::cout << "a = " << std::endl;
   for (int i = 0; i < kN; ++i) {
-    std::cout << "a[" << i << "] = " << a[i] << std::endl; }
-
+    std::cout << "a[" << i << "] = " << a[i] << std::endl;
+  }
 
   std::vector<std::vector<int>> dp;
-  dp.assign(kN+1, std::vector<int>(kW+1, 0));
+  dp.assign(kN + 1, std::vector<int>(kW + 1, 0));
 
   bool exist = false;
 
   for (int i = 0; i < kN; ++i) {
-    for (int w = 0; w < kW+1; ++w) {
-      dp[i+1][w] = std::max(dp[i+1][w], dp[i][w]);
+    for (int w = 0; w < kW + 1; ++w) {
+      dp[i + 1][w] = std::max(dp[i + 1][w], dp[i][w]);
 
-      if (w-a[i] >= 0)
-        dp[i+1][w] = std::max(dp[i+1][w], dp[i][w-a[i]]+a[i]);
+      if (w - a[i] >= 0)
+        dp[i + 1][w] = std::max(dp[i + 1][w], dp[i][w - a[i]] + a[i]);
 
-      if (dp[i+1][w] == kW) { exist = true; }
+      if (dp[i + 1][w] == kW) {
+        exist = true;
+      }
     }
   }
 
   // NOTE: 描画用コード
-  for (int i = 0; i < kN+1; ++i) {
-    for (int w = 0; w < kW+1; ++w) {
+  for (int i = 0; i < kN + 1; ++i) {
+    for (int w = 0; w < kW + 1; ++w) {
       std::cout << dp[i][w] << " ";
     }
     std::cout << "\n";
   }
 
-  if (exist) { std::cout << "True" << std::endl; return;}
+  if (exist) {
+    std::cout << "True" << std::endl;
+    return;
+  }
   std::cout << "False" << std::endl;
 }
 void chapter_5::question_3() {
   std::random_device rnd;
-  const int kN = 3;// rnd() % 10 +2;
-  const int kW = 10;// rnd() % 20 + 2;
+  const int kN = 3;   // rnd() % 10 +2;
+  const int kW = 10;  // rnd() % 20 + 2;
 
   std::vector<int> a(kN, 0);
-  for(int i = 0; i < kN; ++i) { a[i] = rnd() % 10; }
+  for (int i = 0; i < kN; ++i) {
+    a[i] = rnd() % 10;
+  }
 
   // NOTE: 描画用コード
   std::cout << "N = " << kN << std::endl;
   std::cout << "W = " << kW << std::endl;
   for (int i = 0; i < kN; ++i) {
-    std::cout << "a[" << i << "] = " << a[i] << std::endl; }
+    std::cout << "a[" << i << "] = " << a[i] << std::endl;
+  }
 
   std::vector<std::vector<int>> dp;
-  dp.assign(kN+1, std::vector<int>(kW+1, 0));
+  dp.assign(kN + 1, std::vector<int>(kW + 1, 0));
 
   int count = 0;
 
   for (int i = 0; i < kN; ++i) {
-    for (int w = 0; w < kW+1; ++w) {
-      dp[i+1][w] = std::max(dp[i+1][w], dp[i][w]);
+    for (int w = 0; w < kW + 1; ++w) {
+      dp[i + 1][w] = std::max(dp[i + 1][w], dp[i][w]);
 
       if (w - a[i] >= 0)
-        dp[i+1][w] = std::max(dp[i+1][w], dp[i][w-a[i]]+a[i]);
+        dp[i + 1][w] = std::max(dp[i + 1][w], dp[i][w - a[i]] + a[i]);
 
-      if (dp[i+1][w] > 0 && dp[i+1][w] < kW+1) count++;
+      if (dp[i + 1][w] > 0 && dp[i + 1][w] < kW + 1) count++;
     }
   }
 
-  for (int i = 0; i < kN+1; ++i) {
-    for (int w = 0; w < kW+1; ++w) {
+  for (int i = 0; i < kN + 1; ++i) {
+    for (int w = 0; w < kW + 1; ++w) {
       std::cout << dp[i][w] << " ";
     }
     std::cout << "\n";
@@ -432,7 +469,8 @@ void chapter_5::question_4() {
    *         dp[i][w]=0 -> dp[i][w]=a[i]
    *         count[i][w]++
    *
-   *     1. 初期値が複数の値の和に置き換えられる場合、countを要素の数だけ追加する
+   *     1.
+   * 初期値が複数の値の和に置き換えられる場合、countを要素の数だけ追加する
    *         dp[i][w]=0 -> dp[i][w]=a[i]+a[i-1]
    *         count[i][w]+=2
    *
@@ -440,77 +478,148 @@ void chapter_5::question_4() {
    *         dp[i-1][w]=a[i-1] -> dp[i][w]=a[i], a[i-1]=a[i]
    *         count[i][w]=min(count[i-1][w], 1)
    *
-   *     3. dp[i][w] が複数の値の和に置き換えられる場合、countが小さい方を保持する
+   *     3. dp[i][w]
+   * が複数の値の和に置き換えられる場合、countが小さい方を保持する
    *         dp[i-1][w]=a[i-1] -> dp[i][w]=a[i-2]+a[i]
    *         count[i][w]=min(count[i-1][w], 2)
    */
   std::random_device rnd;
-  const int kN = 4;//rnd() % 10 + 2;
-  const int kW = 10;//rnd() % 30 + 2;
-  const int kK = 2;//rnd() % kN + 1;
+  const int kN = 4;   // rnd() % 10 + 2;
+  const int kW = 10;  // rnd() % 30 + 2;
+  const int kK = 2;   // rnd() % kN + 1;
 
   std::vector<int> a(kN, 0);
-  for (int i = 0; i < kN; ++i) { a[i] = rnd() % 10 + 1; }
+  for (int i = 0; i < kN; ++i) {
+    a[i] = rnd() % 10 + 1;
+  }
 
   // NOTE: 確認用コード
   std::cout << "N = " << kN << std::endl;
   std::cout << "W = " << kW << std::endl;
   std::cout << "k = " << kK << std::endl;
   for (int i = 0; i < kN; ++i) {
-    std::cout << "a[" << i << "] = " << a[i] << std::endl; }
+    std::cout << "a[" << i << "] = " << a[i] << std::endl;
+  }
 
   std::vector<std::vector<int>> dp, count;
-  dp.assign(kN+1, std::vector<int>(kW+1, 0));
-  count.assign(kN+1, std::vector<int>(kW+1, 0));
+  dp.assign(kN + 1, std::vector<int>(kW + 1, 0));
+  count.assign(kN + 1, std::vector<int>(kW + 1, 0));
 
   bool possibility = false;
 
   for (int i = 0; i < kN; ++i) {
-    for (int w = 0; w < kW+1; ++w) {
-      dp[i+1][w] = std::max(dp[i+1][w], dp[i][w]);
-      count[i+1][w] = std::max(count[i+1][w], count[i][w]);
+    for (int w = 0; w < kW + 1; ++w) {
+      dp[i + 1][w] = std::max(dp[i + 1][w], dp[i][w]);
+      count[i + 1][w] = std::max(count[i + 1][w], count[i][w]);
 
       const int kWeight = w - a[i];
       if (kWeight >= 0) {
-        bool not_same = dp[i+1][w] != dp[i][kWeight]+a[i];
+        bool not_same = dp[i + 1][w] != dp[i][kWeight] + a[i];
 
-        dp[i+1][w] = std::max(dp[i+1][w], dp[i][kWeight]+a[i]);
+        dp[i + 1][w] = std::max(dp[i + 1][w], dp[i][kWeight] + a[i]);
 
-        if (dp[i+1][w] == dp[i][kWeight]+a[i]) {
+        if (dp[i + 1][w] == dp[i][kWeight] + a[i]) {
           // NOTE: dp[i+1][w]が更新されたら,count[i+1][w]も更新
-          if (not_same)
-            count[i+1][w] = count[i][kWeight]+1;
+          if (not_same) count[i + 1][w] = count[i][kWeight] + 1;
 
           // NOTE: dp[i+1][w]を複数の組み合わせで作成できる場合、
           //       最小要素数でcount[i+1][w]を更新
           else
-            count[i+1][w] = std::min(count[i][w], count[i+1][w]);
+            count[i + 1][w] = std::min(count[i][w], count[i + 1][w]);
         }
       }
 
-      if (dp[i+1][w] == kW && count[i+1][w] < kK+1) possibility = true;
+      if (dp[i + 1][w] == kW && count[i + 1][w] < kK + 1) possibility = true;
     }
   }
 
   // NOTE: 確認用コード
   std::cout << "\n";
   std::cout << "--- dp ---" << std::endl;
-  for (int i = 1; i < kN+1; ++i) {
-    for (int w = 0; w < kW+1; ++w) {
+  for (int i = 1; i < kN + 1; ++i) {
+    for (int w = 0; w < kW + 1; ++w) {
       std::cout << dp[i][w] << " ";
     }
     std::cout << "\n";
   }
   std::cout << "\n";
   std::cout << "--- count ---" << std::endl;
-  for (int i = 1; i < kN+1; ++i) {
-    for (int w = 0; w < kW+1; ++w) {
+  for (int i = 1; i < kN + 1; ++i) {
+    for (int w = 0; w < kW + 1; ++w) {
       std::cout << count[i][w] << " ";
     }
     std::cout << "\n";
   }
 
-  if (possibility) std::cout << "True" << std::endl;
+  if (possibility)
+    std::cout << "True" << std::endl;
   else
     std::cout << "False" << std::endl;
+}
+void chapter_5::question_5() {
+  std::random_device rnd;
+  const int kN = rnd() % 5 + 2;
+  const int kW = rnd() % 10 + kN;
+
+  std::cout << "N = " << kN << std::endl;
+  std::cout << "W = " << kW << std::endl;
+  std::cout << "\n";
+
+  std::vector<int> a(kN, 0);
+  for (int i = 0; i < kN; ++i) {
+    a[i] = rnd() % kW + 1;
+    std::cout << i << ": " << a[i] << std::endl;
+  }
+
+  const bool kPossible = question_5(kN, kW, a);
+
+  if (kPossible)
+    std::cout << "True" << std::endl;
+  else
+    std::cout << "False" << std::endl;
+}
+bool chapter_5::question_5(int N, int W, std::vector<int> a) {
+  /*
+   * 実装方針
+   * 改良ナップザック
+   * i 番目の時にWに届かない場合は、Wを超えない範囲でa[i]を加算し続ける
+   * O(N * W * logW)
+   */
+
+  std::vector<std::vector<int>> dp;
+  dp.assign(N + 1, std::vector<int>(W + 1, 0));
+
+  bool possible = false;
+
+  for (int i = 0; i < N; ++i) {
+    for (int w = 0; w < W + 1; ++w) {
+      for (int a_exp = 0; a_exp < w + 1; a_exp += a[i]) {
+        if (w - a_exp >= 0)
+          dp[i + 1][w] = std::max(dp[i + 1][w], dp[i][w - a_exp] + a_exp);
+      }
+
+      if (dp[i + 1][w] == W) possible = true;
+    }
+  }
+
+  // NOTE: 確認用コード
+  std::cout << "\n";
+  std::cout << "--- dp ---" << std::endl;
+  std::cout << "   ";
+  for (int w = 0; w < W + 1; ++w) {
+    std::cout << w << " ";
+  }
+  std::cout << "\n";
+  for (int i = 1; i < N + 1; ++i) {
+    for (int w = 0; w < W + 1; ++w) {
+      if (w == 0) {
+        std::cout << i << ": ";
+      }
+
+      std::cout << dp[i][w] << " ";
+    }
+    std::cout << "\n";
+  }
+
+  return possible;
 }
