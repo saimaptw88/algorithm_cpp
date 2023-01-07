@@ -4,9 +4,21 @@
 - Code by C++
 
 ## Script
-
+### Build image
 - `docker-compose build`
+
+### Start container
 - `docker-compose up -d`
+
+### Build source
 - `docker-compose exec dev cmake ..`
-- `docker-compose exec dev cmake --build .`
-- `docker-compose exec dev ./my_app`
+- `docker-compose exec dev cmake --build .` or `docker-compose dev make`
+
+### Execute source
+- `docker-compose exec dev src/my_app`
+
+### Unit test
+- `docker-compose exec dev src/ch05_test`
+
+### Cpplint
+- `docker-compose exec dev cpplint ../src/ch05/chapter5.cpp`
