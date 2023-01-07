@@ -96,6 +96,7 @@ src/clean: src/ch05/clean
 
 # Recursive "all" directory target.
 src/ch05/all: src/ch05/CMakeFiles/ch05.dir/all
+src/ch05/all: src/ch05/CMakeFiles/ch05TEST.dir/all
 .PHONY : src/ch05/all
 
 # Recursive "preinstall" directory target.
@@ -104,6 +105,7 @@ src/ch05/preinstall:
 
 # Recursive "clean" directory target.
 src/ch05/clean: src/ch05/CMakeFiles/ch05.dir/clean
+src/ch05/clean: src/ch05/CMakeFiles/ch05TEST.dir/clean
 .PHONY : src/ch05/clean
 
 #=============================================================================
@@ -113,7 +115,7 @@ src/ch05/clean: src/ch05/CMakeFiles/ch05.dir/clean
 src/CMakeFiles/my_app.dir/all: src/ch05/CMakeFiles/ch05.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=3,4,5,6,7,8 "Built target my_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=5,6,7,8,9,10 "Built target my_app"
 .PHONY : src/CMakeFiles/my_app.dir/all
 
 # Build rule for subdir invocation for target.
@@ -157,6 +159,32 @@ ch05: src/ch05/CMakeFiles/ch05.dir/rule
 src/ch05/CMakeFiles/ch05.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05.dir/build.make src/ch05/CMakeFiles/ch05.dir/clean
 .PHONY : src/ch05/CMakeFiles/ch05.dir/clean
+
+#=============================================================================
+# Target rules for target src/ch05/CMakeFiles/ch05TEST.dir
+
+# All Build rule for target.
+src/ch05/CMakeFiles/ch05TEST.dir/all: src/ch05/CMakeFiles/ch05.dir/all
+	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=3,4 "Built target ch05TEST"
+.PHONY : src/ch05/CMakeFiles/ch05TEST.dir/all
+
+# Build rule for subdir invocation for target.
+src/ch05/CMakeFiles/ch05TEST.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch05/CMakeFiles/ch05TEST.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles 0
+.PHONY : src/ch05/CMakeFiles/ch05TEST.dir/rule
+
+# Convenience name for target.
+ch05TEST: src/ch05/CMakeFiles/ch05TEST.dir/rule
+.PHONY : ch05TEST
+
+# clean rule for target.
+src/ch05/CMakeFiles/ch05TEST.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/clean
+.PHONY : src/ch05/CMakeFiles/ch05TEST.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

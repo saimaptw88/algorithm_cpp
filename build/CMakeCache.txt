@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=MYTEST
+CMAKE_PROJECT_NAME:STATIC=MYALGORITHM
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -198,6 +198,15 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+
+//Value Computed by CMake
+MYALGORITHM_BINARY_DIR:STATIC=/cpp-dev/build
+
+//Value Computed by CMake
+MYALGORITHM_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+MYALGORITHM_SOURCE_DIR:STATIC=/cpp-dev
 
 //Value Computed by CMake
 MYTEST_BINARY_DIR:STATIC=/cpp-dev/build

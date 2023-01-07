@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /cpp-dev/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -130,6 +140,20 @@ ch05/fast:
 	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05.dir/build.make src/ch05/CMakeFiles/ch05.dir/build
 .PHONY : ch05/fast
 
+# Convenience name for target.
+src/ch05/CMakeFiles/ch05TEST.dir/rule:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch05/CMakeFiles/ch05TEST.dir/rule
+.PHONY : src/ch05/CMakeFiles/ch05TEST.dir/rule
+
+# Convenience name for target.
+ch05TEST: src/ch05/CMakeFiles/ch05TEST.dir/rule
+.PHONY : ch05TEST
+
+# fast build rule for target.
+ch05TEST/fast:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/build
+.PHONY : ch05TEST/fast
+
 chapter5.o: chapter5.cpp.o
 .PHONY : chapter5.o
 
@@ -154,6 +178,30 @@ chapter5.cpp.s:
 	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05.dir/build.make src/ch05/CMakeFiles/ch05.dir/chapter5.cpp.s
 .PHONY : chapter5.cpp.s
 
+chapter5_test.o: chapter5_test.cpp.o
+.PHONY : chapter5_test.o
+
+# target to build an object file
+chapter5_test.cpp.o:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/chapter5_test.cpp.o
+.PHONY : chapter5_test.cpp.o
+
+chapter5_test.i: chapter5_test.cpp.i
+.PHONY : chapter5_test.i
+
+# target to preprocess a source file
+chapter5_test.cpp.i:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/chapter5_test.cpp.i
+.PHONY : chapter5_test.cpp.i
+
+chapter5_test.s: chapter5_test.cpp.s
+.PHONY : chapter5_test.s
+
+# target to generate assembly for a file
+chapter5_test.cpp.s:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/chapter5_test.cpp.s
+.PHONY : chapter5_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,10 +210,15 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... ch05"
+	@echo "... ch05TEST"
 	@echo "... chapter5.o"
 	@echo "... chapter5.i"
 	@echo "... chapter5.s"
+	@echo "... chapter5_test.o"
+	@echo "... chapter5_test.i"
+	@echo "... chapter5_test.s"
 .PHONY : help
 
 

@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /cpp-dev/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -142,6 +152,19 @@ ch05/fast:
 	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05.dir/build.make src/ch05/CMakeFiles/ch05.dir/build
 .PHONY : ch05/fast
 
+#=============================================================================
+# Target rules for targets named ch05TEST
+
+# Build rule for target.
+ch05TEST: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ch05TEST
+.PHONY : ch05TEST
+
+# fast build rule for target.
+ch05TEST/fast:
+	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05TEST.dir/build.make src/ch05/CMakeFiles/ch05TEST.dir/build
+.PHONY : ch05TEST/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -150,7 +173,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... ch05"
+	@echo "... ch05TEST"
 	@echo "... my_app"
 .PHONY : help
 

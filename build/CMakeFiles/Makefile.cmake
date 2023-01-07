@@ -49,4 +49,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/my_app.dir/DependInfo.cmake"
   "src/ch05/CMakeFiles/ch05.dir/DependInfo.cmake"
+  "src/ch05/CMakeFiles/ch05TEST.dir/DependInfo.cmake"
   )
