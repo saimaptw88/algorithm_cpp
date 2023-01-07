@@ -451,10 +451,6 @@ void chapter_5::question_4() {
 
   std::vector<int> a(kN, 0);
   for (int i = 0; i < kN; ++i) { a[i] = rnd() % 10 + 1; }
-  a[0] = 3;
-  a[1] = 6;
-  a[2] = 1;
-  a[3] = 4;
 
   // NOTE: 確認用コード
   std::cout << "N = " << kN << std::endl;
