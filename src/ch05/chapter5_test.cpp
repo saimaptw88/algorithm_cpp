@@ -5,6 +5,7 @@
 
 #include <cassert>
 
+// NOTE: 同値テストのみ
 namespace chapter_5 {
 TEST(question_5, true_test) {
   const int kN = 4;
