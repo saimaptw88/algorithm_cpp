@@ -579,26 +579,19 @@ void chapter_5::question_5() {
     std::cout << "False" << std::endl;
 }
 bool chapter_5::question_5(int N, int W, std::vector<int> a) {
-  /*
-   * 実装方針
-   * 改良ナップザック
-   * i 番目の時にWに届かない場合は、Wを超えない範囲でa[i]を加算し続ける
-   * O(N * W * W)
-   */
-
   std::vector<std::vector<int>> dp;
-  dp.assign(N + 1, std::vector<int>(W + 1, 0));
+  dp.assign(N+1, std::vector<int>(W+1, false));
 
-  bool possible = false;
+  dp[0][0] = true;
 
   for (int i = 0; i < N; ++i) {
-    for (int w = 0; w < W + 1; ++w) {
-      for (int a_exp = 0; a_exp < w + 1; a_exp += a[i]) {
-        if (w - a_exp >= 0)
-          dp[i + 1][w] = std::max(dp[i + 1][w], dp[i][w - a_exp] + a_exp);
+
+    for (int w = 0; w < W+1; ++w) {
+      if (w+a[i] < W+1 && dp[i][w]) {
+        dp[i][w+a[i]] = true;
       }
 
-      if (dp[i + 1][w] == W) possible = true;
+      if (dp[i][w]) dp[i+1][w] = true;
     }
   }
 
@@ -621,9 +614,34 @@ bool chapter_5::question_5(int N, int W, std::vector<int> a) {
     std::cout << "\n";
   }
 
-  return possible;
+  return dp[N][W];
 }
 
+void chapter_5::question_6() {
+  std::random_device rnd;
+  const int kN = rnd() % 4 + 2;
+  const int kW = rnd() % 30 + 1;
+
+  std::vector<int> a(kN), m(kN);
+  for (int i = 0; i < kN; ++i) {
+    a[i] = rnd() % kW + 2;
+    m[i] = rnd() % 5 + 1;
+  }
+
+  // NOTE: 確認用コード
+  std::cout << "N = " << kN << std::endl;
+  std::cout << "W = " << kW << std::endl;
+  for (int i = 0; i < kN; ++i) {
+    std::cout << "a[" << i << "] = " << a[i] <<
+    ", m[" << i << "] = " << m[i] << std::endl;
+  }
+
+  const bool kResult = question_6(kN, kW, a, m);
+
+  if (kResult) std::cout << "True" << std::endl;
+  else
+    std::cout << "False" << std::endl;
+}
 bool chapter_5::question_6(int N, int W, std::vector<int>a, std::vector<int>m) {
   /*
    * RETURN: a[n] を m[n] 回まで足し合わせるて W になるかを判定する
@@ -641,24 +659,32 @@ bool chapter_5::question_6(int N, int W, std::vector<int>a, std::vector<int>m) {
    *      ただし、上記を実行できるのは実行した回数をカウントして count<=m[i] を満たしている時のみ
    *
    * キャッシュ：
-   * i番目の数でwを満たせたかをキャッシュ
+   * dp: i番目の数でwを満たせたかをキャッシュ
+   * count: i番目の数をwを満たすために加算した回数
    */
 
   std::vector<std::vector<int>> dp;
   dp.assign(N+1, std::vector<int>(W+1, false));
 
+  std::vector<std::vector<int>> count;
+  count.assign(N+1, std::vector<int>(W+1, 0));
+
   dp[0][0] = true;
 
   for (int i = 0; i < N; ++i) {
-    int count = 0;
-
     for (int w = 0; w < W+1; ++w) {
-      if (w+a[i] < W+1 && count < m[i]+1 && dp[i][w]) {
+      if (w+a[i] < W+1 && dp[i][w] && count[i][w] < m[i]) {
         dp[i][w+a[i]] = true;
-        count++;
+        count[i][w+a[i]] = count[i][w] + 1;
+
+        // NOTE: i-1番目まででwを再現できている場合、i番目の値はw再現に不要
+        if (i>0 && count[i-1][w+a[i]])
+          count[i][w+a[i]] = 0;
       }
 
-      if (dp[i][w]) dp[i+1][w] = true;
+      if (dp[i][w]) {
+        dp[i+1][w] = true;
+      }
     }
   }
 
@@ -677,6 +703,23 @@ bool chapter_5::question_6(int N, int W, std::vector<int>a, std::vector<int>m) {
       }
 
       std::cout << dp[i][w] << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
+  std::cout << "--- count ---" << std::endl;
+  std::cout << "   ";
+  for (int w = 0; w < W + 1; ++w) {
+    std::cout << w << " ";
+  }
+  std::cout << "\n";
+  for (int i = 0; i < N; ++i) {
+    for (int w = 0; w < W + 1; ++w) {
+      if (w == 0) {
+        std::cout << i << ": ";
+      }
+
+      std::cout << count[i][w] << " ";
     }
     std::cout << "\n";
   }

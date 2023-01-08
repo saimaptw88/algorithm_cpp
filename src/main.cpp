@@ -8,7 +8,7 @@
 #include "chapter4.h"
 
 int main() {
-  chapter_5::question_5();
+  chapter_5::question_6();
 
   return 0;
 }

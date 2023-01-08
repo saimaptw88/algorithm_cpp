@@ -51,4 +51,30 @@ TEST(question_6, false_test) {
   const bool kResult = question_6(kN, kW, a, m);
   EXPECT_FALSE(kResult);
 }
+
+TEST(question_6, false_at_random_retest_1) {
+  // NOTE:
+  // 下記条件だとTrueになるはずだがFalseになったので再テスト
+  const int kN = 4;
+  const int kW = 13;
+
+  std::vector<int> a{ 14, 4, 14, 5 };
+  std::vector<int> m{ 5, 4, 2, 2};
+
+  const bool kResult = question_6(kN, kW, a, m);
+  EXPECT_TRUE(kResult);
+}
+
+TEST(question_6, false_at_random_retest_2) {
+  // NOTE:
+  // 下記条件だとTrueになるはずだがFalseになったので再テスト
+  const int kN = 3;
+  const int kW = 20;
+
+  std::vector<int> a{ 12, 4, 9 };
+  std::vector<int> m{ 4, 3, 3};
+
+  const bool kResult = question_6(kN, kW, a, m);
+  EXPECT_TRUE(kResult);
+}
 }  // namespace chapter_5
