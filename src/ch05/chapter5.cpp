@@ -583,7 +583,7 @@ bool chapter_5::question_5(int N, int W, std::vector<int> a) {
    * 実装方針
    * 改良ナップザック
    * i 番目の時にWに届かない場合は、Wを超えない範囲でa[i]を加算し続ける
-   * O(N * W * logW)
+   * O(N * W * W)
    */
 
   std::vector<std::vector<int>> dp;
@@ -622,4 +622,64 @@ bool chapter_5::question_5(int N, int W, std::vector<int> a) {
   }
 
   return possible;
+}
+
+bool chapter_5::question_6(int N, int W, std::vector<int>a, std::vector<int>m) {
+  /*
+   * RETURN: a[n] を m[n] 回まで足し合わせるて W になるかを判定する
+   * @N: a, m の要素数
+   * @W: 目標値
+   * @a: 足し合わせる要素
+   * @m: a の各要素の足し合わせ可能な回数
+   *
+   * 制約: 計算量 O(NW)を満たす
+   * 実装方針:
+   * 改良ナップザック問題
+   *   1. i番目までの値でwを再現できていたなら、i+1番目でも再現できる
+   *   2. i番目wが再現できているなら、i番目w+a[i]も再現できる
+   *      w+a[i]<=W && dp[i][w] -> dp[i][w+a[i]]==True再現できる
+   *      ただし、上記を実行できるのは実行した回数をカウントして count<=m[i] を満たしている時のみ
+   *
+   * キャッシュ：
+   * i番目の数でwを満たせたかをキャッシュ
+   */
+
+  std::vector<std::vector<int>> dp;
+  dp.assign(N+1, std::vector<int>(W+1, false));
+
+  dp[0][0] = true;
+
+  for (int i = 0; i < N; ++i) {
+    int count = 0;
+
+    for (int w = 0; w < W+1; ++w) {
+      if (w+a[i] < W+1 && count < m[i]+1 && dp[i][w]) {
+        dp[i][w+a[i]] = true;
+        count++;
+      }
+
+      if (dp[i][w]) dp[i+1][w] = true;
+    }
+  }
+
+  // NOTE: 確認用コード
+  std::cout << "\n";
+  std::cout << "--- dp ---" << std::endl;
+  std::cout << "   ";
+  for (int w = 0; w < W + 1; ++w) {
+    std::cout << w << " ";
+  }
+  std::cout << "\n";
+  for (int i = 0; i < N; ++i) {
+    for (int w = 0; w < W + 1; ++w) {
+      if (w == 0) {
+        std::cout << i << ": ";
+      }
+
+      std::cout << dp[i][w] << " ";
+    }
+    std::cout << "\n";
+  }
+
+  return dp[N][W];
 }

@@ -48,6 +48,10 @@ void question_1();
 void question_2();
 void question_3();
 void question_4();
+
+// NOTE: O(NWW)で O(NW)を達成できていない->答え見てquestion6で実現できた
 void question_5();
 bool question_5(int N, int W, std::vector<int> a);
+
+bool question_6(int N, int W, std::vector<int>a, std::vector<int>m);
 }  // namespace chapter_5
