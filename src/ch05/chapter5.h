@@ -5,7 +5,10 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
+#include <iterator>
 #include <random>
+#include <string>
+#include <sstream>
 #include <vector>
 
 namespace chapter_5 {
@@ -66,6 +69,15 @@ bool question_5(int N, int W, std::vector<int> a);
 
 void question_6();
 bool question_6(int N, int W, std::vector<int>a, std::vector<int>m);
+
+void question_7();
+std::string question_7(std::string s, std::string t);
+
+void question_8();
+double question_8(int N, int M, std::vector<int>a);
+
+void question_9();
+int question_9(int N, std::vector<int>a);
 }  // namespace chapter_5
 
 #endif  // SRC_CH05_CHAPTER5_H_

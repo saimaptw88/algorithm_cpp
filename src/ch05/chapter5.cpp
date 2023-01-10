@@ -165,37 +165,39 @@ void chapter_5::knapsack::execute() {
   std::cout << dp[kN][kW] << std::endl;
 }
 void chapter_5::edit_distance::execute() {
-  const int kINF = 1 << 29;
-  std::string S, T;
+  // 達成したいこと: 文字列Sを文字列Tに変換する編集距離を求めたい
+  // 制約条件: 3つの操作のみ実行可能
+  //   1. S中の文字を１つ変更する
+  //   2. S中の文字を１つ削除する
+  //   3. S中に文字を１つ挿入する
+  // 実装方針: 改良ナップザック。全てのキャッシュに対して３つの操作を行い最小編集距離を更新し続ける
+  // キャッシュ: Sの最初のi文字とTの最初のj文字との間の編集距離
+  std::string S = "logistic";
+  std::string T = "algorithm";
 
-  S = "logistic";
-  T = "algorithm";
-
-  std::vector<std::vector<int>> dp(S.size() + 1,
-                                   std::vector<int>(T.size() + 1, kINF));
+  const int kInf = 1 << 29;
+  std::vector<std::vector<int>> dp;
+  dp.assign(S.size()+1, std::vector<int>(T.size()+1, kInf));
   dp[0][0] = 0;
 
-  for (int i = 0; i <= S.size(); ++i) {
-    for (int j = 0; j <= T.size(); ++j) {
+  for (int i = 0; i < S.size()+1; ++i) {
+    for (int j = 0; j < T.size()+1; ++j) {
       // 変更操作
       if (i > 0 && j > 0) {
-        if (S[i - 1] == T[j - 1]) {
-          // NOTE: 同じ文字の場合、操作不要
-          chmin(dp[i][j], dp[i - 1][j - 1]);
+        if (S[i-1] == T[j-1]) {
+          dp[i][j] = std::min(dp[i][j], dp[i-1][j-1]);
         } else {
-          // NOTE: 同じ文字でない場合、変更操作
-          chmin(dp[i][j], dp[i - 1][j - 1] + 1);
+          dp[i][j] = std::min(dp[i][j], dp[i-1][j-1]+1);
         }
       }
 
       // 削除操作
-      // NOTE: 文字列Sのiになるために要素削除を実行する場合、i-1番目の類似度+1
-      if (i > 0) chmin(dp[i][j], dp[i - 1][j] + 1);
+      if (i > 0)
+        dp[i][j] = std::min(dp[i][j], dp[i-1][j]+1);
 
       // 挿入操作
-      // NOTE: 文字列Sに一文字挿入= 文字列Tから一文字削除
-      // 文字列Tのi番目になるために要素削除を実行する場合、j-1番目の類似度+1
-      if (j > 0) chmin(dp[i][j], dp[i][j - 1] + 1);
+      if (j > 0)
+        dp[i][j] = std::min(dp[i][j], dp[i][j-1]+1);
     }
   }
 
@@ -204,26 +206,25 @@ void chapter_5::edit_distance::execute() {
 void chapter_5::section_division::execute() {
   std::random_device rnd;
 
-  const int kN = rnd() % 10 + 10;
-  std::vector<std::vector<long long>> c(kN + 1, std::vector<long long>(kN + 1));
+  int N = 10;
+  std::vector<std::vector<int>>c(N+1, std::vector<int>(N+1, 10000));
 
-  for (int i = 0; i < kN + 1; ++i) {
-    for (int j = 0; j < kN + 1; ++j) {
-      c[j][i] = rnd() % 10 + 1;
+  for (int i = 0; i < N+1; ++i) {
+    for (int j = 0; j < N+1; ++j) {
+      c[i][j] = rnd() % 10;
     }
   }
 
-  const long long kINF = 1LL << 60;
-  std::vector<long long> dp(kN + 1, kINF);
-  dp[0] = 0LL;
+  std::vector<int> dp(N+1, 10000);
+  dp[0] = 0;
 
-  for (int i = 0; i <= kN; ++i) {
+  for (int i = 0; i < N+1; ++i) {
     for (int j = 0; j < i; ++j) {
-      chmin(dp[i], dp[j] + c[j][i]);
+      dp[i] = std::min(dp[i], dp[j]+c[j][i]);
     }
   }
 
-  std::cout << dp[kN] << std::endl;
+  std::cout << dp[N] << std::endl;
 }
 void chapter_5::question_1() {
   /*
@@ -281,7 +282,7 @@ void chapter_5::question_1() {
     } else if (pre_action == 2 && acts[0] == c_i) {
       max = acts[1];
 
-      // 前回の行動と今回の行動の最大値が異なる場合
+    // 前回の行動と今回の行動の最大値が異なる場合
     } else {
       max = acts[0];
     }
@@ -336,11 +337,8 @@ void chapter_5::question_1() {
   int sum_b = 0;
   int sum_c = 0;
 
-  std::function<int(int, int, std::vector<int>, std::vector<int>,
-                    std::vector<int>)>
-      sum;
-  sum = [](int i, int type, std::vector<int> x0, std::vector<int> x1,
-           std::vector<int> x2) {
+  std::function<int(int, int, std::vector<int>, std::vector<int>, std::vector<int>)> sum;
+  sum = [](int i, int type, std::vector<int> x0, std::vector<int> x1, std::vector<int> x2) {
     switch (type) {
       case 0:
         return x0[i];
@@ -725,4 +723,143 @@ bool chapter_5::question_6(int N, int W, std::vector<int>a, std::vector<int>m) {
   }
 
   return dp[N][W];
+}
+
+void chapter_5::question_7() {
+  std::random_device rnd;
+
+  std::ostringstream s_str_stream, t_str_stream;
+  s_str_stream << rnd();
+  t_str_stream << rnd();
+
+  std::string s, t;
+  s = s_str_stream.str();
+  t = t_str_stream.str();
+
+  std::cout << s << std::endl;
+  std::cout << t << std::endl;
+
+  std::string response = question_7(s, t);
+  std::cout << response << std::endl;
+}
+std::string chapter_5::question_7(std::string s, std::string t) {
+  std::string minimum_string = "";
+
+  int j_index = 0;
+  for (int i = 0; i < s.size(); ++i) {
+    for (int j = j_index; j < t.size(); ++j) {
+      if (s[i] != t[j]) continue;
+
+      minimum_string += s[i];
+      j_index = j + 1;
+
+      break;
+    }
+  }
+
+  return minimum_string;
+}
+
+void chapter_5::question_8() {
+  std::random_device rnd;
+
+  const int kN = 4;//rnd() % 10 + 2;
+  const int kM = 1;//rnd() % kN + 2;
+
+  std::cout << "N = " << kN << std::endl;
+  std::cout << "M = " << kM << std::endl;
+
+  std::vector<int> a{1,2,3,4};
+  // std::vector<int> a(kN);
+  // for (int i = 0; i < kN; ++i) {
+  //   a[i] = rnd() % 10 + 1;
+  //   std::cout << "a[" << i << "] = " << a[i] << std::endl;
+  // }
+
+  double response = question_8(kN, kM, a);
+  std::cout << response << std::endl;
+}
+double chapter_5::question_8(int N, int M, std::vector<int>a) {
+  std::vector<std::vector<double>> section_average;
+  section_average.assign(N+1, std::vector<double>(N+1, 0.0));
+
+  for (int i = 0; i < N+1; ++i) {
+    for (int j = 0; j < i; ++j) {
+      std::vector<int>::const_iterator itr = a.begin();
+
+      const double kSum = std::accumulate(itr+j, itr+i, 0);
+      double count = std::distance(itr+j, itr+i);
+      if (count == 0) count = 1;
+
+      section_average[i][j] = kSum / count;
+    }
+  }
+
+  std::vector<std::vector<double>>dp;
+  dp.assign(N+1, std::vector<double>(M+1, 0));
+
+  for (int m = 1; m < M+1; ++m) {
+    for (int i = 0; i < N+1; ++i) {
+      for (int j = 0; j < i; ++j) {
+        dp[i][m] = std::max(dp[i][m], dp[j][m-1] + section_average[i][j]);
+      }
+    }
+  }
+
+  std::cout << "\n";
+  std::cout << "--- average ---" << std::endl;
+  std::cout << "  ";
+  for(int i = 0; i < N+1; ++i) { std::cout << i << "  "; }
+  std::cout << "\n";
+  for (int i = 0; i < N+1; ++i) {
+    for (int j = 0; j < N+1; ++j) {
+      if (j==0) std::cout << i << "  ";
+      std::cout << section_average[i][j] << "  ";
+    }
+    std::cout << "\n";
+  }
+
+  std::cout << "\n";
+  std::cout << "--- dp ---" << std::endl;
+  std::cout << "   ";
+  for(int i = 1; i < M+1; ++i) { std::cout << i << "  "; }
+  std::cout << "\n";
+  for (int i = 0; i < N+1; ++i) {
+    for (int j = 1; j < M+1; ++j) {
+      if (j==1) std::cout << i << "  ";
+      std::cout << dp[i][j] << "  ";
+    }
+    std::cout << "\n";
+  }
+  return dp[N][M];
+}
+
+void chapter_5::question_9() {
+  int N = 4;
+  std::vector<int> a{10,20,30,40};
+
+  int cost = question_9(N, a);
+
+  std::cout << cost << std::endl;
+}
+
+int chapter_5::question_9(int N, std::vector<int>a) {
+  int cost = 0;
+
+  std::function<void(int, std::vector<int>)> add;
+  add = [&cost, &add](int size, std::vector<int>a) {
+    if (size == 1) return;
+
+    int c = a[1] + a[0];
+    a[1] = c;
+    cost += c;
+
+    a.erase(a.begin());
+
+    add(size-1, a);
+  };
+
+  add(N, a);
+
+  return cost;
 }

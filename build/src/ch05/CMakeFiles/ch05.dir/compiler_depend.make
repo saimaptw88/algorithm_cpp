@@ -199,6 +199,8 @@ src/ch05/CMakeFiles/ch05.dir/chapter5.cpp.o: /cpp-dev/src/ch05/chapter5.cpp \
   /usr/include/c++/7/bits/ostream.tcc \
   /usr/include/c++/7/istream \
   /usr/include/c++/7/bits/istream.tcc \
+  /usr/include/c++/7/iterator \
+  /usr/include/c++/7/bits/stream_iterator.h \
   /usr/include/c++/7/random \
   /usr/include/c++/7/cmath \
   /usr/include/math.h \
@@ -228,8 +230,14 @@ src/ch05/CMakeFiles/ch05.dir/chapter5.cpp.o: /cpp-dev/src/ch05/chapter5.cpp \
   /usr/include/aarch64-linux-gnu/c++/7/bits/opt_random.h \
   /usr/include/c++/7/bits/random.tcc \
   /usr/include/c++/7/numeric \
-  /usr/include/c++/7/bits/stl_numeric.h
+  /usr/include/c++/7/bits/stl_numeric.h \
+  /usr/include/c++/7/sstream \
+  /usr/include/c++/7/bits/sstream.tcc
 
+
+/usr/include/c++/7/bits/sstream.tcc:
+
+/usr/include/c++/7/sstream:
 
 /usr/include/c++/7/bits/stl_numeric.h:
 
@@ -256,6 +264,10 @@ src/ch05/CMakeFiles/ch05.dir/chapter5.cpp.o: /cpp-dev/src/ch05/chapter5.cpp \
 /usr/include/aarch64-linux-gnu/bits/fp-fast.h:
 
 /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/c++/7/bits/stream_iterator.h:
+
+/usr/include/c++/7/iterator:
 
 /usr/include/c++/7/bits/istream.tcc:
 

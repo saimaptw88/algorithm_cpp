@@ -151,7 +151,8 @@ src/ch05/CMakeFiles/ch05.dir/chapter5.cpp.o: \
  /usr/include/c++/7/bits/locale_facets.tcc \
  /usr/include/c++/7/bits/basic_ios.tcc \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
- /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/random \
+ /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/iterator \
+ /usr/include/c++/7/bits/stream_iterator.h /usr/include/c++/7/random \
  /usr/include/c++/7/cmath /usr/include/math.h \
  /usr/include/aarch64-linux-gnu/bits/math-vector.h \
  /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -176,4 +177,5 @@ src/ch05/CMakeFiles/ch05.dir/chapter5.cpp.o: \
  /usr/include/c++/7/tr1/riemann_zeta.tcc /usr/include/c++/7/bits/random.h \
  /usr/include/aarch64-linux-gnu/c++/7/bits/opt_random.h \
  /usr/include/c++/7/bits/random.tcc /usr/include/c++/7/numeric \
- /usr/include/c++/7/bits/stl_numeric.h
+ /usr/include/c++/7/bits/stl_numeric.h /usr/include/c++/7/sstream \
+ /usr/include/c++/7/bits/sstream.tcc

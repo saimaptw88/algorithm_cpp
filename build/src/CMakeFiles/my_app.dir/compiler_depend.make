@@ -1079,17 +1079,23 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
   /usr/include/c++/7/bits/ostream.tcc \
   /usr/include/c++/7/istream \
   /usr/include/c++/7/bits/istream.tcc \
+  /usr/include/c++/7/iterator \
+  /usr/include/c++/7/bits/stream_iterator.h \
+  /usr/include/c++/7/sstream \
+  /usr/include/c++/7/bits/sstream.tcc \
   /cpp-dev/src/chapter1.h \
   /cpp-dev/src/chapter2.h \
   /cpp-dev/src/chapter3.h \
-  /usr/include/c++/7/iterator \
-  /usr/include/c++/7/bits/stream_iterator.h \
   /cpp-dev/src/chapter4.h \
   /usr/include/c++/7/map \
   /usr/include/c++/7/bits/stl_tree.h \
   /usr/include/c++/7/bits/stl_map.h \
   /usr/include/c++/7/bits/stl_multimap.h
 
+
+/usr/include/c++/7/bits/sstream.tcc:
+
+/usr/include/c++/7/sstream:
 
 /cpp-dev/src/chapter4.cpp:
 
