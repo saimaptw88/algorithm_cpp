@@ -780,6 +780,9 @@ void chapter_5::question_8() {
   std::cout << response << std::endl;
 }
 double chapter_5::question_8(int N, int M, std::vector<int>a) {
+  // Nこの整数aをMこの連続する区間に分割する。
+  // 各区間の平均値の総和が最大値になるアルゴリズムの設計
+  // O(N^2M)
   std::vector<std::vector<double>> section_average;
   section_average.assign(N+1, std::vector<double>(N+1, 0.0));
 
@@ -842,8 +845,10 @@ void chapter_5::question_9() {
 
   std::cout << cost << std::endl;
 }
-
 int chapter_5::question_9(int N, std::vector<int>a) {
+  // N匹のスライムを２匹ずつ合体させ、その際のスライムの値をコストとする。
+  // 最後の１匹になるまで合体させた際の最小コストを求めるアルゴリズム
+  // O(N^3)
   int cost = 0;
 
   std::function<void(int, std::vector<int>)> add;
