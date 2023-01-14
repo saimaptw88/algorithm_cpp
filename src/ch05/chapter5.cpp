@@ -849,6 +849,26 @@ int chapter_5::question_9(int N, std::vector<int>a) {
   // N匹のスライムを２匹ずつ合体させ、その際のスライムの値をコストとする。
   // 最後の１匹になるまで合体させた際の最小コストを求めるアルゴリズム
   // O(N^3)
+  std::vector<int> S(N+1, 0);
+  for (int i = 0; i < N; ++i) { S[i+1] = S[i] + a[i]; }
+
+  std::vector<std::vector<int>> dp;
+  dp.assign(N+1, std::vector<int>(10000));
+  for (int i = 0; i < N; ++i) dp[i][i+1] = 0;
+
+ for (int bet = 2; bet <= N; ++bet) {
+    for (int i = 0; i + bet <= N; ++i) {
+      int j = i + bet;
+
+      // dp[i][j] を更新する
+      for (int k = i+1; k < j; ++k) {
+        dp[i][j] = std::min(dp[i][j], dp[i][k] + dp[k][j] + S[j]-S[i]);
+      }
+    }
+  }
+
+  return dp[0][N];
+
   int cost = 0;
 
   std::function<void(int, std::vector<int>)> add;
