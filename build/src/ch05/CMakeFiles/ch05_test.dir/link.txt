@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ch05_test.dir/chapter5_test.cpp.o -o ../ch05_test   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib:/cpp-dev/build/src ../libch05.so -lgtest -lgtest_main -lpthread 
