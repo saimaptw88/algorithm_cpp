@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/dp_test.dir/dp_test.cc.o -o ../dp_test   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib:/cpp-dev/build/src ../libdp.so -lgtest -lgtest_main -lpthread 
