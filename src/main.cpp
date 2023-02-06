@@ -9,7 +9,7 @@
 #include "chapter4.h"
 
 int main() {
-  question5_3();
+  question5_6();
 
   return 0;
 }
