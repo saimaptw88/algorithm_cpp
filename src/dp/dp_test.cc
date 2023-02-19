@@ -49,3 +49,27 @@ TEST(dp, question5_achive_w) {
 
   EXPECT_TRUE(dp::question5(N, W, a));
 }
+TEST(dp, question6_achive_w_and_not_over_m) {
+  int N = 3;
+  int W = 9;
+  std::vector<int> a{ 2, 3, 8 };
+  std::vector<int> m{ 3, 2, 3 };
+
+  EXPECT_TRUE(dp::question6(N, W, a, m));
+}
+TEST(dp, question6_achive_w_and_over_m) {
+  int N = 3;
+  int W = 9;
+  std::vector<int> a{ 2, 3, 8 };
+  std::vector<int> m{ 2, 2, 3 };
+
+  EXPECT_FALSE(dp::question6(N, W, a, m));
+}
+TEST(dp, question6_not_achive_w) {
+  int N = 3;
+  int W = 9;
+  std::vector<int> a{ 4, 2, 8 };
+  std::vector<int> m{ 3, 2, 3 };
+
+  EXPECT_FALSE(dp::question6(N, W, a, m));
+}

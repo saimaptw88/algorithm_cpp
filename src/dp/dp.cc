@@ -129,3 +129,39 @@ bool dp::question5(int N, int W, std::vector<int> a) {
 
   return (dp[N-1][W] == W);
 }
+
+bool dp::question6(int N, int W, std::vector<int> a, std::vector<int> m) {
+  std::vector<std::vector<bool>> dp;
+  dp.assign(N, std::vector<bool>(W+1, false));
+
+  std::vector<std::vector<int>> count;
+  count.assign(N, std::vector<int>(W+1, 0));
+
+  for (int i = 0; i < N; ++i) {
+    dp[i][a[i]] = true;
+    count[i][a[i]] = 1;
+
+    for (int w = 0; w <= W; ++w) {
+      if (i > 0) {
+        // NOTE: (i-1,w)=Trueなら、(i,w)もTrue
+        if (dp[i-1][w]) dp[i][w] = true;
+        // NOTE: (i-1, w-a[i])=Trueなら(i,w)=True
+        if (w-a[i] >= 0 && dp[i-1][w-a[i]]) {
+          dp[i][w] = true;
+          count[i][w] = 1;
+        }
+      }
+
+      // NOTE: (i, w-a[i])=Trueならm[i]を超えない範囲で(i,w)=True
+      if (w-a[i] >= 0 && count[i][w-a[i]] < m[i] && dp[i][w-a[i]]) {
+        dp[i][w] = true;
+        count[i][w] = count[i][w-a[i]] + 1;
+      }
+    }
+  }
+
+  for (int i = 0; i < N; ++i) {
+    if (dp[i][W]) return true;
+  }
+  return false;
+}
