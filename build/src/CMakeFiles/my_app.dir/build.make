@@ -157,6 +157,7 @@ src/my_app: src/CMakeFiles/my_app.dir/chapter2.cpp.o
 src/my_app: src/CMakeFiles/my_app.dir/chapter3.cpp.o
 src/my_app: src/CMakeFiles/my_app.dir/build.make
 src/my_app: src/libch05.so
+src/my_app: src/libdp.so
 src/my_app: src/CMakeFiles/my_app.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable my_app"
 	cd /cpp-dev/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/my_app.dir/link.txt --verbose=$(VERBOSE)

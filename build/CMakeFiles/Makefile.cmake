@@ -13,6 +13,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.24.2/CMakeSystem.cmake"
   "/cpp-dev/src/CMakeLists.txt"
   "/cpp-dev/src/ch05/CMakeLists.txt"
+  "/cpp-dev/src/dp/CMakeLists.txt"
   "/usr/local/share/cmake-3.24/Modules/CMakeCInformation.cmake"
   "/usr/local/share/cmake-3.24/Modules/CMakeCXXInformation.cmake"
   "/usr/local/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake"
@@ -43,6 +44,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/ch05/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/dp/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -50,4 +52,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/my_app.dir/DependInfo.cmake"
   "src/ch05/CMakeFiles/ch05.dir/DependInfo.cmake"
   "src/ch05/CMakeFiles/ch05_test.dir/DependInfo.cmake"
+  "src/dp/CMakeFiles/dp.dir/DependInfo.cmake"
+  "src/dp/CMakeFiles/dp_test.dir/DependInfo.cmake"
   )

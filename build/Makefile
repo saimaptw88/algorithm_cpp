@@ -165,6 +165,32 @@ ch05_test/fast:
 	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05_test.dir/build.make src/ch05/CMakeFiles/ch05_test.dir/build
 .PHONY : ch05_test/fast
 
+#=============================================================================
+# Target rules for targets named dp
+
+# Build rule for target.
+dp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dp
+.PHONY : dp
+
+# fast build rule for target.
+dp/fast:
+	$(MAKE) $(MAKESILENT) -f src/dp/CMakeFiles/dp.dir/build.make src/dp/CMakeFiles/dp.dir/build
+.PHONY : dp/fast
+
+#=============================================================================
+# Target rules for targets named dp_test
+
+# Build rule for target.
+dp_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dp_test
+.PHONY : dp_test
+
+# fast build rule for target.
+dp_test/fast:
+	$(MAKE) $(MAKESILENT) -f src/dp/CMakeFiles/dp_test.dir/build.make src/dp/CMakeFiles/dp_test.dir/build
+.PHONY : dp_test/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -176,6 +202,8 @@ help:
 	@echo "... test"
 	@echo "... ch05"
 	@echo "... ch05_test"
+	@echo "... dp"
+	@echo "... dp_test"
 	@echo "... my_app"
 .PHONY : help
 
