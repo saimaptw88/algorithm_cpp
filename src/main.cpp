@@ -9,5 +9,6 @@
 #include "chapter4.h"
 
 int main() {
+  dp::question3();
   return 0;
 }

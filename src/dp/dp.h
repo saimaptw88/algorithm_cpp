@@ -10,6 +10,7 @@
 int hello();
 
 namespace dp {
+void question3();
 int question3(int N, int W, std::vector<int> a);
 }
 

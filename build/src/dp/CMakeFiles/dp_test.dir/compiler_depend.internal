@@ -4,7 +4,7 @@
 src/dp/CMakeFiles/dp_test.dir/dp_test.cc.o
  /cpp-dev/src/dp/dp_test.cc
  /usr/include/stdc-predef.h
- /cpp-dev/src/dp/dp.hh
+ /cpp-dev/src/dp/dp.h
  /usr/include/c++/7/algorithm
  /usr/include/c++/7/utility
  /usr/include/aarch64-linux-gnu/c++/7/bits/c++config.h

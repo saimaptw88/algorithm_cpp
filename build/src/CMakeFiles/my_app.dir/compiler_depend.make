@@ -1083,7 +1083,7 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
   /usr/include/c++/7/bits/stream_iterator.h \
   /usr/include/c++/7/sstream \
   /usr/include/c++/7/bits/sstream.tcc \
-  /cpp-dev/src/dp/dp.hh \
+  /cpp-dev/src/dp/dp.h \
   /cpp-dev/src/chapter1.h \
   /cpp-dev/src/chapter2.h \
   /cpp-dev/src/chapter3.h \
@@ -1093,6 +1093,8 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
   /usr/include/c++/7/bits/stl_map.h \
   /usr/include/c++/7/bits/stl_multimap.h
 
+
+/cpp-dev/src/dp/dp.h:
 
 /usr/include/c++/7/bits/sstream.tcc:
 
@@ -1433,8 +1435,6 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
 /usr/include/c++/7/bits/random.h:
 
 /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h:
-
-/cpp-dev/src/dp/dp.hh:
 
 /usr/include/c++/7/bits/alloc_traits.h:
 

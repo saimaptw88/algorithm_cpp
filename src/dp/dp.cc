@@ -6,6 +6,20 @@ int hello() {
   return 0;
 }
 
+void dp::question3() {
+  std::random_device rnd;
+  int N = rnd() % 10 + 3;
+  int W = rnd() % 10 + 4;
+
+  std::vector<int> a(N);
+  for (auto &a_ : a) a_ = rnd() % 10;
+
+  std::cout << "N=" << N << std::endl;
+  std::cout << "W=" << W << std::endl;
+  for (int i = 0; i < N; ++i)
+    std::cout << "a[" << i << "]=" << a[i] << std::endl;
+  std::cout << "ans=" << question3(N, W, a) << std::endl;
+}
 int dp::question3(int N, int W, std::vector<int> a) {
   std::vector<std::vector<int>> dp;
   dp.assign(N+1, std::vector<int>(W+1, 0));
