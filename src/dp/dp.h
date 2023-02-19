@@ -16,6 +16,9 @@ int question3(int N, int W, std::vector<int> a);
 
 void question4();
 bool question4(int N, int W, int k, std::vector<int> a);
+
+void question5();
+bool question5(int N, int W, std::vector<int> a);
 }
 
 #endif  // SRC_DP_DP_H_

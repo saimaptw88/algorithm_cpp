@@ -92,3 +92,40 @@ bool dp::question4(int N, int W, int k, std::vector<int> a) {
 
   return false;
 }
+
+void dp::question5() {
+  std::random_device rnd;
+  int N = rnd() % 10 + 3;
+  int W = rnd() % 10 + 3;
+
+  std::vector<int> a(N);
+  for (auto& a_ : a) a_ = rnd() % 10;
+
+  std::cout << "N=" << N << std::endl;
+  std::cout << "W=" << W << std::endl;
+
+  for (int i = 0; i < N; ++i) {
+    std::cout << "a[" << i << "]=" << a[i] << std::endl;
+  }
+
+  std::string str = "No";
+  if (question5(N, W, a)) str = "Yes";
+
+  std::cout << "ans=" << str << std::endl;
+}
+bool dp::question5(int N, int W, std::vector<int> a) {
+  std::vector<std::vector<int>> dp;
+  dp.assign(N, std::vector<int>(W+1, 0));
+
+  for (int i = 0; i < N; ++i) {
+    for (int w = 0; w <= W; ++w) {
+      if (w-a[i] >= 0)
+        dp[i][w] = std::max(dp[i][w], dp[i][w-a[i]] + a[i]);
+
+      if (i > 0)
+        dp[i][w] = std::max(dp[i][w], dp[i-1][w]);
+    }
+  }
+
+  return (dp[N-1][W] == W);
+}

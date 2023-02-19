@@ -42,3 +42,10 @@ TEST(dp, question4_achive_w) {
 
   EXPECT_EQ(true, dp::question4(N, W, k, a));
 }
+TEST(dp, question5_achive_w) {
+  int N = 3;
+  int W = 17;
+  std::vector<int> a{ 2, 4, 7 };
+
+  EXPECT_TRUE(dp::question5(N, W, a));
+}
