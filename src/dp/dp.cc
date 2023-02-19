@@ -44,3 +44,30 @@ int dp::question3(int N, int W, std::vector<int> a) {
   if (!kind[0]) return kind.size() - 1;
   return kind.size();
 }
+
+
+bool dp::question4(int N, int W, int k, std::vector<int> a) {
+  std::vector<std::vector<int>> dp, count;
+  dp.assign(N+1, std::vector<int>(W+1, 0));
+  count.assign(N+1, std::vector<int>(W+1, 0));
+
+  for (int i = 0; i < N; ++i) {
+    for (int w = 0; w <= W; ++w) {
+      if (w-a[i] >= 0) {
+        int add_num = dp[i][w-a[i]] + a[i];
+        dp[i+1][w] = std::max(dp[i+1][w], add_num);
+
+        if (dp[i+1][w] == add_num) count[i+1][w] = count[i][w-a[i]] + 1;
+      }
+
+      dp[i+1][w] = std::max(dp[i+1][w], dp[i][w]);
+      count[i+1][w] = std::max(count[i+1][w], count[i][w]);
+    }
+  }
+
+  for (int i = 0; i < N+1; ++i) {
+    if (dp[i][W] == W && count[i][W] <= k) return true;
+  }
+
+  return false;
+}
