@@ -45,7 +45,28 @@ int dp::question3(int N, int W, std::vector<int> a) {
   return kind.size();
 }
 
+void dp::question4() {
+  std::random_device rnd;
+  int N = rnd() % 10 + 3;
+  int W = rnd() % 10 + 3;
+  int k = N - 2;
 
+  std::vector<int> a(N);
+  for (auto& a_ : a) a_ = rnd() % 10;
+
+  std::cout << "N=" << N << std::endl;
+  std::cout << "W=" << W << std::endl;
+  std::cout << "k=" << k << std::endl;
+
+  for (int i = 0; i < N; ++i) {
+    std::cout << "a[" << i << "]=" << a[i] << std::endl;
+  }
+
+  std::string str = "No";
+  if (question4(N, W, k, a)) str = "Yes";
+
+  std::cout << "ans=" << str << std::endl;
+}
 bool dp::question4(int N, int W, int k, std::vector<int> a) {
   std::vector<std::vector<int>> dp, count;
   dp.assign(N+1, std::vector<int>(W+1, 0));
