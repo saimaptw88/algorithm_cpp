@@ -130,6 +130,28 @@ bool dp::question5(int N, int W, std::vector<int> a) {
   return (dp[N-1][W] == W);
 }
 
+void dp::question6() {
+  std::random_device rnd;
+  int N = rnd() % 10 + 3;
+  int W = rnd() % 10 + 3;
+
+  std::vector<int> a(N), m(N);
+  for (auto& a_ : a) a_ = rnd() % 10;
+  for (auto& m_ : m) m_ = rnd() % 10;
+
+  std::cout << "N=" << N << std::endl;
+  std::cout << "W=" << W << std::endl;
+
+  for (int i = 0; i < N; ++i) {
+    std::cout << "a[" << i << "]=" << a[i] <<
+    ", m[" << i << "]=" << m[i] << std::endl;
+  }
+
+  if (question6(N, W, a, m))
+    std::cout << "ans=Yes" << std::endl;
+  else
+    std::cout << "ans=No" << std::endl;
+}
 bool dp::question6(int N, int W, std::vector<int> a, std::vector<int> m) {
   std::vector<std::vector<bool>> dp;
   dp.assign(N, std::vector<bool>(W+1, false));
@@ -138,8 +160,10 @@ bool dp::question6(int N, int W, std::vector<int> a, std::vector<int> m) {
   count.assign(N, std::vector<int>(W+1, 0));
 
   for (int i = 0; i < N; ++i) {
-    dp[i][a[i]] = true;
-    count[i][a[i]] = 1;
+    if (a[i] <= W) {
+      dp[i][a[i]] = true;
+      count[i][a[i]] = 1;
+    }
 
     for (int w = 0; w <= W; ++w) {
       if (i > 0) {

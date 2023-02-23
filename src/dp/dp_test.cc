@@ -73,3 +73,12 @@ TEST(dp, question6_not_achive_w) {
 
   EXPECT_FALSE(dp::question6(N, W, a, m));
 }
+TEST(dp, question6_random_error) {
+  // NOTE: double free or corruption (out)が発生した
+  int N = 7;
+  int W = 4;
+  std::vector<int> a{ 4, 9, 2, 3, 7, 2, 8 };
+  std::vector<int> m{ 2, 4, 0, 6, 8, 2, 1 };
+
+  EXPECT_TRUE(dp::question6(N, W, a, m));
+}

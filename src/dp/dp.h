@@ -20,6 +20,7 @@ bool question4(int N, int W, int k, std::vector<int> a);
 void question5();
 bool question5(int N, int W, std::vector<int> a);
 
+void question6();
 bool question6(int N, int W, std::vector<int> a, std::vector<int> m);
 }  // namespace dp
 
