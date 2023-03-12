@@ -82,3 +82,43 @@ TEST(dp, question6_random_error) {
 
   EXPECT_TRUE(dp::question6(N, W, a, m));
 }
+TEST(dp, question7_no_same_charactor) {
+  std::string s = "1234";
+  std::string t = "5678";
+
+  std::string res = dp::question7(s, t);
+
+  EXPECT_EQ("", res);
+}
+TEST(dp, question7_same_charactors) {
+  std::string s = "test";
+  std::string t = "test";
+
+  std::string res = dp::question7(s, t);
+
+  EXPECT_EQ("test", res);
+}
+TEST(dp, question7_twice_matched) {
+  std::string s = "test";
+  std::string t = "gest";
+
+  std::string res = dp::question7(s, t);
+
+  EXPECT_EQ("est", res);
+}
+TEST(dp, question7_long_charactor) {
+  std::string s = "test";
+  std::string t = "gesttest";
+
+  std::string res = dp::question7(s, t);
+
+  EXPECT_EQ("test", res);
+}
+TEST(dp, question7_reverse_char) {
+  std::string s = "1234test";
+  std::string t = "test4321";
+
+  std::string res = dp::question7(s, t);
+
+  EXPECT_EQ("test", res);
+}

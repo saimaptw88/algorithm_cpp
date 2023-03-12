@@ -189,3 +189,40 @@ bool dp::question6(int N, int W, std::vector<int> a, std::vector<int> m) {
   }
   return false;
 }
+
+std::string dp::question7(std::string s, std::string t) {
+  std::cout << "s=" << s << std::endl;
+  std::cout << "t=" << t << "\n" << std::endl;
+
+  std::vector<std::vector<bool>> dp;
+  dp.assign(s.size(), std::vector<bool>(t.size(), false));
+
+  for (int i = 0; i < s.size(); ++i) {
+    for (int j = 0; j < t.size(); ++j) {
+      if (s[i] == t[j]) dp[i][j] = true;
+    }
+  }
+
+  for (int i = 0; i < s.size(); ++i) {
+    for (int j = 0; j < t.size(); ++j) {
+      std::cout << dp[i][j] << " ";
+    }
+    std::cout << "\n";
+  }
+
+  std::string str;
+
+  int start = 0;
+  for (int j = 0; j < t.size(); ++j) {
+    for (int i = start; i < s.size(); ++i) {
+      if (dp[i][j]) {
+        str.push_back(t[j]);
+        start = i + 1;
+        break;
+      }
+    }
+  }
+
+  std::cout << "ans=" << str << std::endl;
+  return str;
+}

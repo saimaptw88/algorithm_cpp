@@ -22,6 +22,8 @@ bool question5(int N, int W, std::vector<int> a);
 
 void question6();
 bool question6(int N, int W, std::vector<int> a, std::vector<int> m);
+
+std::string question7(std::string s, std::string t);
 }  // namespace dp
 
 #endif  // SRC_DP_DP_H_

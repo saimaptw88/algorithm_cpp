@@ -1,10 +1,10 @@
-Start testing: Feb 19 06:55 UTC
+Start testing: Feb 25 09:11 UTC
 ----------------------------------------------------------
 1/1 Testing: MyTest
 1/1 Test: MyTest
 Command: "/bin/bash" "-c" "./src/ch05_test"
 Directory: /cpp-dev/build
-"MyTest" start time: Feb 19 06:55 UTC
+"MyTest" start time: Feb 25 09:11 UTC
 Output:
 ----------------------------------------------------------
 Running main() from /tmp/src/googletest-release-1.12.0/googletest/src/gtest_main.cc
@@ -216,8 +216,8 @@ Expected equality of these values:
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Failed.
-"MyTest" end time: Feb 19 06:55 UTC
+"MyTest" end time: Feb 25 09:11 UTC
 "MyTest" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Feb 19 06:55 UTC
+End testing: Feb 25 09:11 UTC
