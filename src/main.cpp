@@ -1,5 +1,7 @@
 // Copyright 2022 saito
 #include <random>
+#include <vector>
+
 
 #include "./ch06/chapter6.h"
 #include "./ch05/chapter5.h"
@@ -10,8 +12,8 @@
 #include "chapter4.h"
 
 int main() {
-  int ans = chapter6::binary_search(39);
-  std::cout << ans << std::endl;
+  int res = chapter6::shoot_king();
+  std::cout << res << std::endl;
 
   return 0;
 }
