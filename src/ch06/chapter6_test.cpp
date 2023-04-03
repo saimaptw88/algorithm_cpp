@@ -53,3 +53,12 @@ TEST(chapter6, question1_case2_test) {
     EXPECT_EQ(expected[i], num[i]);
   }
 }
+
+TEST(chapter6, question2_case1_test) {
+  int N = 2;
+  std::vector<int> a{1, 5};
+  std::vector<int> b{2, 4};
+  std::vector<int> c{3, 6};
+
+  EXPECT_EQ(3, chapter6::question2(N, a, b, c));
+}

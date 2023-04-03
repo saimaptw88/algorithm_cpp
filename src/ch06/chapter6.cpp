@@ -107,7 +107,41 @@ void chapter6::question1(const int N, const std::vector<int> a, std::vector<int>
   std::sort(a_copy.begin(), a_copy.end());
 
   for (int i = 0; i < N; ++i) {
-    decltype(a_copy)::iterator itr = std::lower_bound(a_copy.begin(), a_copy.end(), a[i]);
+    decltype(a_copy)::iterator itr =
+      std::lower_bound(a_copy.begin(), a_copy.end(), a[i]);
     num->at(i) = std::distance(a_copy.begin(), itr);
   }
+}
+
+int chapter6::question2(
+  const int N,
+  const std::vector<int>a,
+  const std::vector<int>b,
+  const std::vector<int>c) {
+  std::vector<int> a_copy(N), b_copy(N), c_copy(N);
+
+  std::copy(a.begin(), a.end(), a_copy.begin());
+  std::copy(b.begin(), b.end(), b_copy.begin());
+  std::copy(c.begin(), c.end(), c_copy.begin());
+
+  std::sort(a_copy.begin(), a_copy.end());
+  std::sort(b_copy.begin(), b_copy.end());
+  std::sort(c_copy.begin(), c_copy.end());
+
+  int count = 0;
+  for (int i = 0; i < N; ++i) {
+    decltype(a_copy)::iterator it_a =
+      std::lower_bound(a_copy.begin(), a_copy.end(), b_copy[i]);
+    int a_num = std::distance(a_copy.begin(), it_a);
+
+    decltype(c_copy)::iterator it_c =
+      std::upper_bound(c_copy.begin(), c_copy.end(), b_copy[i]);
+    int c_num = std::distance(it_c, c_copy.end());
+
+    if(a_num < 1 || c_num < 1) continue;
+
+    count += a_num * c_num;
+  }
+
+  return count;
 }
