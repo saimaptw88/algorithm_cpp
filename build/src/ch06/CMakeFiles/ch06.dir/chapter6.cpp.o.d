@@ -138,7 +138,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: \
  /usr/include/c++/7/bits/locale_facets.tcc \
  /usr/include/c++/7/bits/basic_ios.tcc \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
- /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/random \
+ /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/iterator \
+ /usr/include/c++/7/bits/stream_iterator.h /usr/include/c++/7/random \
  /usr/include/c++/7/cmath /usr/include/math.h \
  /usr/include/aarch64-linux-gnu/bits/math-vector.h \
  /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h \

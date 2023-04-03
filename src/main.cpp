@@ -12,8 +12,14 @@
 #include "chapter4.h"
 
 int main() {
-  int res = chapter6::shoot_king();
-  std::cout << res << std::endl;
+  int N = 3;
+  std::vector<int> a(N), num(N);
+  for (int i = 0; i < N; ++i) { a[i] = i; num[i] = i; }
 
+  chapter6::question1(N, a, &num);
+
+  for (int i = 0; i < N; ++i) {
+    std::cout << a[i] << ", " << num[i] << std::endl;
+  }
   return 0;
 }

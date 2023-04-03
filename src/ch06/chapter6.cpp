@@ -94,3 +94,20 @@ int chapter6::shoot_king() {
 
   return right;
 }
+
+void chapter6::question1(const int N, const std::vector<int> a, std::vector<int>* num) {
+  // 実装方針
+  // 各値aiに対して2分探索を行いそれぞれが何番目に小さい値かを格納するベクトルnumを返す
+  // int N: ベクトルの要素数
+  // const std::vector<int>a: 整数列
+  // std::vector<int> num: 戻り値
+  std::vector<int>a_copy(N);
+  std::copy(a.begin(), a.end(), a_copy.begin());
+
+  std::sort(a_copy.begin(), a_copy.end());
+
+  for (int i = 0; i < N; ++i) {
+    decltype(a_copy)::iterator itr = std::lower_bound(a_copy.begin(), a_copy.end(), a[i]);
+    num->at(i) = std::distance(a_copy.begin(), itr);
+  }
+}

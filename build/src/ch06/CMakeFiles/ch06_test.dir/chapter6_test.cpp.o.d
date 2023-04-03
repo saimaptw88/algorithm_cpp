@@ -138,7 +138,8 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: \
  /usr/include/c++/7/bits/locale_facets.tcc \
  /usr/include/c++/7/bits/basic_ios.tcc \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
- /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/random \
+ /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/iterator \
+ /usr/include/c++/7/bits/stream_iterator.h /usr/include/c++/7/random \
  /usr/include/c++/7/cmath /usr/include/math.h \
  /usr/include/aarch64-linux-gnu/bits/math-vector.h \
  /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -263,8 +264,7 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: \
  /usr/include/c++/7/cxxabi.h \
  /usr/include/aarch64-linux-gnu/c++/7/bits/cxxabi_tweaks.h \
  /usr/local/include/gtest/internal/custom/gtest-printers.h \
- /usr/local/include/gtest/gtest-param-test.h /usr/include/c++/7/iterator \
- /usr/include/c++/7/bits/stream_iterator.h \
+ /usr/local/include/gtest/gtest-param-test.h \
  /usr/local/include/gtest/internal/gtest-param-util.h \
  /usr/include/c++/7/cassert /usr/include/assert.h \
  /usr/local/include/gtest/gtest-test-part.h \

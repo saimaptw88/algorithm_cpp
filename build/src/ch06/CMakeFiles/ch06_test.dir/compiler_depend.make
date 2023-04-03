@@ -179,6 +179,8 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
   /usr/include/c++/7/bits/ostream.tcc \
   /usr/include/c++/7/istream \
   /usr/include/c++/7/bits/istream.tcc \
+  /usr/include/c++/7/iterator \
+  /usr/include/c++/7/bits/stream_iterator.h \
   /usr/include/c++/7/random \
   /usr/include/c++/7/cmath \
   /usr/include/math.h \
@@ -340,8 +342,6 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
   /usr/include/aarch64-linux-gnu/c++/7/bits/cxxabi_tweaks.h \
   /usr/local/include/gtest/internal/custom/gtest-printers.h \
   /usr/local/include/gtest/gtest-param-test.h \
-  /usr/include/c++/7/iterator \
-  /usr/include/c++/7/bits/stream_iterator.h \
   /usr/local/include/gtest/internal/gtest-param-util.h \
   /usr/include/c++/7/cassert \
   /usr/include/assert.h \
@@ -801,6 +801,12 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
 
 /usr/include/aarch64-linux-gnu/bits/types/sig_atomic_t.h:
 
+/usr/include/linux/stddef.h:
+
+/usr/include/c++/7/iterator:
+
+/usr/include/c++/7/bits/stream_iterator.h:
+
 /usr/include/c++/7/bits/functional_hash.h:
 
 /usr/include/c++/7/random:
@@ -1030,9 +1036,3 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
 /usr/include/c++/7/bits/predefined_ops.h:
 
 /usr/local/include/gtest/internal/custom/gtest-printers.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/c++/7/iterator:
-
-/usr/include/c++/7/bits/stream_iterator.h:

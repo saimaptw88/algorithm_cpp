@@ -167,7 +167,8 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
  /usr/include/c++/7/bits/locale_facets.tcc \
  /usr/include/c++/7/bits/basic_ios.tcc \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
- /usr/include/c++/7/bits/istream.tcc /cpp-dev/src/./ch05/chapter5.h \
+ /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/iterator \
+ /usr/include/c++/7/bits/stream_iterator.h /cpp-dev/src/./ch05/chapter5.h \
  /usr/include/c++/7/functional /usr/include/c++/7/tuple \
  /usr/include/c++/7/array /usr/include/c++/7/bits/uses_allocator.h \
  /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/std_function.h \
@@ -177,8 +178,7 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
  /usr/include/c++/7/bits/hashtable_policy.h \
  /usr/include/c++/7/bits/node_handle.h /usr/include/c++/7/optional \
  /usr/include/c++/7/bits/enable_special_members.h \
- /usr/include/c++/7/bits/unordered_map.h /usr/include/c++/7/iterator \
- /usr/include/c++/7/bits/stream_iterator.h /usr/include/c++/7/sstream \
+ /usr/include/c++/7/bits/unordered_map.h /usr/include/c++/7/sstream \
  /usr/include/c++/7/bits/sstream.tcc /cpp-dev/src/./dp/dp.h \
  /cpp-dev/src/chapter1.h /cpp-dev/src/chapter2.h /cpp-dev/src/chapter3.h \
  /cpp-dev/src/chapter4.h /usr/include/c++/7/map \

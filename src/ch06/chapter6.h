@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <iterator>
 #include <random>
 #include <vector>
 
@@ -16,6 +17,7 @@ namespace chapter6 {
   int binary_age();
   int binary_search_lower_bound(std::vector<int>, std::vector<int>, int, int);
   int shoot_king();
+  void question1(int N, const std::vector<int>, std::vector<int>*);
 }
 
 #endif  // SRC_CH06_CHAPTER6_H_

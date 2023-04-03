@@ -179,6 +179,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
   /usr/include/c++/7/bits/ostream.tcc \
   /usr/include/c++/7/istream \
   /usr/include/c++/7/bits/istream.tcc \
+  /usr/include/c++/7/iterator \
+  /usr/include/c++/7/bits/stream_iterator.h \
   /usr/include/c++/7/random \
   /usr/include/c++/7/cmath \
   /usr/include/math.h \
@@ -247,6 +249,10 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
 /usr/include/c++/7/random:
+
+/usr/include/c++/7/bits/stream_iterator.h:
+
+/usr/include/c++/7/iterator:
 
 /usr/include/c++/7/bits/istream.tcc:
 
