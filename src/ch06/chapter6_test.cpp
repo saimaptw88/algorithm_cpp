@@ -62,3 +62,34 @@ TEST(chapter6, question2_case1_test) {
 
   EXPECT_EQ(3, chapter6::question2(N, a, b, c));
 }
+
+TEST(chapter6, question3_case1_test) {
+  int N = 4;
+  int M = 8;
+  std::vector<int> a { 1, 2, 5, 6 };
+
+  EXPECT_EQ(8, chapter6::question3(N, M, a));
+}
+TEST(chapter6, question3_case2_test) {
+  int N = 4;
+  int M = 23;
+  std::vector<int> a { 10, 2, 5, 6 };
+
+  EXPECT_EQ(23, chapter6::question3(N, M, a));
+}
+// M以下の値を作れない場合、-1を返す
+TEST(chapter6, question3_case3_test) {
+  int N = 4;
+  int M = 3;
+  std::vector<int> a { 4, 4, 5, 6 };
+
+  EXPECT_EQ(-1, chapter6::question3(N, M, a));
+}
+// M未満の場合
+TEST(chapter6, question3_case4_test) {
+  int N = 4;
+  int M = 25;
+  std::vector<int> a { 3, 4, 5, 6 };
+
+  EXPECT_EQ(24, chapter6::question3(N, M, a));
+}

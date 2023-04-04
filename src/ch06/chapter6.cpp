@@ -145,3 +145,33 @@ int chapter6::question2(
 
   return count;
 }
+
+int chapter6::question3(const int kN, const int kM, const std::vector<int> &kA) {
+  // 実装方針
+  // 最大値M/4を実現できるか？できなければ(M-1)/4は実現できるか？を判定する
+  std::vector<int> a(kN);
+  std::copy(kA.begin(), kA.end(), a.begin());
+  std::sort(a.begin(), a.end());
+
+  int ans = -1;
+  const int ave = static_cast<int>(kM / kN + 0.9);
+
+  for (int i = 0; i < kN; ++i) {
+    const int def1 = ave - a[i];
+
+    for (int j = 0; j < kN; ++j) {
+      const int def2 = ave - a[j];
+
+      auto itr1 = std::lower_bound(a.begin(), a.end(), def1 + ave);
+      int dis1 = std::distance(a.begin(), itr1);
+
+      auto itr2 = std::lower_bound(a.begin(), a.end(), def2 + ave);
+      int dis2 = std::distance(a.begin(), itr2);
+
+      int compare = a[i]+a[j]+a[dis1]+a[dis2];
+      if (compare <= kM && compare > ans) ans = compare;
+    }
+  }
+
+  return ans;
+}
