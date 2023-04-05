@@ -175,3 +175,42 @@ int chapter6::question3(const int kN, const int kM, const std::vector<int> &kA) 
 
   return ans;
 }
+
+int chapter6::question4(const int kN, const int kM, const std::vector<int> &kA) {
+  std::vector<int> a(kN);
+  std::copy(kA.begin(), kA.end(), a.begin());
+  std::sort(a.begin(), a.end());
+
+  const int kMaxRange = a[kN-1] - a[0];
+
+  if (kM < 2) return 0;
+  if (kM == 2) return kMaxRange;
+
+  const int kAve = static_cast<int>(kMaxRange / (kM-1) + 0.9);
+
+  std::vector<int> indexs(kM);
+  indexs[0] = 0;
+  indexs[kM-1] = a[kN-1];
+
+  int lowest_dis = kMaxRange;
+
+  for (int i = 1; i < kM-1; ++i) {
+    // 各区間の平均値以上で最も平均値に近い要素の番号を取得
+    auto itr = std::lower_bound(a.begin(), a.end(), kAve*(i+1));
+    const int index = std::distance(a.begin(), itr);
+
+    // 各区間の平均値と、平均値に最も近しい要素の距離を取得
+    const int dis1 = std::abs(kAve*(i+1) - a[index]);
+    const int dis2 = std::abs(kAve*(i+1) - a[index-1]);
+    const int dis = std::min(dis1, dis2);
+
+    // 各区間の要素番号を格納
+    if (dis == dis1) indexs[i] = index;
+    else indexs[i] = index - 1;
+
+    // 最短距離を更新
+    if (dis < lowest_dis) lowest_dis = dis;
+  }
+
+  return lowest_dis;
+}

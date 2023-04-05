@@ -93,3 +93,11 @@ TEST(chapter6, question3_case4_test) {
 
   EXPECT_EQ(24, chapter6::question3(N, M, a));
 }
+
+TEST(chapter6, question4_case1_test) {
+  int N = 4;
+  int M = 4;
+  std::vector<int> a{1, 2, 5, 13};
+
+  EXPECT_EQ(1, chapter6::question4(N, M, a));
+}
