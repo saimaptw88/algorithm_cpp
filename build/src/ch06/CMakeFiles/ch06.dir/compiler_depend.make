@@ -176,29 +176,46 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
   /usr/include/c++/7/bits/stl_vector.h \
   /usr/include/c++/7/bits/stl_bvector.h \
   /usr/include/c++/7/bits/vector.tcc \
-  /usr/include/c++/7/iostream \
-  /usr/include/c++/7/ostream \
-  /usr/include/c++/7/ios \
+  /usr/include/c++/7/iomanip \
   /usr/include/c++/7/bits/ios_base.h \
   /usr/include/c++/7/bits/locale_classes.h \
   /usr/include/c++/7/bits/locale_classes.tcc \
   /usr/include/c++/7/system_error \
   /usr/include/aarch64-linux-gnu/c++/7/bits/error_constants.h \
-  /usr/include/c++/7/streambuf \
-  /usr/include/c++/7/bits/streambuf.tcc \
-  /usr/include/c++/7/bits/basic_ios.h \
+  /usr/include/c++/7/locale \
   /usr/include/c++/7/bits/locale_facets.h \
   /usr/include/c++/7/cwctype \
   /usr/include/wctype.h \
   /usr/include/aarch64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_base.h \
+  /usr/include/c++/7/streambuf \
+  /usr/include/c++/7/bits/streambuf.tcc \
   /usr/include/c++/7/bits/streambuf_iterator.h \
   /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_inline.h \
   /usr/include/c++/7/bits/locale_facets.tcc \
-  /usr/include/c++/7/bits/basic_ios.tcc \
-  /usr/include/c++/7/bits/ostream.tcc \
+  /usr/include/c++/7/bits/locale_facets_nonio.h \
+  /usr/include/c++/7/ctime \
+  /usr/include/aarch64-linux-gnu/c++/7/bits/time_members.h \
+  /usr/include/aarch64-linux-gnu/c++/7/bits/messages_members.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/7/bits/codecvt.h \
+  /usr/include/c++/7/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/7/bits/locale_conv.h \
+  /usr/include/c++/7/bits/stringfwd.h \
+  /usr/include/c++/7/bits/allocator.h \
+  /usr/include/c++/7/bits/codecvt.h \
+  /usr/include/c++/7/bits/unique_ptr.h \
+  /usr/include/c++/7/bits/quoted_string.h \
+  /usr/include/c++/7/sstream \
   /usr/include/c++/7/istream \
+  /usr/include/c++/7/ios \
+  /usr/include/c++/7/bits/basic_ios.h \
+  /usr/include/c++/7/bits/basic_ios.tcc \
+  /usr/include/c++/7/ostream \
+  /usr/include/c++/7/bits/ostream.tcc \
   /usr/include/c++/7/bits/istream.tcc \
+  /usr/include/c++/7/bits/sstream.tcc \
+  /usr/include/c++/7/iostream \
   /usr/include/c++/7/iterator \
   /usr/include/c++/7/bits/stream_iterator.h \
   /usr/include/c++/7/random \
@@ -263,6 +280,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/iterator:
 
+/usr/include/c++/7/bits/sstream.tcc:
+
 /usr/include/c++/7/bits/istream.tcc:
 
 /usr/include/c++/7/tr1/ell_integral.tcc:
@@ -271,11 +290,25 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/bits/basic_ios.tcc:
 
+/usr/include/c++/7/bits/basic_ios.h:
+
+/usr/include/c++/7/sstream:
+
+/usr/include/c++/7/bits/unique_ptr.h:
+
+/usr/include/c++/7/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/7/bits/codecvt.h:
+
+/usr/include/aarch64-linux-gnu/c++/7/bits/messages_members.h:
+
+/usr/include/aarch64-linux-gnu/c++/7/bits/time_members.h:
+
+/usr/include/c++/7/ctime:
+
 /usr/include/c++/7/bits/locale_facets.tcc:
 
 /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_inline.h:
-
-/usr/include/c++/7/bits/basic_ios.h:
 
 /usr/include/c++/7/bits/locale_classes.tcc:
 
@@ -286,6 +319,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/c++/7/bits/stl_uninitialized.h:
 
 /usr/include/c++/7/cwctype:
+
+/usr/include/c++/7/locale:
 
 /usr/include/c++/7/bits/unordered_map.h:
 
@@ -369,6 +404,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/linux/errno.h:
 
+/usr/include/c++/7/iomanip:
+
 /usr/include/aarch64-linux-gnu/bits/waitflags.h:
 
 /usr/include/aarch64-linux-gnu/bits/select.h:
@@ -396,6 +433,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/aarch64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/c++/7/bits/exception.h:
+
+/usr/include/c++/7/bits/quoted_string.h:
 
 /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_base.h:
 
@@ -505,6 +544,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/bits/stl_function.h:
 
+/usr/include/libintl.h:
+
 /usr/include/c++/7/clocale:
 
 /usr/include/c++/7/debug/assertions.h:
@@ -551,6 +592,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/bits/cxxabi_init_exception.h:
 
+/usr/include/c++/7/bits/locale_conv.h:
+
 /usr/include/c++/7/typeinfo:
 
 /usr/include/aarch64-linux-gnu/bits/types/FILE.h:
@@ -584,6 +627,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/aarch64-linux-gnu/bits/_G_config.h:
 
 /usr/include/c++/7/string:
+
+/usr/include/c++/7/bits/locale_facets_nonio.h:
 
 /usr/include/stdlib.h:
 

@@ -251,3 +251,19 @@ int chapter6::question5(
 
   return right;
 }
+
+float chapter6::question6(const int A, const int B, const int C) {
+  long long left = 0, right = 1LL << 60;
+
+  while (right - left > 1) {
+    long long mid = 0.5 * (right + left);
+    double t = mid * 1e-6;
+    double ans = A * t + B * std::sin(3.141593 * C * t);
+
+    if (ans > 100.0) right = mid;
+    else left = mid;
+  }
+
+  std::cout << std::fixed << std::setprecision(15) << left*1e-6 << std::endl;
+  return right * 1e-6;
+}

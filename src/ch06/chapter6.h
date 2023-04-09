@@ -5,6 +5,8 @@
 
 #include <algorithm>
 #include <functional>
+#include <limits>
+#include <iomanip>
 #include <iostream>
 #include <iterator>
 #include <random>
@@ -23,6 +25,7 @@ namespace chapter6 {
   int question3(int, int, const std::vector<int>&);
   int question4(int, int, const std::vector<int>&);
   int question5(int, int, const std::vector<int>&, const std::vector<int>&);
+  float question6(int, int, int);
 }
 
 #endif  // SRC_CH06_CHAPTER6_H_

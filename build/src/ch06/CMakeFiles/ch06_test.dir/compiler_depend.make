@@ -176,29 +176,46 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
   /usr/include/c++/7/bits/stl_vector.h \
   /usr/include/c++/7/bits/stl_bvector.h \
   /usr/include/c++/7/bits/vector.tcc \
-  /usr/include/c++/7/iostream \
-  /usr/include/c++/7/ostream \
-  /usr/include/c++/7/ios \
+  /usr/include/c++/7/iomanip \
   /usr/include/c++/7/bits/ios_base.h \
   /usr/include/c++/7/bits/locale_classes.h \
   /usr/include/c++/7/bits/locale_classes.tcc \
   /usr/include/c++/7/system_error \
   /usr/include/aarch64-linux-gnu/c++/7/bits/error_constants.h \
-  /usr/include/c++/7/streambuf \
-  /usr/include/c++/7/bits/streambuf.tcc \
-  /usr/include/c++/7/bits/basic_ios.h \
+  /usr/include/c++/7/locale \
   /usr/include/c++/7/bits/locale_facets.h \
   /usr/include/c++/7/cwctype \
   /usr/include/wctype.h \
   /usr/include/aarch64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_base.h \
+  /usr/include/c++/7/streambuf \
+  /usr/include/c++/7/bits/streambuf.tcc \
   /usr/include/c++/7/bits/streambuf_iterator.h \
   /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_inline.h \
   /usr/include/c++/7/bits/locale_facets.tcc \
-  /usr/include/c++/7/bits/basic_ios.tcc \
-  /usr/include/c++/7/bits/ostream.tcc \
+  /usr/include/c++/7/bits/locale_facets_nonio.h \
+  /usr/include/c++/7/ctime \
+  /usr/include/aarch64-linux-gnu/c++/7/bits/time_members.h \
+  /usr/include/aarch64-linux-gnu/c++/7/bits/messages_members.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/7/bits/codecvt.h \
+  /usr/include/c++/7/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/7/bits/locale_conv.h \
+  /usr/include/c++/7/bits/stringfwd.h \
+  /usr/include/c++/7/bits/allocator.h \
+  /usr/include/c++/7/bits/codecvt.h \
+  /usr/include/c++/7/bits/unique_ptr.h \
+  /usr/include/c++/7/bits/quoted_string.h \
+  /usr/include/c++/7/sstream \
   /usr/include/c++/7/istream \
+  /usr/include/c++/7/ios \
+  /usr/include/c++/7/bits/basic_ios.h \
+  /usr/include/c++/7/bits/basic_ios.tcc \
+  /usr/include/c++/7/ostream \
+  /usr/include/c++/7/bits/ostream.tcc \
   /usr/include/c++/7/bits/istream.tcc \
+  /usr/include/c++/7/bits/sstream.tcc \
+  /usr/include/c++/7/iostream \
   /usr/include/c++/7/iterator \
   /usr/include/c++/7/bits/stream_iterator.h \
   /usr/include/c++/7/random \
@@ -246,25 +263,10 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
   /usr/include/c++/7/backward/auto_ptr.h \
   /usr/local/include/gtest/gtest-assertion-result.h \
   /usr/local/include/gtest/gtest-message.h \
-  /usr/include/c++/7/sstream \
-  /usr/include/c++/7/bits/sstream.tcc \
   /usr/local/include/gtest/internal/gtest-port.h \
   /usr/include/c++/7/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/c++/7/locale \
-  /usr/include/c++/7/bits/locale_facets_nonio.h \
-  /usr/include/c++/7/ctime \
-  /usr/include/aarch64-linux-gnu/c++/7/bits/time_members.h \
-  /usr/include/aarch64-linux-gnu/c++/7/bits/messages_members.h \
-  /usr/include/libintl.h \
-  /usr/include/c++/7/bits/codecvt.h \
-  /usr/include/c++/7/bits/locale_facets_nonio.tcc \
-  /usr/include/c++/7/bits/locale_conv.h \
-  /usr/include/c++/7/bits/stringfwd.h \
-  /usr/include/c++/7/bits/allocator.h \
-  /usr/include/c++/7/bits/codecvt.h \
-  /usr/include/c++/7/bits/unique_ptr.h \
   /usr/include/aarch64-linux-gnu/sys/stat.h \
   /usr/include/aarch64-linux-gnu/bits/stat.h \
   /usr/local/include/gtest/internal/custom/gtest-port.h \
@@ -326,8 +328,6 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
   /usr/include/aarch64-linux-gnu/bits/types/struct_sigstack.h \
   /usr/include/aarch64-linux-gnu/bits/sigthread.h \
   /usr/lib/gcc/aarch64-linux-gnu/7/include/float.h \
-  /usr/include/c++/7/iomanip \
-  /usr/include/c++/7/bits/quoted_string.h \
   /usr/include/c++/7/map \
   /usr/include/c++/7/bits/stl_tree.h \
   /usr/include/c++/7/bits/stl_map.h \
@@ -779,11 +779,11 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
 
 /usr/include/c++/7/bits/unordered_map.h:
 
-/usr/include/c++/7/cwctype:
-
 /usr/include/c++/7/cassert:
 
 /usr/include/c++/7/locale:
+
+/usr/include/c++/7/cwctype:
 
 /usr/include/c++/7/bits/stl_uninitialized.h:
 
@@ -805,12 +805,6 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
 
 /usr/include/c++/7/atomic:
 
-/usr/include/c++/7/clocale:
-
-/usr/include/pthread.h:
-
-/usr/include/c++/7/bits/basic_ios.h:
-
 /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_inline.h:
 
 /usr/include/c++/7/debug/assertions.h:
@@ -818,6 +812,30 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
 /usr/include/c++/7/mutex:
 
 /usr/include/c++/7/bits/locale_facets.tcc:
+
+/usr/include/c++/7/ctime:
+
+/usr/lib/gcc/aarch64-linux-gnu/7/include/float.h:
+
+/usr/include/aarch64-linux-gnu/c++/7/bits/time_members.h:
+
+/usr/include/aarch64-linux-gnu/c++/7/bits/messages_members.h:
+
+/usr/include/c++/7/set:
+
+/usr/include/c++/7/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/7/bits/unique_ptr.h:
+
+/usr/include/c++/7/map:
+
+/usr/include/c++/7/sstream:
+
+/usr/include/c++/7/clocale:
+
+/usr/include/pthread.h:
+
+/usr/include/c++/7/bits/basic_ios.h:
 
 /usr/include/aarch64-linux-gnu/bits/errno.h:
 
@@ -830,6 +848,12 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
 /usr/include/c++/7/bits/istream.tcc:
 
 /usr/include/aarch64-linux-gnu/bits/types/sig_atomic_t.h:
+
+/usr/include/c++/7/bits/sstream.tcc:
+
+/usr/include/aarch64-linux-gnu/sys/procfs.h:
+
+/usr/local/include/gtest/gtest.h:
 
 /usr/include/linux/stddef.h:
 
@@ -867,15 +891,11 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
 
 /usr/include/c++/7/bits/stl_numeric.h:
 
-/usr/include/aarch64-linux-gnu/sys/procfs.h:
-
-/usr/local/include/gtest/gtest.h:
-
-/usr/include/c++/7/bits/sstream.tcc:
-
 /usr/include/c++/7/bits/stl_raw_storage_iter.h:
 
-/usr/include/c++/7/bits/unique_ptr.h:
+/usr/include/c++/7/bits/codecvt.h:
+
+/usr/include/c++/7/ext/concurrence.h:
 
 /usr/include/c++/7/bits/allocated_ptr.h:
 
@@ -889,29 +909,9 @@ src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o: /cpp-dev/src/ch06/chapter
 
 /usr/local/include/gtest/gtest-assertion-result.h:
 
-/usr/include/c++/7/map:
-
-/usr/include/c++/7/sstream:
-
 /usr/local/include/gtest/internal/gtest-port.h:
 
 /usr/include/c++/7/stdlib.h:
-
-/usr/include/c++/7/ctime:
-
-/usr/lib/gcc/aarch64-linux-gnu/7/include/float.h:
-
-/usr/include/aarch64-linux-gnu/c++/7/bits/time_members.h:
-
-/usr/include/aarch64-linux-gnu/c++/7/bits/messages_members.h:
-
-/usr/include/c++/7/ext/concurrence.h:
-
-/usr/include/c++/7/bits/codecvt.h:
-
-/usr/include/c++/7/set:
-
-/usr/include/c++/7/bits/locale_facets_nonio.tcc:
 
 /usr/include/c++/7/bits/atomic_base.h:
 

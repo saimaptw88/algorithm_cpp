@@ -128,3 +128,22 @@ TEST(chapter6, question5_case3_test) {
 
   EXPECT_EQ(2, chapter6::question5(N, K, a, b));
 }
+
+TEST(chapter6, question6_case1_test) {
+  int A = 1;
+  int B = 1;
+  int C = 1;
+
+  EXPECT_FLOAT_EQ(100.0, chapter6::question6(A, B, C));
+}
+
+TEST(chapter6, question6_case2_test) {
+  int A = 53;
+  int B = 82;
+  int C = 49;
+
+  float t_ans = chapter6::question6(A, B, C);
+  float ans = A * t_ans + B * std::sin(C*3.141593*t_ans);
+
+  EXPECT_FLOAT_EQ(100.0, ans);
+}
