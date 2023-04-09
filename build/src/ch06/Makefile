@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles /cpp-dev/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /cpp-dev/build && $(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles /cpp-dev/build/src/ch06//CMakeFiles/progress.marks
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch06/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch06/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,109 +113,94 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch06/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch06/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /cpp-dev/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named my_app
+# Convenience name for target.
+src/ch06/CMakeFiles/ch06.dir/rule:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch06/CMakeFiles/ch06.dir/rule
+.PHONY : src/ch06/CMakeFiles/ch06.dir/rule
 
-# Build rule for target.
-my_app: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_app
-.PHONY : my_app
-
-# fast build rule for target.
-my_app/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/build
-.PHONY : my_app/fast
-
-#=============================================================================
-# Target rules for targets named ch05
-
-# Build rule for target.
-ch05: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ch05
-.PHONY : ch05
-
-# fast build rule for target.
-ch05/fast:
-	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05.dir/build.make src/ch05/CMakeFiles/ch05.dir/build
-.PHONY : ch05/fast
-
-#=============================================================================
-# Target rules for targets named ch05_test
-
-# Build rule for target.
-ch05_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ch05_test
-.PHONY : ch05_test
-
-# fast build rule for target.
-ch05_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/ch05/CMakeFiles/ch05_test.dir/build.make src/ch05/CMakeFiles/ch05_test.dir/build
-.PHONY : ch05_test/fast
-
-#=============================================================================
-# Target rules for targets named ch06
-
-# Build rule for target.
-ch06: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ch06
+# Convenience name for target.
+ch06: src/ch06/CMakeFiles/ch06.dir/rule
 .PHONY : ch06
 
 # fast build rule for target.
 ch06/fast:
-	$(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06.dir/build.make src/ch06/CMakeFiles/ch06.dir/build
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06.dir/build.make src/ch06/CMakeFiles/ch06.dir/build
 .PHONY : ch06/fast
 
-#=============================================================================
-# Target rules for targets named ch06_test
+# Convenience name for target.
+src/ch06/CMakeFiles/ch06_test.dir/rule:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch06/CMakeFiles/ch06_test.dir/rule
+.PHONY : src/ch06/CMakeFiles/ch06_test.dir/rule
 
-# Build rule for target.
-ch06_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ch06_test
+# Convenience name for target.
+ch06_test: src/ch06/CMakeFiles/ch06_test.dir/rule
 .PHONY : ch06_test
 
 # fast build rule for target.
 ch06_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06_test.dir/build.make src/ch06/CMakeFiles/ch06_test.dir/build
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06_test.dir/build.make src/ch06/CMakeFiles/ch06_test.dir/build
 .PHONY : ch06_test/fast
 
-#=============================================================================
-# Target rules for targets named dp
+chapter6.o: chapter6.cpp.o
+.PHONY : chapter6.o
 
-# Build rule for target.
-dp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dp
-.PHONY : dp
+# target to build an object file
+chapter6.cpp.o:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06.dir/build.make src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o
+.PHONY : chapter6.cpp.o
 
-# fast build rule for target.
-dp/fast:
-	$(MAKE) $(MAKESILENT) -f src/dp/CMakeFiles/dp.dir/build.make src/dp/CMakeFiles/dp.dir/build
-.PHONY : dp/fast
+chapter6.i: chapter6.cpp.i
+.PHONY : chapter6.i
 
-#=============================================================================
-# Target rules for targets named dp_test
+# target to preprocess a source file
+chapter6.cpp.i:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06.dir/build.make src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.i
+.PHONY : chapter6.cpp.i
 
-# Build rule for target.
-dp_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dp_test
-.PHONY : dp_test
+chapter6.s: chapter6.cpp.s
+.PHONY : chapter6.s
 
-# fast build rule for target.
-dp_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/dp/CMakeFiles/dp_test.dir/build.make src/dp/CMakeFiles/dp_test.dir/build
-.PHONY : dp_test/fast
+# target to generate assembly for a file
+chapter6.cpp.s:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06.dir/build.make src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.s
+.PHONY : chapter6.cpp.s
+
+chapter6_test.o: chapter6_test.cpp.o
+.PHONY : chapter6_test.o
+
+# target to build an object file
+chapter6_test.cpp.o:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06_test.dir/build.make src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.o
+.PHONY : chapter6_test.cpp.o
+
+chapter6_test.i: chapter6_test.cpp.i
+.PHONY : chapter6_test.i
+
+# target to preprocess a source file
+chapter6_test.cpp.i:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06_test.dir/build.make src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.i
+.PHONY : chapter6_test.cpp.i
+
+chapter6_test.s: chapter6_test.cpp.s
+.PHONY : chapter6_test.s
+
+# target to generate assembly for a file
+chapter6_test.cpp.s:
+	cd /cpp-dev/build && $(MAKE) $(MAKESILENT) -f src/ch06/CMakeFiles/ch06_test.dir/build.make src/ch06/CMakeFiles/ch06_test.dir/chapter6_test.cpp.s
+.PHONY : chapter6_test.cpp.s
 
 # Help Target
 help:
@@ -226,13 +211,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... ch05"
-	@echo "... ch05_test"
 	@echo "... ch06"
 	@echo "... ch06_test"
-	@echo "... dp"
-	@echo "... dp_test"
-	@echo "... my_app"
+	@echo "... chapter6.o"
+	@echo "... chapter6.i"
+	@echo "... chapter6.s"
+	@echo "... chapter6_test.o"
+	@echo "... chapter6_test.i"
+	@echo "... chapter6_test.s"
 .PHONY : help
 
 
@@ -244,6 +230,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /cpp-dev/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
