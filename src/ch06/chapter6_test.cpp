@@ -101,3 +101,30 @@ TEST(chapter6, question4_case1_test) {
 
   EXPECT_EQ(1, chapter6::question4(N, M, a));
 }
+
+TEST(chapter6, question5_case1_test) {
+  int N = 4;
+  int K = 3;
+  std::vector<int> a { 1, 2, 3, 4};
+  std::vector<int> b { 1, 2, 3, 4};
+
+  EXPECT_EQ(2, chapter6::question5(N, K, a, b));
+}
+
+TEST(chapter6, question5_case2_test) {
+  int N = 2;
+  int K = 3;
+  std::vector<int> a {2, 3};
+  std::vector<int> b {3, 5};
+
+  EXPECT_EQ(10, chapter6::question5(N, K, a, b));
+}
+
+TEST(chapter6, question5_case3_test) {
+  int N = 3;
+  int K = 7;
+  std::vector<int> a {1, 2, 1};
+  std::vector<int> b {2, 1, 2};
+
+  EXPECT_EQ(2, chapter6::question5(N, K, a, b));
+}

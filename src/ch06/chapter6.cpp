@@ -214,3 +214,40 @@ int chapter6::question4(const int kN, const int kM, const std::vector<int> &kA) 
 
   return lowest_dis;
 }
+
+int chapter6::question5(
+  const int kN,
+  const int kK,
+  const std::vector<int>& kA,
+  const std::vector<int>& kB) {
+  std::vector<int> a(kN), b(kN);
+
+  std::copy(kA.begin(), kA.end(), a.begin());
+  std::copy(kB.begin(), kB.end(), b.begin());
+
+  std::sort(a.begin(), a.end());
+  std::sort(b.begin(), b.end());
+
+  std::function<bool(int)> check;
+  check = [&](int x) {
+    int count = 0;
+
+    for (int i = 0; i < kN; ++i) {
+      int bi = x / a[i];  // NOTE: 切り捨て
+      auto itr = std::upper_bound(b.begin(), b.end(), bi);  // NOTE: 切り捨てbiを超える数
+      count +=  std::distance(b.begin(), itr);
+    }
+    return (count >= kK);
+  };
+
+  int left = 0, right = a[kN-1] * b[kN-1];
+
+  while (right - left > 1) {
+    const int mid = 0.5 * (right + left);
+
+    if (check(mid)) right = mid;
+    else left = mid;
+  }
+
+  return right;
+}

@@ -89,11 +89,15 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
   /usr/include/c++/7/bits/memoryfwd.h \
   /usr/include/c++/7/bits/uniform_int_dist.h \
   /usr/include/c++/7/limits \
-  /usr/include/c++/7/iostream \
-  /usr/include/c++/7/ostream \
-  /usr/include/c++/7/ios \
-  /usr/include/c++/7/iosfwd \
+  /usr/include/c++/7/functional \
+  /usr/include/c++/7/bits/stl_function.h \
+  /usr/include/c++/7/backward/binders.h \
+  /usr/include/c++/7/tuple \
+  /usr/include/c++/7/array \
+  /usr/include/c++/7/stdexcept \
+  /usr/include/c++/7/string \
   /usr/include/c++/7/bits/stringfwd.h \
+  /usr/include/c++/7/bits/char_traits.h \
   /usr/include/c++/7/bits/postypes.h \
   /usr/include/c++/7/cwchar \
   /usr/include/wchar.h \
@@ -104,19 +108,25 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
   /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h \
   /usr/include/aarch64-linux-gnu/bits/types/__FILE.h \
   /usr/include/aarch64-linux-gnu/bits/types/FILE.h \
-  /usr/include/c++/7/bits/char_traits.h \
   /usr/include/c++/7/cstdint \
   /usr/lib/gcc/aarch64-linux-gnu/7/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/c++/7/bits/allocator.h \
+  /usr/include/aarch64-linux-gnu/c++/7/bits/c++allocator.h \
+  /usr/include/c++/7/ext/new_allocator.h \
   /usr/include/c++/7/bits/localefwd.h \
   /usr/include/aarch64-linux-gnu/c++/7/bits/c++locale.h \
   /usr/include/c++/7/clocale \
   /usr/include/locale.h \
   /usr/include/aarch64-linux-gnu/bits/locale.h \
+  /usr/include/c++/7/iosfwd \
   /usr/include/c++/7/cctype \
   /usr/include/ctype.h \
-  /usr/include/c++/7/bits/ios_base.h \
+  /usr/include/c++/7/bits/ostream_insert.h \
+  /usr/include/c++/7/bits/cxxabi_forced.h \
+  /usr/include/c++/7/bits/range_access.h \
+  /usr/include/c++/7/bits/basic_string.h \
   /usr/include/c++/7/ext/atomicity.h \
   /usr/include/aarch64-linux-gnu/c++/7/bits/gthr.h \
   /usr/include/aarch64-linux-gnu/c++/7/bits/gthr-default.h \
@@ -131,17 +141,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
   /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h \
   /usr/include/aarch64-linux-gnu/bits/setjmp.h \
   /usr/include/aarch64-linux-gnu/c++/7/bits/atomic_word.h \
-  /usr/include/c++/7/bits/locale_classes.h \
-  /usr/include/c++/7/string \
-  /usr/include/c++/7/bits/allocator.h \
-  /usr/include/aarch64-linux-gnu/c++/7/bits/c++allocator.h \
-  /usr/include/c++/7/ext/new_allocator.h \
-  /usr/include/c++/7/bits/ostream_insert.h \
-  /usr/include/c++/7/bits/cxxabi_forced.h \
-  /usr/include/c++/7/bits/stl_function.h \
-  /usr/include/c++/7/backward/binders.h \
-  /usr/include/c++/7/bits/range_access.h \
-  /usr/include/c++/7/bits/basic_string.h \
   /usr/include/c++/7/string_view \
   /usr/include/c++/7/bits/functional_hash.h \
   /usr/include/c++/7/bits/string_view.tcc \
@@ -160,10 +159,31 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/c++/7/bits/basic_string.tcc \
+  /usr/include/c++/7/bits/uses_allocator.h \
+  /usr/include/c++/7/bits/invoke.h \
+  /usr/include/c++/7/bits/std_function.h \
+  /usr/include/c++/7/bits/refwrap.h \
+  /usr/include/c++/7/unordered_map \
+  /usr/include/c++/7/ext/aligned_buffer.h \
+  /usr/include/c++/7/bits/hashtable.h \
+  /usr/include/c++/7/bits/hashtable_policy.h \
+  /usr/include/c++/7/bits/node_handle.h \
+  /usr/include/c++/7/optional \
+  /usr/include/c++/7/bits/enable_special_members.h \
+  /usr/include/c++/7/bits/unordered_map.h \
+  /usr/include/c++/7/vector \
+  /usr/include/c++/7/bits/stl_uninitialized.h \
+  /usr/include/c++/7/bits/stl_vector.h \
+  /usr/include/c++/7/bits/stl_bvector.h \
+  /usr/include/c++/7/bits/vector.tcc \
+  /usr/include/c++/7/iostream \
+  /usr/include/c++/7/ostream \
+  /usr/include/c++/7/ios \
+  /usr/include/c++/7/bits/ios_base.h \
+  /usr/include/c++/7/bits/locale_classes.h \
   /usr/include/c++/7/bits/locale_classes.tcc \
   /usr/include/c++/7/system_error \
   /usr/include/aarch64-linux-gnu/c++/7/bits/error_constants.h \
-  /usr/include/c++/7/stdexcept \
   /usr/include/c++/7/streambuf \
   /usr/include/c++/7/bits/streambuf.tcc \
   /usr/include/c++/7/bits/basic_ios.h \
@@ -207,11 +227,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
   /usr/include/c++/7/tr1/poly_laguerre.tcc \
   /usr/include/c++/7/tr1/riemann_zeta.tcc \
   /usr/include/c++/7/bits/random.h \
-  /usr/include/c++/7/vector \
-  /usr/include/c++/7/bits/stl_uninitialized.h \
-  /usr/include/c++/7/bits/stl_vector.h \
-  /usr/include/c++/7/bits/stl_bvector.h \
-  /usr/include/c++/7/bits/vector.tcc \
   /usr/include/aarch64-linux-gnu/c++/7/bits/opt_random.h \
   /usr/include/c++/7/bits/random.tcc \
   /usr/include/c++/7/numeric \
@@ -219,10 +234,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 
 /usr/include/c++/7/bits/stl_numeric.h:
-
-/usr/include/c++/7/bits/vector.tcc:
-
-/usr/include/c++/7/bits/stl_uninitialized.h:
 
 /usr/include/c++/7/tr1/poly_hermite.tcc:
 
@@ -248,8 +259,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
-/usr/include/c++/7/random:
-
 /usr/include/c++/7/bits/stream_iterator.h:
 
 /usr/include/c++/7/iterator:
@@ -266,7 +275,23 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_inline.h:
 
+/usr/include/c++/7/bits/basic_ios.h:
+
+/usr/include/c++/7/bits/locale_classes.tcc:
+
+/usr/include/c++/7/bits/locale_classes.h:
+
+/usr/include/c++/7/bits/vector.tcc:
+
+/usr/include/c++/7/bits/stl_uninitialized.h:
+
 /usr/include/c++/7/cwctype:
+
+/usr/include/c++/7/bits/unordered_map.h:
+
+/usr/include/c++/7/bits/enable_special_members.h:
+
+/usr/include/c++/7/optional:
 
 /usr/include/c++/7/bits/stl_tempbuf.h:
 
@@ -276,8 +301,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/exception:
 
-/usr/include/aarch64-linux-gnu/bits/stdio_lim.h:
-
 /usr/include/ctype.h:
 
 /usr/include/c++/7/bits/stl_heap.h:
@@ -285,6 +308,10 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/c++/7/bits/concept_check.h:
+
+/usr/include/c++/7/iostream:
+
+/usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/aarch64-linux-gnu/bits/mathcalls.h:
 
@@ -303,10 +330,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h:
 
 /usr/include/aarch64-linux-gnu/sys/select.h:
-
-/usr/include/c++/7/bits/streambuf_iterator.h:
-
-/usr/include/c++/7/bits/ios_base.h:
 
 /usr/include/alloca.h:
 
@@ -358,8 +381,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/aarch64-linux-gnu/bits/sysmacros.h:
 
-/usr/include/c++/7/bits/locale_classes.tcc:
-
 /usr/include/c++/7/bits/move.h:
 
 /cpp-dev/src/ch06/chapter6.h:
@@ -385,6 +406,8 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/aarch64-linux-gnu/bits/math-vector.h:
 
 /usr/include/c++/7/bits/ostream_insert.h:
+
+/usr/include/c++/7/bits/node_handle.h:
 
 /usr/include/c++/7/bits/stl_pair.h:
 
@@ -413,6 +436,10 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/aarch64-linux-gnu/bits/floatn.h:
 
 /usr/include/c++/7/debug/debug.h:
+
+/usr/include/c++/7/streambuf:
+
+/usr/include/c++/7/cerrno:
 
 /cpp-dev/src/ch06/chapter6.cpp:
 
@@ -456,6 +483,12 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/aarch64-linux-gnu/c++/7/bits/c++config.h:
 
+/usr/include/c++/7/bits/random.tcc:
+
+/usr/include/c++/7/bits/streambuf.tcc:
+
+/usr/include/c++/7/type_traits:
+
 /usr/include/c++/7/bits/stl_algobase.h:
 
 /usr/include/aarch64-linux-gnu/sys/types.h:
@@ -476,7 +509,11 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/debug/assertions.h:
 
-/usr/include/c++/7/bits/stl_iterator_base_funcs.h:
+/usr/include/c++/7/system_error:
+
+/usr/include/c++/7/backward/binders.h:
+
+/usr/include/c++/7/unordered_map:
 
 /usr/include/c++/7/vector:
 
@@ -502,8 +539,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/cstdlib:
 
-/usr/include/aarch64-linux-gnu/asm/errno.h:
-
 /usr/include/asm-generic/errno.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/wint_t.h:
@@ -518,10 +553,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/typeinfo:
 
-/usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/c++/7/iostream:
-
 /usr/include/aarch64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h:
@@ -532,11 +563,35 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/bits/stringfwd.h:
 
-/usr/include/c++/7/bits/locale_classes.h:
+/usr/include/aarch64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/c++/7/functional:
+
+/usr/include/c++/7/tuple:
+
+/usr/include/c++/7/bits/streambuf_iterator.h:
+
+/usr/include/c++/7/bits/ios_base.h:
+
+/usr/include/c++/7/bits/invoke.h:
+
+/usr/include/c++/7/bits/hashtable_policy.h:
+
+/usr/include/c++/7/bits/stl_bvector.h:
+
+/usr/include/c++/7/utility:
+
+/usr/include/aarch64-linux-gnu/bits/_G_config.h:
+
+/usr/include/c++/7/string:
 
 /usr/include/stdlib.h:
 
 /usr/include/c++/7/bits/postypes.h:
+
+/usr/include/c++/7/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/7/bits/std_function.h:
 
 /usr/include/wchar.h:
 
@@ -548,8 +603,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/lib/gcc/aarch64-linux-gnu/7/include/stdarg.h:
 
-/usr/include/c++/7/bits/basic_ios.h:
-
 /usr/include/aarch64-linux-gnu/c++/7/bits/error_constants.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h:
@@ -557,38 +610,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 /usr/include/aarch64-linux-gnu/bits/stdlib-float.h:
 
 /usr/lib/gcc/aarch64-linux-gnu/7/include/stdint.h:
-
-/usr/include/c++/7/cerrno:
-
-/usr/include/c++/7/streambuf:
-
-/usr/include/c++/7/ios:
-
-/usr/include/c++/7/bits/localefwd.h:
-
-/usr/include/locale.h:
-
-/usr/include/aarch64-linux-gnu/bits/locale.h:
-
-/usr/include/c++/7/bits/locale_facets.h:
-
-/usr/include/c++/7/cctype:
-
-/usr/include/c++/7/bits/stl_vector.h:
-
-/usr/include/aarch64-linux-gnu/c++/7/bits/gthr.h:
-
-/usr/include/c++/7/ostream:
-
-/usr/include/aarch64-linux-gnu/c++/7/bits/gthr-default.h:
-
-/usr/include/c++/7/cmath:
-
-/usr/include/sched.h:
-
-/usr/include/aarch64-linux-gnu/bits/sched.h:
-
-/usr/include/aarch64-linux-gnu/bits/setjmp.h:
 
 /usr/include/aarch64-linux-gnu/bits/byteswap-16.h:
 
@@ -602,11 +623,41 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/string_view:
 
+/usr/include/c++/7/ios:
+
+/usr/include/c++/7/bits/localefwd.h:
+
+/usr/include/locale.h:
+
+/usr/include/aarch64-linux-gnu/bits/locale.h:
+
+/usr/include/c++/7/bits/locale_facets.h:
+
+/usr/include/c++/7/cctype:
+
 /usr/include/c++/7/bits/cxxabi_forced.h:
 
 /usr/include/c++/7/bits/range_access.h:
 
 /usr/include/c++/7/bits/basic_string.h:
+
+/usr/include/c++/7/bits/stl_vector.h:
+
+/usr/include/aarch64-linux-gnu/c++/7/bits/gthr.h:
+
+/usr/include/c++/7/ostream:
+
+/usr/include/c++/7/array:
+
+/usr/include/aarch64-linux-gnu/c++/7/bits/gthr-default.h:
+
+/usr/include/c++/7/cmath:
+
+/usr/include/sched.h:
+
+/usr/include/aarch64-linux-gnu/bits/sched.h:
+
+/usr/include/aarch64-linux-gnu/bits/setjmp.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
 
@@ -620,14 +671,6 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/cstdio:
 
-/usr/include/c++/7/bits/stl_bvector.h:
-
-/usr/include/c++/7/utility:
-
-/usr/include/c++/7/string:
-
-/usr/include/aarch64-linux-gnu/bits/_G_config.h:
-
 /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h:
 
 /usr/include/aarch64-linux-gnu/bits/sys_errlist.h:
@@ -636,12 +679,14 @@ src/ch06/CMakeFiles/ch06.dir/chapter6.cpp.o: /cpp-dev/src/ch06/chapter6.cpp \
 
 /usr/include/c++/7/bits/basic_string.tcc:
 
-/usr/include/c++/7/backward/binders.h:
+/usr/include/c++/7/random:
 
-/usr/include/c++/7/system_error:
+/usr/include/c++/7/bits/uses_allocator.h:
 
-/usr/include/c++/7/bits/random.tcc:
+/usr/include/c++/7/bits/refwrap.h:
 
-/usr/include/c++/7/type_traits:
+/usr/include/aarch64-linux-gnu/asm/errno.h:
 
-/usr/include/c++/7/bits/streambuf.tcc:
+/usr/include/c++/7/ext/aligned_buffer.h:
+
+/usr/include/c++/7/bits/hashtable.h:
