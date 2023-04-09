@@ -267,3 +267,13 @@ float chapter6::question6(const int A, const int B, const int C) {
   std::cout << std::fixed << std::setprecision(15) << left*1e-6 << std::endl;
   return right * 1e-6;
 }
+
+unsigned int chapter6::question7(const int N, std::vector<unsigned int> a) {
+  std::function<unsigned int(int, std::vector<unsigned int>)> Median;
+  Median = [](int M, std::vector<unsigned int>m) {
+    std::sort(m.begin(), m.end());
+    return m[M * 0.5 + 1];
+  };
+
+  return 0;
+}

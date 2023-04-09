@@ -26,6 +26,7 @@ namespace chapter6 {
   int question4(int, int, const std::vector<int>&);
   int question5(int, int, const std::vector<int>&, const std::vector<int>&);
   float question6(int, int, int);
+  unsigned int question7(int, std::vector<unsigned int>);
 }
 
 #endif  // SRC_CH06_CHAPTER6_H_

@@ -137,13 +137,24 @@ TEST(chapter6, question6_case1_test) {
   EXPECT_FLOAT_EQ(100.0, chapter6::question6(A, B, C));
 }
 
-TEST(chapter6, question6_case2_test) {
-  int A = 53;
-  int B = 82;
-  int C = 49;
+TEST(chapter6, question7_case1_test) {
+  int N = 3;
+  std::vector<unsigned int> a{10, 30, 20};
 
-  float t_ans = chapter6::question6(A, B, C);
-  float ans = A * t_ans + B * std::sin(C*3.141593*t_ans);
+  EXPECT_EQ(30, chapter6::question7(N, a));
+}
 
-  EXPECT_FLOAT_EQ(100.0, ans);
+TEST(chapter6, question7_case2_test) {
+  int N = 1;
+  std::vector<unsigned int> a{10};
+
+  EXPECT_EQ(10, chapter6::question7(N, a));
+}
+
+
+TEST(chapter6, question7_case3_test) {
+  int N = 10;
+  std::vector<unsigned int> a{5, 9, 5, 9, 8, 9, 3, 5, 4, 3};
+
+  EXPECT_EQ(8, chapter6::question7(N, a));
 }
