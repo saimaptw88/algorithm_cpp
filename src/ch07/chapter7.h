@@ -3,9 +3,16 @@
 #define SRC_CH07_CHAPTER7_H_
 
 
+#include <algorithm>
+#include <functional>
 #include <iostream>
+#include <random>
 
 
 int sum(int, int);
+
+namespace chapter7 {
+void DividedScheduling();
+};  // chaapter7
 
 #endif  // SRC_CH07_CHAPTER7_H_
