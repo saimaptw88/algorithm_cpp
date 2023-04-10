@@ -30,3 +30,27 @@ void chapter7::DividedScheduling() {
 
   std::cout << res << std::endl;
 }
+
+void chapter7::AGC009A() {
+  std::random_device rnd;
+  const int N = rnd() % 10 + 3;
+
+  std::vector<long long> A(N), B(N);
+  for (int i = 0; i < N; ++i) {
+    A[i] = rnd() % 10;
+    B[i] = rnd() % 10;
+  }
+
+  long long sum = 0LL;
+
+  for (int i = N -1; i > 0; --i) {
+    A[i] += sum;
+    long long amari = A[i] % B[i];
+    long long D = 0LL;
+
+    if (amari != 0) D = B[i] - amari;
+    sum += D;
+  }
+
+  std::cout << sum << std::endl;
+}
