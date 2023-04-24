@@ -54,3 +54,49 @@ void chapter7::AGC009A() {
 
   std::cout << sum << std::endl;
 }
+
+int chapter7::question1(const int N, std::vector<int>a, std::vector<int>b) {
+  std::sort(a.begin(), a.end());
+  std::sort(b.begin(), b.end());
+
+  int count = 0;
+
+  for (int i = 0; i < N; ++i) {
+    int ind = std::upper_bound(b.begin(), b.end(), a[i]) - b.begin();
+
+    count += N - ind;
+  }
+
+  return count;
+}
+
+int chapter7::question2(int N, std::vector<std::pair<int, int>>reds, std::vector<std::pair<int, int>>blues) {
+  // 青のx座標をソートし、青のx座標xiよりx座標が小さく、青のy座標yiよりy座標が小さい中で最大のものを数える
+  std::sort(blues.begin(), blues.end());
+  std::sort(reds.begin(), reds.end());
+
+  int count = 0;
+  std::vector<bool> used(N, false);
+
+  for (int i = 0; i < N; ++i) {
+    int idx = std::lower_bound(reds.begin(), reds.end(), blues[i]) - reds.begin();
+
+    if (!idx) continue;
+
+    std::function<bool(const std::pair<int,int>&, const std::pair<int,int>&)> cmd;
+    cmd = [](const std::pair<int,int>&a, const std::pair<int,int>&b) {
+      return a.second < b.second;
+    };
+    idx = std::lower_bound(reds.begin(), reds.end(), blues[i], cmd) - reds.begin();
+
+    if (!idx) continue;
+    idx --;
+
+    if (used[idx]) continue;
+
+    count++;
+    used[idx] = true;
+  }
+
+  return count;
+}

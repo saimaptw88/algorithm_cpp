@@ -7,3 +7,40 @@
 TEST(chapter7, sum_test) {
   EXPECT_EQ(3, sum(1, 2));
 }
+
+TEST(chapter7, question1_test_case1) {
+  int N = 3;
+  std::vector<int> a{0, 1, 2};
+  std::vector<int> b{5, 0, 1};
+
+  EXPECT_EQ(4, chapter7::question1(N, a, b));
+}
+
+TEST(chapter7, question1_test_case2) {
+  int N = 3;
+  std::vector<int> a{10, 6, 5};
+  std::vector<int> b{5, 0, 1};
+
+  EXPECT_EQ(0, chapter7::question1(N, a, b));
+}
+
+TEST(chapter7, question2_test_case1) {
+  int N = 3;
+  std::vector<std::pair<int, int>> reds{std::make_pair(3, 8),
+                                     std::make_pair(2, 9),
+                                     std::make_pair(2, 4)};
+  std::vector<std::pair<int, int>> blues{{3, 5}, {2, 4}, {6, 4}};
+
+  EXPECT_EQ(1, chapter7::question2(N, reds, blues));
+}
+
+TEST(chapter7, question2_test_case2) {
+  int N = 4;
+  std::vector<std::pair<int, int>> reds{std::make_pair(3, 8),
+                                     std::make_pair(2, 9),
+                                     std::make_pair(2, 4),
+                                     std::make_pair(1, 3)};
+  std::vector<std::pair<int, int>> blues{{3, 5}, {2, 4}, {6, 4}, {1, 3}};
+
+  EXPECT_EQ(2, chapter7::question2(N, reds, blues));
+}
