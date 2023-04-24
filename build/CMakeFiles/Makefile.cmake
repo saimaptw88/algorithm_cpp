@@ -14,6 +14,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/cpp-dev/src/CMakeLists.txt"
   "/cpp-dev/src/ch05/CMakeLists.txt"
   "/cpp-dev/src/ch06/CMakeLists.txt"
+  "/cpp-dev/src/ch07/CMakeLists.txt"
   "/cpp-dev/src/dp/CMakeLists.txt"
   "/usr/local/share/cmake-3.24/Modules/CMakeCInformation.cmake"
   "/usr/local/share/cmake-3.24/Modules/CMakeCXXInformation.cmake"
@@ -46,6 +47,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/ch05/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/ch06/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/ch07/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/dp/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -56,6 +58,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/ch05/CMakeFiles/ch05_test.dir/DependInfo.cmake"
   "src/ch06/CMakeFiles/ch06.dir/DependInfo.cmake"
   "src/ch06/CMakeFiles/ch06_test.dir/DependInfo.cmake"
+  "src/ch07/CMakeFiles/ch07.dir/DependInfo.cmake"
+  "src/ch07/CMakeFiles/ch07_test.dir/DependInfo.cmake"
   "src/dp/CMakeFiles/dp.dir/DependInfo.cmake"
   "src/dp/CMakeFiles/dp_test.dir/DependInfo.cmake"
   )
