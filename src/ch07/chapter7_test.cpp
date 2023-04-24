@@ -44,3 +44,27 @@ TEST(chapter7, question2_test_case2) {
 
   EXPECT_EQ(2, chapter7::question2(N, reds, blues));
 }
+
+TEST(chapter7, question3_test_case1) {
+  int N = 1;
+  std::vector<int> d{2};
+  std::vector<int> t{3};
+
+  EXPECT_TRUE(chapter7::question3(N, d, t));
+}
+
+TEST(chapter7, question3_test_case2) {
+  int N = 2;
+  std::vector<int> d{2, 4};
+  std::vector<int> t{3, 7};
+
+  EXPECT_TRUE(chapter7::question3(N, d, t));
+}
+
+TEST(chapter7, question3_test_case3) {
+  int N = 2;
+  std::vector<int> d{2, 4};
+  std::vector<int> t{3, 6};
+
+  EXPECT_FALSE(chapter7::question3(N, d, t));
+}

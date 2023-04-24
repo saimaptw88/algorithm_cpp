@@ -100,3 +100,28 @@ int chapter7::question2(int N, std::vector<std::pair<int, int>>reds, std::vector
 
   return count;
 }
+
+bool chapter7::question3(int N, std::vector<int>d, std::vector<int>t) {
+  std::vector<std::pair<int, int>> jobs(N);
+  for (int i = 0; i < N; ++i) {
+    jobs[i].first = t[i] - d[i];
+    jobs[i].second = t[i];
+  }
+
+  std::function<bool(const std::pair<int,int>&, const std::pair<int, int>&)> cmd;
+  cmd = [](const std::pair<int, int>&a, const std::pair<int, int>&b) {
+    return a.second < b.second;
+  };
+  std::sort(jobs.begin(), jobs.end(), cmd);
+
+  int count = 0;
+  int end_time = 0;
+  for (int i = 0; i < N; ++i) {
+    if (jobs[i].first < end_time) continue;
+
+    end_time = jobs[i].second;
+    count++;
+  }
+
+  return count == N;
+}
