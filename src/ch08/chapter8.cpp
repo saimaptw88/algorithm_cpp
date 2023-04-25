@@ -54,3 +54,7 @@ void chapter8::DoublyConnectedNode() {
 void chapter8::question1() {
   std::cout << "O(N)" << std::endl;
 }
+
+void chapter8::question2() {
+  std::cout << "O(N)" << std::endl;
+}
