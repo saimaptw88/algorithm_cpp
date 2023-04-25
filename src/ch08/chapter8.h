@@ -85,6 +85,7 @@ void DoublyConnectedNode();
 
 void question1();
 void question2();
+void question3();
 };  // chaapter8
 
 #endif  // SRC_CH08_CHAPTER8_H_

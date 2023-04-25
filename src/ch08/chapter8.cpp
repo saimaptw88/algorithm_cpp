@@ -58,3 +58,9 @@ void chapter8::question1() {
 void chapter8::question2() {
   std::cout << "O(N)" << std::endl;
 }
+
+void chapter8::question3() {
+  std::cout << "連結リストの長さをもつ変数を定義する。"
+  << "挿入なら+、削除なら-して長さを保つ。"
+  << std::endl;
+}
