@@ -50,3 +50,7 @@ void chapter8::DoublyConnectedNode() {
   std::cout << "after: ";
   dPrintList();
 }
+
+void chapter8::question1() {
+  std::cout << "O(N)" << std::endl;
+}

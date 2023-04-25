@@ -83,6 +83,7 @@ void dErace(DoublyNode* v) {
 
 void DoublyConnectedNode();
 
+void question1();
 };  // chaapter8
 
 #endif  // SRC_CH08_CHAPTER8_H_
