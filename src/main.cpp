@@ -1,8 +1,10 @@
 // Copyright 2022 saito
 #include <random>
+#include <iostream>
 #include <vector>
+#include <string>
 
-
+#include "./ch08/chapter8.h"
 #include "./ch07/chapter7.h"
 #include "./ch06/chapter6.h"
 #include "./ch05/chapter5.h"
@@ -14,7 +16,7 @@
 
 
 int main() {
-  chapter7::DividedScheduling();
+  chapter8::DoublyConnectedNode();
 
   return 0;
 }

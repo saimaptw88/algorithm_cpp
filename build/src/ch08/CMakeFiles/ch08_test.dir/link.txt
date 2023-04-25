@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ch08_test.dir/chapter8_test.cpp.o -o ../ch08_test   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib:/cpp-dev/build/src ../libch08.so -lgtest -lgtest_main -lpthread 
