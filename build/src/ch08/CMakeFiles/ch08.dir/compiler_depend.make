@@ -228,8 +228,25 @@ src/ch08/CMakeFiles/ch08.dir/chapter8.cpp.o: /cpp-dev/src/ch08/chapter8.cpp \
   /usr/include/aarch64-linux-gnu/c++/7/bits/opt_random.h \
   /usr/include/c++/7/bits/random.tcc \
   /usr/include/c++/7/numeric \
-  /usr/include/c++/7/bits/stl_numeric.h
+  /usr/include/c++/7/bits/stl_numeric.h \
+  /usr/include/c++/7/set \
+  /usr/include/c++/7/bits/stl_tree.h \
+  /usr/include/c++/7/bits/stl_set.h \
+  /usr/include/c++/7/bits/stl_multiset.h \
+  /usr/include/c++/7/unordered_set \
+  /usr/include/c++/7/bits/unordered_set.h \
+  /usr/include/c++/7/map \
+  /usr/include/c++/7/bits/stl_map.h \
+  /usr/include/c++/7/bits/stl_multimap.h
 
+
+/usr/include/c++/7/unordered_set:
+
+/usr/include/c++/7/bits/stl_multiset.h:
+
+/usr/include/c++/7/bits/stl_set.h:
+
+/usr/include/c++/7/set:
 
 /usr/include/c++/7/bits/stl_numeric.h:
 
@@ -353,6 +370,8 @@ src/ch08/CMakeFiles/ch08.dir/chapter8.cpp.o: /cpp-dev/src/ch08/chapter8.cpp \
 
 /usr/include/aarch64-linux-gnu/bits/floatn-common.h:
 
+/usr/include/c++/7/bits/stl_tree.h:
+
 /usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
 
 /cpp-dev/src/ch08/chapter8.h:
@@ -380,6 +399,8 @@ src/ch08/CMakeFiles/ch08.dir/chapter8.cpp.o: /cpp-dev/src/ch08/chapter8.cpp \
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h:
+
+/usr/include/c++/7/bits/unordered_set.h:
 
 /usr/include/c++/7/bits/move.h:
 
@@ -439,6 +460,8 @@ src/ch08/CMakeFiles/ch08.dir/chapter8.cpp.o: /cpp-dev/src/ch08/chapter8.cpp \
 
 /usr/include/c++/7/bits/functional_hash.h:
 
+/usr/include/c++/7/bits/stl_multimap.h:
+
 /usr/include/aarch64-linux-gnu/c++/7/bits/os_defines.h:
 
 /usr/include/c++/7/bits/stl_iterator.h:
@@ -484,6 +507,8 @@ src/ch08/CMakeFiles/ch08.dir/chapter8.cpp.o: /cpp-dev/src/ch08/chapter8.cpp \
 /usr/include/c++/7/stdexcept:
 
 /usr/include/c++/7/cstdlib:
+
+/usr/include/c++/7/bits/stl_map.h:
 
 /usr/include/asm-generic/errno.h:
 
@@ -660,6 +685,8 @@ src/ch08/CMakeFiles/ch08.dir/chapter8.cpp.o: /cpp-dev/src/ch08/chapter8.cpp \
 /usr/include/c++/7/istream:
 
 /usr/include/c++/7/ext/string_conversions.h:
+
+/usr/include/c++/7/map:
 
 /usr/include/aarch64-linux-gnu/bits/cpu-set.h:
 
