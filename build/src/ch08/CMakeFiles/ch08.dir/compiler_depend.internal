@@ -230,4 +230,13 @@ src/ch08/CMakeFiles/ch08.dir/chapter8.cpp.o
  /usr/include/c++/7/bits/random.tcc
  /usr/include/c++/7/numeric
  /usr/include/c++/7/bits/stl_numeric.h
+ /usr/include/c++/7/set
+ /usr/include/c++/7/bits/stl_tree.h
+ /usr/include/c++/7/bits/stl_set.h
+ /usr/include/c++/7/bits/stl_multiset.h
+ /usr/include/c++/7/unordered_set
+ /usr/include/c++/7/bits/unordered_set.h
+ /usr/include/c++/7/map
+ /usr/include/c++/7/bits/stl_map.h
+ /usr/include/c++/7/bits/stl_multimap.h
 

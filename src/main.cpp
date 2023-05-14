@@ -1,9 +1,7 @@
 // Copyright 2022 saito
-#include <random>
-#include <iostream>
-#include <vector>
 #include <string>
 
+#include "./ch09/chapter9.h"
 #include "./ch08/chapter8.h"
 #include "./ch07/chapter7.h"
 #include "./ch06/chapter6.h"
@@ -16,5 +14,9 @@
 
 
 int main() {
+  std::string s {"(()(())())(()())"};
+
+  chapter9::question3(s.size(), s);
+
   return 0;
 }
