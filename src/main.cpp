@@ -14,9 +14,9 @@
 
 
 int main() {
-  std::string s {"34+12-*"};
+  std::string s {"(()(())())(()())"};
 
-  chapter9::question2(s);
+  chapter9::question3(s.size(), s);
 
   return 0;
 }

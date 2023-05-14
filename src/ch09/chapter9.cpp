@@ -30,3 +30,33 @@ void chapter9::question2(const std::string& str) {
 
   std::cout << stk.top();
 }
+
+void chapter9::question3(unsigned int N, const std::string& str) {
+  int count = 0;
+  for (const auto&s : str) {
+    if (s == '(') count++;
+  }
+  if (count != N/2) {
+    std::cout << "No\n";
+  }
+
+  std::vector<std::pair<int, int>> ans;
+  std::stack<int> stk;
+
+  for (int i = 0; i < N; ++i) {
+    if (str[i] == '(') {
+      stk.push(i);
+      continue;
+    }
+
+    ans.push_back({stk.top(), i});
+    stk.pop();
+  }
+
+  for (int i = 0; i < ans.size(); ++i) {
+    std::cout << ans[i].first
+              << " : "
+              << ans[i].second
+              << std::endl;
+  }
+}

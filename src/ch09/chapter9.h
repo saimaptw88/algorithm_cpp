@@ -5,6 +5,7 @@
 #include <regex>
 #include <queue>
 #include <stack>
+#include <utility>
 
 
 namespace chapter9 {
@@ -206,4 +207,5 @@ void exec() {
 }
 
 void question2(const std::string& str);
+void question3(unsigned int, const std::string&);
 }  // namespace chapter9
