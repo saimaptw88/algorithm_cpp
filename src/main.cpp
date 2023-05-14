@@ -16,7 +16,5 @@
 
 
 int main() {
-  chapter8::DoublyConnectedNode();
-
   return 0;
 }

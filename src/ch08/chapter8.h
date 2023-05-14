@@ -7,7 +7,9 @@
 #include <functional>
 #include <iostream>
 #include <random>
-
+#include <set>
+#include <unordered_set>
+#include <map>
 
 int sum(int, int);
 
@@ -86,6 +88,9 @@ void DoublyConnectedNode();
 void question1();
 void question2();
 void question3();
+void question4();
+void question5();
+
 };  // chaapter8
 
 #endif  // SRC_CH08_CHAPTER8_H_
