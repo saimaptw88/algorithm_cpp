@@ -29,6 +29,10 @@
 /cpp-dev/build/src/ch09/CMakeFiles/test.dir
 /cpp-dev/build/src/ch09/CMakeFiles/edit_cache.dir
 /cpp-dev/build/src/ch09/CMakeFiles/rebuild_cache.dir
+/cpp-dev/build/src/ch10/CMakeFiles/ch10.dir
+/cpp-dev/build/src/ch10/CMakeFiles/test.dir
+/cpp-dev/build/src/ch10/CMakeFiles/edit_cache.dir
+/cpp-dev/build/src/ch10/CMakeFiles/rebuild_cache.dir
 /cpp-dev/build/src/dp/CMakeFiles/dp.dir
 /cpp-dev/build/src/dp/CMakeFiles/dp_test.dir
 /cpp-dev/build/src/dp/CMakeFiles/test.dir

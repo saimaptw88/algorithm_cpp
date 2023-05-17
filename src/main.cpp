@@ -1,6 +1,7 @@
 // Copyright 2022 saito
 #include <string>
 
+#include "./ch10/chapter10.h"
 #include "./ch09/chapter9.h"
 #include "./ch08/chapter8.h"
 #include "./ch07/chapter7.h"
@@ -14,9 +15,7 @@
 
 
 int main() {
-  std::string s {"(()(())())(()())"};
-
-  chapter9::question3(s.size(), s);
+  chapter10::code10_5();
 
   return 0;
 }
