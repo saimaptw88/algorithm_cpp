@@ -1,5 +1,7 @@
 // Copyright 2023 saito
 #include <iostream>
+#include <map>
+#include <random>
 #include <vector>
 
 
@@ -39,4 +41,7 @@ struct UnionFind {
 };
 
 void code11_4();
+namespace question1 {
+void exec();
+}  // namespace question1
 }  // namespace chapter11
