@@ -146,4 +146,40 @@ void exec() {
   }
 }
 }  // namespace question2
+
+void question3() {
+  int N, K, L;
+  std::cin >> N >> K >> L;
+
+  UnionFind road(N), train(N);
+
+  for (int i = 0; i < K; ++i) {
+    int p, q;
+    std::cin >> p >> q;
+
+    road.unite(p - 1, q - 1);
+  }
+
+  for (int i = 0; i < L; ++i) {
+    int r, s;
+    std::cin >> r >> s;
+
+    train.unite(r - 1, s - 1);
+  }
+
+  std::vector<int> res(N);
+
+  for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < N; ++j) {
+      if (!road.issame(i, j)) continue;
+      if (!train.issame(i, j)) continue;
+
+      res[i]++;
+    }
+  }
+
+  for (const auto& r : res) {
+    std::cout << r << std::endl;
+  }
+}
 }  // namespace chapter11

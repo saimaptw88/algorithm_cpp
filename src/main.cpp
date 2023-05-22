@@ -16,7 +16,7 @@
 
 
 int main() {
-  chapter11::question2::exec();
+  chapter11::question3();
 
   return 0;
 }

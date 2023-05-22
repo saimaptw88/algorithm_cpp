@@ -50,4 +50,6 @@ void exec();
 namespace question2 {
 void exec();
 }  // namespace question2
+
+void question3();
 }  // namespace chapter11
