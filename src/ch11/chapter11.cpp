@@ -92,4 +92,58 @@ void exec() {
   std::cout << res << std::endl;
 }
 }  // namespace question1
+
+namespace question2 {
+void exec() {
+  int N, M;
+  std::cin >> N >> M;
+
+  std::vector<int> A(M),B(M);
+  for (int i = 0; i < M; ++i) {
+    std::cin >> A[i] >> B[i];
+    --A[i], --B[i];
+  }
+
+  std::vector<int> res(M);
+  res[M-1] = (N-1) * N / 2;
+
+  UnionFind uf(N);
+
+  for (int i = M - 1; i >= 0; --i) {
+    uf.unite(A[i], B[i]);
+
+    std::vector<int> roots;
+    for (int j = 0; j < N; ++j) {
+      if (uf.root(j) == j) roots.push_back(j);
+    }
+
+    int inconvenience = 0;
+    if (roots.size() > 1) {
+      for (int bit = 0; bit < (1<<roots.size()); ++bit) {
+        int count = 0;
+        for (int j = 0; j < roots.size(); ++j) {
+          if (bit & (1<<j)) count++;
+        }
+
+        if (count != 2) continue;
+
+        int add = 1;
+        for (int j = 0; j < roots.size(); ++j) {
+          if (bit & (1<<j)) add *= uf.size(roots[j]);
+        }
+
+        inconvenience += add;
+      }
+    }
+
+
+    if (i == 0) continue;
+    res[i-1] = inconvenience;
+  }
+
+  for (const auto& r : res) {
+    std::cout << r << std::endl;
+  }
+}
+}  // namespace question2
 }  // namespace chapter11

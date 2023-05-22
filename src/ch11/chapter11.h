@@ -7,7 +7,8 @@
 
 namespace chapter11 {
 struct UnionFind {
-  std::vector<int> par_, siz_;
+  std::vector<int> par_;  // 各頂点の親番号
+  std::vector<int> siz_;  // 各根付き木の頂点数
 
   UnionFind(int n) : par_(n, -1), siz_(n, 1) {}
 
@@ -41,7 +42,12 @@ struct UnionFind {
 };
 
 void code11_4();
+
 namespace question1 {
 void exec();
 }  // namespace question1
+
+namespace question2 {
+void exec();
+}  // namespace question2
 }  // namespace chapter11
