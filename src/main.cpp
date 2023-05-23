@@ -1,6 +1,7 @@
 // Copyright 2022 saito
 #include <string>
 
+#include "./ch12/chapter12.h"
 #include "./ch11/chapter11.h"
 #include "./ch10/chapter10.h"
 #include "./ch09/chapter9.h"
@@ -16,7 +17,11 @@
 
 
 int main() {
-  chapter11::question4::exec();
+  int N = 5;
+  std::vector<int> a{2,1,6,3,4};
+  chapter12::InsertionSoft(a);
+
+  for (const auto& a_ : a) std::cout << a_ << std::endl;
 
   return 0;
 }
