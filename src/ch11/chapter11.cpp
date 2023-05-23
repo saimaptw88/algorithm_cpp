@@ -182,4 +182,30 @@ void question3() {
     std::cout << r << std::endl;
   }
 }
+
+namespace question4 {
+void exec() {
+  int N,M;
+  std::cin >> N >> M;
+
+  WeightedUnionFind wuf(N);
+  std::vector<int> R(M), L(M), D(M);
+
+  for (int i = 0; i < M; ++i) {
+    std::cin >> R[i] >> L[i] >> D[i];
+
+    R[i]--, L[i]--;
+
+    wuf.unite(R[i], L[i], D[i]);
+  }
+
+  bool res = true;
+  for (int i = 0; i < M; ++i) {
+    if (wuf.weight(L[i]) - wuf.weight(R[i]) != D[i]) res = false;
+  }
+
+  if (res) std::cout << "Yes" << std::endl;
+  else std::cout << "No" << std::endl;
+}
+}  // namespace question4
 }  // namespace chapter11
