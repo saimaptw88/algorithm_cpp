@@ -18,7 +18,7 @@
 
 int main() {
   std::vector<int> a{2,1,6,3,4};
-  chapter12::MergeSort(a, 0, 5);
+  chapter12::QuickSort(a, 0, 5);
 
   for (const auto& a_ : a) std::cout << a_ << std::endl;
 

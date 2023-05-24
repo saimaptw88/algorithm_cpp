@@ -46,4 +46,24 @@ void MergeSort(std::vector<int>& a, int left, int right) {
     }
   }
 }
+
+void QuickSort(std::vector<int>& a, int left, int right) {
+  if (right - left <= 1) return;
+
+  const int kPivotIndex = (left + right) / 2;
+  const int kPivot = a[kPivotIndex];
+
+  std::swap(a[kPivotIndex], a[right-1]);
+
+  int i = left;
+  for (int j = left; j < right - 1; ++j) {
+    if (a[j] < kPivot) {
+      std::swap(a[i++], a[j]);
+    }
+  }
+  std::swap(a[i], a[right-1]);
+
+  QuickSort(a, left, i);
+  QuickSort(a, i+1, right);
+}
 }  // namespace chapter12
