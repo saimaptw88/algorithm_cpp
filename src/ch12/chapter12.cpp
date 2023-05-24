@@ -91,4 +91,26 @@ void HeapSort(std::vector<int>& a) {
   }
 }
 }  // namespace haep
+
+void BucketSort(std::vector<int>& a) {
+  const int max = 1000000;
+  const int N = static_cast<int>(a.size());
+
+  std::vector<int> num(max, 0);
+  for (int i = 0; i < N; ++i) {
+    ++num[a[i]];
+  }
+
+  std::vector<int> sum(max, 0);
+  for (int i = 1; i < max; ++i) {
+    sum[i] = sum[i-1] + num[i];
+  }
+
+  std::vector<int> a2(N);
+  for (int i = N; i >= 0; --i) {
+    a2[--sum[a[i]]] = a[i];
+  }
+
+  a = a2;
+}
 }  // namespace chapter12

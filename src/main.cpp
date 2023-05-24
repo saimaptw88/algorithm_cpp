@@ -18,7 +18,7 @@
 
 int main() {
   std::vector<int> a{2,1,6,3,4};
-  chapter12::heap::HeapSort(a);
+  chapter12::BucketSort(a);
 
   for (const auto& a_ : a) std::cout << a_ << std::endl;
 
