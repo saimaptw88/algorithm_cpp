@@ -17,9 +17,8 @@
 
 
 int main() {
-  int N = 5;
   std::vector<int> a{2,1,6,3,4};
-  chapter12::InsertionSoft(a);
+  chapter12::MergeSort(a, 0, 5);
 
   for (const auto& a_ : a) std::cout << a_ << std::endl;
 
