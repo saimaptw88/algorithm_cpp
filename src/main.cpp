@@ -18,9 +18,7 @@
 
 int main() {
   std::vector<int> a{2,1,6,3,4};
-  chapter12::BucketSort(a);
-
-  for (const auto& a_ : a) std::cout << a_ << std::endl;
+  chapter12::question1(a);
 
   return 0;
 }

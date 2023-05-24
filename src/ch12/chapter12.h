@@ -14,4 +14,6 @@ void HeapSort(std::vector<int>&);
 }  // namespace haep
 
 void BucketSort(std::vector<int>&);
+
+void question1(std::vector<int>&);
 }  // namespace chapter12

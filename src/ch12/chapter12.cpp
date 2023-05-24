@@ -113,4 +113,23 @@ void BucketSort(std::vector<int>& a) {
 
   a = a2;
 }
+
+void question1(std::vector<int>& a) {
+  const int kMax = 1000000;
+  const int kN = static_cast<int>(a.size());
+
+  std::vector<int> num(kMax, 0);
+  for (int i = 0; i < kN; ++i) ++num[a[i]];
+
+  std::vector<int> sum(kMax, 0);
+  for (int i = 1; i < kMax; ++i)
+    sum[i] = sum[i-1] + num[i];
+
+  std::vector<int> count(kN);
+  for (int i = 0; i < kN; ++i)
+    count[i] = sum[a[i]];
+
+  for (const auto& c : count)
+    std::cout << c << std::endl;
+}
 }  // namespace chapter12
