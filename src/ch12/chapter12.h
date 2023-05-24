@@ -1,3 +1,4 @@
+#include <functional>
 #include <iostream>
 #include <utility>
 #include <vector>
@@ -16,4 +17,5 @@ void HeapSort(std::vector<int>&);
 void BucketSort(std::vector<int>&);
 
 void question1(std::vector<int>&);
+void question2(int, int, const std::vector<int>&, const std::vector<int>&);
 }  // namespace chapter12

@@ -132,4 +132,16 @@ void question1(std::vector<int>& a) {
   for (const auto& c : count)
     std::cout << c << std::endl;
 }
+void question2(
+  const int kN,
+  const int kM,
+  const std::vector<int>& kA,
+  const std::vector<int>& kB) {
+  int min = 1000000;
+  for (int i = 0; i < kA.size(); ++i) {
+    if (kA[i] < min) min = kA[i];
+  }
+
+  std::cout << min * kM << std::endl;
+}
 }  // namespace chapter12
