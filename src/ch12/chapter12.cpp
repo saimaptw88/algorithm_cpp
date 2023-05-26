@@ -144,4 +144,89 @@ void question2(
 
   std::cout << min * kM << std::endl;
 }
+
+struct Heap {
+  std::vector<int> heap_;
+
+  Heap() {}
+  void push(int x) {
+    heap_.push_back(x);
+    int i = static_cast<int>(heap_.size() - 1);
+
+    while(i > 0) {
+      int p = (i - 1) / 2;
+
+      if (heap_[p] >= x) break;
+
+      heap_[i] = heap_[p];
+      i = p;
+    }
+
+    heap_[i] = x;
+  }
+  int top() {
+    if (!heap_.empty()) return heap_[0];
+
+    return -1;
+  }
+  void pop() {
+    if (heap_.empty()) return;
+
+    int x = heap_.back();
+    heap_.pop_back();
+
+    int i = 0;
+    while (i*2+1 < heap_.size()) {
+      int child1 = i * 2 + 1, child2 = i * 2 + 2;
+
+      if (child2 < (int)heap_.size()
+        && heap_[child2] > heap_[child1]) {
+        child1 = child2;
+      }
+
+      if (heap_[child1] <= x) break;
+
+      heap_[i] = heap_[child1];
+      i = child1;
+    }
+
+    heap_[i] = x;
+  }
+};
+void question3(int k, int N, const std::vector<int>& a) {
+  Heap heap;
+
+  for (int i = 0; i < k; ++i) heap.push(a[i]);
+
+  for (int i = k; i < N; ++i) {
+    if (a[i] < heap.top()) {
+      heap.pop();
+      heap.push(a[i]);
+    }
+
+    std::cout << heap.top() << std::endl;
+  }
+}
+
+void question5(int k, int N, const std::vector<int>&a) {
+  const int kMax = 1000000;
+
+  std::vector<int> num(kMax, 0);
+  for (int i = 0; i < N; ++i) {
+    num[a[i]]++;
+  }
+
+  std::vector<int> sum(kMax, 0);
+  for (int i = 1; i < kMax; ++i) {
+    sum[i] = sum[i-1] + num[i];
+
+    if (sum[i] >= k) {
+      std::cout << i << std::endl;
+      return;
+    }
+  }
+}
+void question6(int a, int m) {
+  std::cout << "Pass";
+}
 }  // namespace chapter12
