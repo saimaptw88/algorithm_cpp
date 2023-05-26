@@ -86,6 +86,7 @@ src/all: src/ch08/all
 src/all: src/ch09/all
 src/all: src/ch10/all
 src/all: src/ch11/all
+src/all: src/ch12/all
 src/all: src/dp/all
 .PHONY : src/all
 
@@ -97,6 +98,7 @@ src/preinstall: src/ch08/preinstall
 src/preinstall: src/ch09/preinstall
 src/preinstall: src/ch10/preinstall
 src/preinstall: src/ch11/preinstall
+src/preinstall: src/ch12/preinstall
 src/preinstall: src/dp/preinstall
 .PHONY : src/preinstall
 
@@ -109,6 +111,7 @@ src/clean: src/ch08/clean
 src/clean: src/ch09/clean
 src/clean: src/ch10/clean
 src/clean: src/ch11/clean
+src/clean: src/ch12/clean
 src/clean: src/dp/clean
 .PHONY : src/clean
 
@@ -226,6 +229,21 @@ src/ch11/clean: src/ch11/CMakeFiles/ch11.dir/clean
 .PHONY : src/ch11/clean
 
 #=============================================================================
+# Directory level rules for directory src/ch12
+
+# Recursive "all" directory target.
+src/ch12/all: src/ch12/CMakeFiles/ch12.dir/all
+.PHONY : src/ch12/all
+
+# Recursive "preinstall" directory target.
+src/ch12/preinstall:
+.PHONY : src/ch12/preinstall
+
+# Recursive "clean" directory target.
+src/ch12/clean: src/ch12/CMakeFiles/ch12.dir/clean
+.PHONY : src/ch12/clean
+
+#=============================================================================
 # Directory level rules for directory src/dp
 
 # Recursive "all" directory target.
@@ -253,15 +271,16 @@ src/CMakeFiles/my_app.dir/all: src/ch08/CMakeFiles/ch08.dir/all
 src/CMakeFiles/my_app.dir/all: src/ch09/CMakeFiles/ch09.dir/all
 src/CMakeFiles/my_app.dir/all: src/ch10/CMakeFiles/ch10.dir/all
 src/CMakeFiles/my_app.dir/all: src/ch11/CMakeFiles/ch11.dir/all
+src/CMakeFiles/my_app.dir/all: src/ch12/CMakeFiles/ch12.dir/all
 src/CMakeFiles/my_app.dir/all: src/dp/CMakeFiles/dp.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/my_app.dir/build.make src/CMakeFiles/my_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=27,28,29,30,31,32 "Built target my_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=29,30,31,32,33,34 "Built target my_app"
 .PHONY : src/CMakeFiles/my_app.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/my_app.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/my_app.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/my_app.dir/rule
@@ -562,13 +581,39 @@ src/ch11/CMakeFiles/ch11.dir/clean:
 .PHONY : src/ch11/CMakeFiles/ch11.dir/clean
 
 #=============================================================================
+# Target rules for target src/ch12/CMakeFiles/ch12.dir
+
+# All Build rule for target.
+src/ch12/CMakeFiles/ch12.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/ch12/CMakeFiles/ch12.dir/build.make src/ch12/CMakeFiles/ch12.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/ch12/CMakeFiles/ch12.dir/build.make src/ch12/CMakeFiles/ch12.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=23,24 "Built target ch12"
+.PHONY : src/ch12/CMakeFiles/ch12.dir/all
+
+# Build rule for subdir invocation for target.
+src/ch12/CMakeFiles/ch12.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ch12/CMakeFiles/ch12.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /cpp-dev/build/CMakeFiles 0
+.PHONY : src/ch12/CMakeFiles/ch12.dir/rule
+
+# Convenience name for target.
+ch12: src/ch12/CMakeFiles/ch12.dir/rule
+.PHONY : ch12
+
+# clean rule for target.
+src/ch12/CMakeFiles/ch12.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/ch12/CMakeFiles/ch12.dir/build.make src/ch12/CMakeFiles/ch12.dir/clean
+.PHONY : src/ch12/CMakeFiles/ch12.dir/clean
+
+#=============================================================================
 # Target rules for target src/dp/CMakeFiles/dp.dir
 
 # All Build rule for target.
 src/dp/CMakeFiles/dp.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/dp/CMakeFiles/dp.dir/build.make src/dp/CMakeFiles/dp.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/dp/CMakeFiles/dp.dir/build.make src/dp/CMakeFiles/dp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=23,24 "Built target dp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=25,26 "Built target dp"
 .PHONY : src/dp/CMakeFiles/dp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -594,7 +639,7 @@ src/dp/CMakeFiles/dp.dir/clean:
 src/dp/CMakeFiles/dp_test.dir/all: src/dp/CMakeFiles/dp.dir/all
 	$(MAKE) $(MAKESILENT) -f src/dp/CMakeFiles/dp_test.dir/build.make src/dp/CMakeFiles/dp_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/dp/CMakeFiles/dp_test.dir/build.make src/dp/CMakeFiles/dp_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=25,26 "Built target dp_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cpp-dev/build/CMakeFiles --progress-num=27,28 "Built target dp_test"
 .PHONY : src/dp/CMakeFiles/dp_test.dir/all
 
 # Build rule for subdir invocation for target.
