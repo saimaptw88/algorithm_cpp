@@ -77,6 +77,12 @@
     "*.tcc": "cpp",
     "memory_resource": "cpp",
     "stop_token": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "iomanip": "cpp",
+    "list": "cpp",
+    "regex": "cpp",
+    "set": "cpp",
+    "stack": "cpp",
+    "unordered_set": "cpp"
   }
 }
