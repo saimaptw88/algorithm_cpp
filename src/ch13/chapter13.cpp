@@ -120,6 +120,79 @@ void rec(const Graph &G, int v) {
   order.push_back(v);
 }
 
+namespace question1 {
+// 幅優先探索を行い、再起が終了するたびに
+std::vector<bool> seen;
+void dfs(const Graph &G, int v) {
+  seen[v] = true;
+
+  for (auto c : G[v]) {
+    if (seen[c]) continue;
+
+    dfs(G, c);
+  }
+}
+
+std::vector<int> dist;
+void bfs(const Graph &G, int s) {
+  std::queue<int> que;
+
+  dist[s] = 0;
+  que.push(s);
+
+  while(!que.empty()) {
+    const int v = que.front();
+    que.pop();
+
+    for (auto c : G[v]) {
+      if (dist[c] != -1) continue;
+
+      dist[v] = dist[c] + 1;
+      que.push(c);
+    }
+  }
+}
+void exec() {
+  int N,M;
+  std::cin >> N >> M;
+
+  seen.assign(N, false);
+
+  Graph G(N);
+  for (int i = 0; i < M; ++i) {
+    int a, b;
+    std::cin >> a >> b;
+
+    G[a].push_back(b);
+    G[b].push_back(a);
+  }
+
+  int count = 0;
+  for (int i = 0; i < N; ++i) {
+    if (seen[i]) continue;
+
+    dfs(G, i);
+
+    ++count;
+  }
+
+  std::cout << count << std::endl;
+
+
+  dist.assign(N, -1);
+
+  int res = 0;
+  for (int i = 0; i < N; ++i) {
+    if (dist[i] != -1) continue;
+
+    bfs(G, i);
+
+    ++res;
+  }
+
+  std::cout << res << std::endl;
+}
+}  // namespace question1
 
 void execute() {
   int N = 4, M = 5;

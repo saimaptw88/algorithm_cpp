@@ -23,5 +23,10 @@ bool color_is_bool(const Graph&, int, int cur=0);
 std::vector<int> order;
 void rec(const Graph&, int);
 
+namespace question1 {
+void dfs(const Graph&, int);
+void bfs(const Graph&, int);
+void exec();
+}  // namespace question1
 void execute();
 }
