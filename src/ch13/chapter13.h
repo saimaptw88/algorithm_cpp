@@ -2,6 +2,8 @@
 #include <iostream>
 #include <queue>
 #include <random>
+#include <set>
+#include <stack>
 #include <vector>
 
 
@@ -34,5 +36,11 @@ std::vector<int> dist;
 void bfs(const Graph&, int);
 void exec();
 }  // namespace question2
+
+namespace question6 {
+void dfs(const Graph &, int, int);
+void exec();
+}  // namespace question3
+
 void execute();
-}
+}  // namespace chapter13

@@ -94,7 +94,7 @@ void has_path() {
   else std::cout << "No" << std::endl;
 }
 
-bool color_is_bool(const Graph &G, int v, int cur=0) {
+bool color_is_bool(const Graph &G, int v, int cur) {
   for (auto next_v : G[v]) {
     if (color[next_v] != -1) {
       if (color[next_v] == cur) return false;
@@ -235,6 +235,80 @@ void exec() {
   else std::cout << "No" << std::endl;
 }
 }  // namespace question2
+
+namespace question6 {
+std::vector<bool> seen, finished;
+int pos;
+std::stack<int> hist;
+
+void dfs(const Graph &G, int v, int p) {
+  seen[v] = true;
+  hist.push(v);
+
+  for (auto next_v : G[v]) {
+    if (next_v == p) continue;
+
+    if (finished[next_v]) continue;
+
+    if (seen[next_v]) {
+      pos = next_v;
+      return;
+    }
+
+    dfs(G, next_v, v);
+
+    if (pos != -1) return;
+  }
+
+  hist.pop();
+  finished[v] = true;
+}
+
+void exec() {
+  int N, M;
+  std::cin >> N >> M;
+
+  Graph G(N);
+  for (int i = 0; i < M; ++i) {
+    int a, b;
+    std::cin >> a >> b;
+
+    --a, --b;
+
+    G[a].push_back(b);
+  }
+
+  seen.assign(N, false);
+  finished.assign(N, false);
+
+  pos = -1;
+  dfs(G, 0, -1);
+
+  std::set<int> cycle;
+  while (!hist.empty()) {
+    const int t = hist.top();
+    hist.pop();
+
+    cycle.insert(t);
+    if (t == pos) break;
+  }
+
+  int Q;
+  std::cin >> Q;
+
+  for (int _ = 0; _ < Q; ++_) {
+    int a, b;
+    std::cin >> a >> b;
+    --a, --b;
+
+    if (cycle.count(a) && cycle.count(b))
+      std::cout << 2 << std::endl;
+    else
+      std::cout << 1 << std::endl;
+  }
+}
+}  // namespace question3
+
 void execute() {
   int N = 4, M = 5;
   std::cout << "N=" << N << ", M=" << M << std::endl;
@@ -257,4 +331,4 @@ void execute() {
     std::cout << v << ": " << dist[v] << std::endl;
   }
 }
-}
+}  // namespace chapter13

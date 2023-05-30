@@ -18,7 +18,7 @@
 
 
 int main() {
-  chapter13::execute();
+  chapter13::question6::exec();
 
   return 0;
 }
