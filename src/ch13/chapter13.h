@@ -28,5 +28,11 @@ void dfs(const Graph&, int);
 void bfs(const Graph&, int);
 void exec();
 }  // namespace question1
+
+namespace question2 {
+std::vector<int> dist;
+void bfs(const Graph&, int);
+void exec();
+}  // namespace question2
 void execute();
 }

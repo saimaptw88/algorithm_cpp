@@ -194,6 +194,47 @@ void exec() {
 }
 }  // namespace question1
 
+namespace question2 {
+void bfs(const Graph &G, int s) {
+  std::queue<int> que;
+
+  dist[s] = 0;
+  que.push(s);
+
+  while (!que.empty()) {
+    const int v = que.front();
+    que.pop();
+
+    for (auto c : G[v]) {
+      if (dist[c] != -1) continue;
+
+      dist[c] = dist[v] + 1;
+      que.push(c);
+    }
+  }
+}
+
+void exec() {
+  int N, M, s, t;
+  std::cin >> N >> M >> s >> t;
+
+  Graph G(N);
+  for (int i = 0; i < M; ++i) {
+    int a, b;
+    std::cin >> a >> b;
+
+    G[a].push_back(b);
+    G[b].push_back(a);
+  }
+
+  dist.assign(N, -1);
+
+  bfs(G, s);
+
+  if (dist[t]) std::cout << "Yes" << std::endl;
+  else std::cout << "No" << std::endl;
+}
+}  // namespace question2
 void execute() {
   int N = 4, M = 5;
   std::cout << "N=" << N << ", M=" << M << std::endl;
