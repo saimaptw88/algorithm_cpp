@@ -1,6 +1,7 @@
 // Copyright 2022 saito
 #include <string>
 
+#include "./ch13/chapter13.h"
 #include "./ch12/chapter12.h"
 #include "./ch11/chapter11.h"
 #include "./ch10/chapter10.h"
@@ -17,8 +18,7 @@
 
 
 int main() {
-  std::vector<int> a{2,1,6,3,4};
-  chapter12::question1(a);
+  chapter13::execute();
 
   return 0;
 }

@@ -296,6 +296,19 @@ ch12/fast:
 .PHONY : ch12/fast
 
 #=============================================================================
+# Target rules for targets named ch13
+
+# Build rule for target.
+ch13: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ch13
+.PHONY : ch13
+
+# fast build rule for target.
+ch13/fast:
+	$(MAKE) $(MAKESILENT) -f src/ch13/CMakeFiles/ch13.dir/build.make src/ch13/CMakeFiles/ch13.dir/build
+.PHONY : ch13/fast
+
+#=============================================================================
 # Target rules for targets named dp
 
 # Build rule for target.
@@ -342,6 +355,7 @@ help:
 	@echo "... ch10"
 	@echo "... ch11"
 	@echo "... ch12"
+	@echo "... ch13"
 	@echo "... dp"
 	@echo "... dp_test"
 	@echo "... my_app"

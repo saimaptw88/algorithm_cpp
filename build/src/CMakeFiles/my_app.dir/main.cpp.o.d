@@ -114,33 +114,15 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
  /usr/include/aarch64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/aarch64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/c++/7/bits/basic_string.tcc /cpp-dev/src/./ch12/chapter12.h \
- /usr/include/c++/7/algorithm /usr/include/c++/7/utility \
- /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/bits/stl_algo.h \
- /usr/include/c++/7/bits/algorithmfwd.h \
- /usr/include/c++/7/bits/stl_heap.h /usr/include/c++/7/bits/stl_tempbuf.h \
- /usr/include/c++/7/bits/stl_construct.h \
- /usr/include/c++/7/bits/uniform_int_dist.h /usr/include/c++/7/functional \
- /usr/include/c++/7/tuple /usr/include/c++/7/array \
- /usr/include/c++/7/stdexcept /usr/include/c++/7/bits/uses_allocator.h \
- /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/std_function.h \
- /usr/include/c++/7/bits/refwrap.h /usr/include/c++/7/unordered_map \
- /usr/include/c++/7/ext/aligned_buffer.h \
- /usr/include/c++/7/bits/hashtable.h \
- /usr/include/c++/7/bits/hashtable_policy.h \
- /usr/include/c++/7/bits/node_handle.h /usr/include/c++/7/optional \
- /usr/include/c++/7/bits/enable_special_members.h \
- /usr/include/c++/7/bits/unordered_map.h /usr/include/c++/7/vector \
- /usr/include/c++/7/bits/stl_uninitialized.h \
- /usr/include/c++/7/bits/stl_vector.h \
- /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
+ /usr/include/c++/7/bits/basic_string.tcc /cpp-dev/src/./ch13/chapter13.h \
  /usr/include/c++/7/iostream /usr/include/c++/7/ostream \
  /usr/include/c++/7/ios /usr/include/c++/7/bits/ios_base.h \
  /usr/include/c++/7/bits/locale_classes.h \
  /usr/include/c++/7/bits/locale_classes.tcc \
  /usr/include/c++/7/system_error \
  /usr/include/aarch64-linux-gnu/c++/7/bits/error_constants.h \
- /usr/include/c++/7/streambuf /usr/include/c++/7/bits/streambuf.tcc \
+ /usr/include/c++/7/stdexcept /usr/include/c++/7/streambuf \
+ /usr/include/c++/7/bits/streambuf.tcc \
  /usr/include/c++/7/bits/basic_ios.h \
  /usr/include/c++/7/bits/locale_facets.h /usr/include/c++/7/cwctype \
  /usr/include/wctype.h /usr/include/aarch64-linux-gnu/bits/wctype-wchar.h \
@@ -150,12 +132,15 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
  /usr/include/c++/7/bits/locale_facets.tcc \
  /usr/include/c++/7/bits/basic_ios.tcc \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
- /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/list \
- /usr/include/c++/7/bits/stl_list.h \
- /usr/include/c++/7/bits/allocated_ptr.h /usr/include/c++/7/bits/list.tcc \
- /cpp-dev/src/./ch11/chapter11.h /usr/include/c++/7/map \
- /usr/include/c++/7/bits/stl_tree.h /usr/include/c++/7/bits/stl_map.h \
- /usr/include/c++/7/bits/stl_multimap.h /usr/include/c++/7/random \
+ /usr/include/c++/7/bits/istream.tcc /usr/include/c++/7/queue \
+ /usr/include/c++/7/deque /usr/include/c++/7/bits/stl_construct.h \
+ /usr/include/c++/7/bits/stl_uninitialized.h /usr/include/c++/7/utility \
+ /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/bits/stl_deque.h \
+ /usr/include/c++/7/bits/deque.tcc /usr/include/c++/7/vector \
+ /usr/include/c++/7/bits/stl_vector.h \
+ /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
+ /usr/include/c++/7/bits/stl_heap.h /usr/include/c++/7/bits/stl_queue.h \
+ /usr/include/c++/7/bits/uses_allocator.h /usr/include/c++/7/random \
  /usr/include/c++/7/cmath /usr/include/math.h \
  /usr/include/aarch64-linux-gnu/bits/math-vector.h \
  /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -178,13 +163,35 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
  /usr/include/c++/7/tr1/poly_hermite.tcc \
  /usr/include/c++/7/tr1/poly_laguerre.tcc \
  /usr/include/c++/7/tr1/riemann_zeta.tcc /usr/include/c++/7/bits/random.h \
+ /usr/include/c++/7/bits/uniform_int_dist.h \
  /usr/include/aarch64-linux-gnu/c++/7/bits/opt_random.h \
  /usr/include/c++/7/bits/random.tcc /usr/include/c++/7/numeric \
- /usr/include/c++/7/bits/stl_numeric.h /cpp-dev/src/./ch10/chapter10.h \
- /cpp-dev/src/./ch09/chapter9.h /usr/include/c++/7/regex \
- /usr/include/c++/7/bitset /usr/include/c++/7/iterator \
- /usr/include/c++/7/bits/stream_iterator.h /usr/include/c++/7/locale \
- /usr/include/c++/7/bits/locale_facets_nonio.h /usr/include/c++/7/ctime \
+ /usr/include/c++/7/bits/stl_numeric.h /usr/include/c++/7/set \
+ /usr/include/c++/7/bits/stl_tree.h \
+ /usr/include/c++/7/ext/aligned_buffer.h \
+ /usr/include/c++/7/bits/node_handle.h /usr/include/c++/7/optional \
+ /usr/include/c++/7/bits/enable_special_members.h \
+ /usr/include/c++/7/bits/stl_set.h /usr/include/c++/7/bits/stl_multiset.h \
+ /usr/include/c++/7/stack /usr/include/c++/7/bits/stl_stack.h \
+ /cpp-dev/src/./ch12/chapter12.h /usr/include/c++/7/algorithm \
+ /usr/include/c++/7/bits/stl_algo.h \
+ /usr/include/c++/7/bits/algorithmfwd.h \
+ /usr/include/c++/7/bits/stl_tempbuf.h /usr/include/c++/7/functional \
+ /usr/include/c++/7/tuple /usr/include/c++/7/array \
+ /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/std_function.h \
+ /usr/include/c++/7/bits/refwrap.h /usr/include/c++/7/unordered_map \
+ /usr/include/c++/7/bits/hashtable.h \
+ /usr/include/c++/7/bits/hashtable_policy.h \
+ /usr/include/c++/7/bits/unordered_map.h /usr/include/c++/7/list \
+ /usr/include/c++/7/bits/stl_list.h \
+ /usr/include/c++/7/bits/allocated_ptr.h /usr/include/c++/7/bits/list.tcc \
+ /cpp-dev/src/./ch11/chapter11.h /usr/include/c++/7/map \
+ /usr/include/c++/7/bits/stl_map.h /usr/include/c++/7/bits/stl_multimap.h \
+ /cpp-dev/src/./ch10/chapter10.h /cpp-dev/src/./ch09/chapter9.h \
+ /usr/include/c++/7/regex /usr/include/c++/7/bitset \
+ /usr/include/c++/7/iterator /usr/include/c++/7/bits/stream_iterator.h \
+ /usr/include/c++/7/locale /usr/include/c++/7/bits/locale_facets_nonio.h \
+ /usr/include/c++/7/ctime \
  /usr/include/aarch64-linux-gnu/c++/7/bits/time_members.h \
  /usr/include/aarch64-linux-gnu/c++/7/bits/messages_members.h \
  /usr/include/libintl.h /usr/include/c++/7/bits/codecvt.h \
@@ -201,10 +208,8 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
  /usr/include/c++/7/bits/atomic_base.h \
  /usr/include/c++/7/bits/atomic_lockfree_defines.h \
  /usr/include/c++/7/backward/auto_ptr.h /usr/include/c++/7/sstream \
- /usr/include/c++/7/bits/sstream.tcc /usr/include/c++/7/stack \
- /usr/include/c++/7/deque /usr/include/c++/7/bits/stl_deque.h \
- /usr/include/c++/7/bits/deque.tcc /usr/include/c++/7/bits/stl_stack.h \
- /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
+ /usr/include/c++/7/bits/sstream.tcc /usr/include/c++/7/cstring \
+ /usr/include/string.h /usr/include/strings.h \
  /usr/include/c++/7/bits/regex_constants.h \
  /usr/include/c++/7/bits/regex_error.h \
  /usr/include/c++/7/bits/regex_automaton.h \
@@ -215,10 +220,8 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
  /usr/include/c++/7/bits/regex_compiler.tcc \
  /usr/include/c++/7/bits/regex.h /usr/include/c++/7/bits/regex.tcc \
  /usr/include/c++/7/bits/regex_executor.h \
- /usr/include/c++/7/bits/regex_executor.tcc /usr/include/c++/7/queue \
- /usr/include/c++/7/bits/stl_queue.h /cpp-dev/src/./ch08/chapter8.h \
- /usr/include/c++/7/set /usr/include/c++/7/bits/stl_set.h \
- /usr/include/c++/7/bits/stl_multiset.h /usr/include/c++/7/unordered_set \
+ /usr/include/c++/7/bits/regex_executor.tcc \
+ /cpp-dev/src/./ch08/chapter8.h /usr/include/c++/7/unordered_set \
  /usr/include/c++/7/bits/unordered_set.h /cpp-dev/src/./ch07/chapter7.h \
  /cpp-dev/src/./ch06/chapter6.h /usr/include/c++/7/iomanip \
  /usr/include/c++/7/bits/quoted_string.h /cpp-dev/src/./ch05/chapter5.h \
