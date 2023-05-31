@@ -4,6 +4,7 @@
 #include <random>
 #include <set>
 #include <stack>
+#include <string>
 #include <vector>
 
 
@@ -36,6 +37,16 @@ std::vector<int> dist;
 void bfs(const Graph&, int);
 void exec();
 }  // namespace question2
+
+namespace question3 {
+bool bfs(const Graph&, int);
+void exec();
+}  // namespace question3
+
+namespace question4 {
+int bfs(const Graph &, int, int, int, int);
+void exec();
+}  // namespace question4
 
 namespace question6 {
 void dfs(const Graph &, int, int);

@@ -236,6 +236,139 @@ void exec() {
 }
 }  // namespace question2
 
+namespace question3 {
+std::vector<int> color;
+bool bfs(const Graph &G, int s) {
+  std::queue<int> que;
+
+  que.push(s);
+  color[s] = 0;
+
+  while (!que.empty()) {
+    const int v = que.front();
+    que.pop();
+
+    for (auto next_v : G[v]) {
+      if (color[next_v] != -1) {
+        if (color[next_v] == color[v]) return false;
+
+        continue;
+      }
+
+      color[next_v] = 1 - color[v];
+
+      que.push(next_v);
+    }
+  }
+
+  return true;
+}
+
+void exec() {
+  int N, M;
+  std::cin >> N >> M;
+
+  Graph G(N);
+  for (int i = 0; i < M; ++i) {
+    int a, b;
+    std::cin >> a >> b;
+
+    G[a].push_back(b);
+    G[b].push_back(a);
+  }
+
+  color.assign(N, -1);
+
+  for (int i = 0; i < N; ++i) {
+    if (color[i] != -1) continue;
+
+    if (!bfs(G, i)) {
+      std::cout << "No" << std::endl;
+      return;
+    }
+  }
+
+  std::cout << "Yes" << std::endl;
+}
+}  // namespace question3
+
+namespace question4 {
+int bfs(const Graph &G, int H, int W, int s, int g) {
+  std::vector<int> dist(H*W, -1);
+  std::queue<int> que;
+
+  que.push(s);
+  dist[s] = 0;
+
+  int count = 0;
+  while (!que.empty()) {
+    const int v = que.front();
+    que.pop();
+
+    for (auto next_v : G[v]) {
+      if (dist[next_v] != -1)
+        dist[next_v] = std::min(dist[next_v], dist[v] + 1);
+      else
+        dist[next_v] = dist[v] + 1;
+
+      que.push(next_v);
+    }
+
+    std::cout << count << std::endl;
+
+    ++count;
+  }
+
+  return dist[g];
+}
+void exec() {
+  int H, W;
+  std::cin >> H >> W;
+
+  std::vector<std::string> field(H);
+  for (auto& f : field) std::cin >> f;
+
+  int sh, sw, gh, gw;
+  for (int h = 0; h < H; ++h) {
+    for (int w = 0; w < W; ++w) {
+      if (field[h][w] == 'S') sh = h, sw = w;
+      if (field[h][w] == 'G') gh = h, gw = w;
+    }
+  }
+
+  using Node = std::pair<int, int>;
+  std::queue<Node> que;
+
+  que.push({sh, sw});
+  std::vector<std::vector<int>> dist(H, std::vector<int>(W, -1));
+  dist[sh][sw] = 0;
+
+  const std::vector<int> dh{1, 0, -1, 0};
+  const std::vector<int> dw{0, 1, 0, -1};
+
+  while (!que.empty()) {
+    const auto [h, w] = que.front();
+    que.pop();
+
+    for (int dir = 0; dir < 4; ++dir) {
+      const int nh = h + dh[dir];
+      const int nw = w + dw[dir];
+
+      if (nh < 0 || nh >= H || nw < 0 || nw >= W) continue;
+
+      if (field[nh][nw] == '#') continue;
+
+      if (dist[nh][nw] == -1) {
+        dist[nh][nw] = dist[h][w] + 1;
+        que.push({nh, nw});
+      }
+    }
+  }
+
+  std::cout << dist[gh][gw] << std::endl;
+}
+}  // namespace question4
+
 namespace question6 {
 std::vector<bool> seen, finished;
 int pos;
@@ -310,25 +443,6 @@ void exec() {
 }  // namespace question3
 
 void execute() {
-  int N = 4, M = 5;
-  std::cout << "N=" << N << ", M=" << M << std::endl;
-
-  Graph G(N);
-  std::random_device rnd;
-
-  for (int i = 0; i < M; ++i) {
-    int a = rnd() % 4;
-    int b = rnd() % 4;
-
-    std::cout << a << " -> " << b << std::endl;
-
-    G[a].push_back(b);
-    G[b].push_back(a);
-  }
-
-  std::vector<int> dist = bfs(G, 0);
-  for (int v = 0; v < N; ++v) {
-    std::cout << v << ": " << dist[v] << std::endl;
-  }
+  question4::exec();
 }
 }  // namespace chapter13
