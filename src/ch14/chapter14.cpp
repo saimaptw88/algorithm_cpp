@@ -3,6 +3,6 @@
 
 
 void chapter14::execute() {
-  BellmanFord bf;
-  bf.exec();
+  DijkstraAlgorithm da;
+  da.exec();
 }
