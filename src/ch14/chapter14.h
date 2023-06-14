@@ -1,5 +1,7 @@
 // Copyright 2023 saito
 #include <iostream>
+#include <queue>
+#include <utility>
 #include <vector>
 
 
@@ -108,7 +110,7 @@ output:
 };
 
 class DijkstraAlgorithm {
- private:
+ protected:
   const int64_t kInf = INT64_MAX;
 
   struct Edge {
@@ -147,7 +149,7 @@ class DijkstraAlgorithm {
   output:
   0 3 5 14 9 16
   */
-  void exec() {
+  virtual void exec() {
     int N, M, s;
     std::cin >> N >> M >> s;
 
@@ -182,6 +184,54 @@ class DijkstraAlgorithm {
       }
 
       used[min_v] = true;
+    }
+
+    for (int v = 0; v < N; ++v) {
+      if (dist[v] < kInf)
+        std::cout << dist[v] << std::endl;
+      else
+        std::cout << "INF" << std::endl;
+    }
+  }
+};
+
+class UpdatedDijkstraAlgorithm : public DijkstraAlgorithm{
+ public:
+  void exec() override {
+    int N, M, s;
+    std::cin >> N >> M >> s;
+
+    Graph G(N);
+    for (int i = 0; i < M; ++i) {
+      int a, b;
+      int64_t w;
+      std::cin >> a >> b >> w;
+
+      G[a].push_back(Edge(b, w));
+    }
+
+    std::vector<int64_t> dist(N, kInf);
+    dist[s] = 0;
+
+    using Pair = std::pair<int64_t, int>;
+    std::priority_queue<Pair,
+                        std::vector<Pair>,
+                        std::greater<Pair>> que;
+
+    que.push(std::make_pair(dist[s], s));
+
+    while (!que.empty()) {
+      const int v = que.top().second;
+      const int64_t d = que.top().first;
+      que.pop();
+
+      if (d > dist[v]) continue;
+
+      for (auto e : G[v]) {
+        if (chmin(dist[e.to_], dist[v]+e.w_)) {
+          que.push(std::make_pair(dist[e.to_], e.to_));
+        }
+      }
     }
 
     for (int v = 0; v < N; ++v) {

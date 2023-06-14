@@ -3,6 +3,6 @@
 
 
 void chapter14::execute() {
-  DijkstraAlgorithm da;
+  UpdatedDijkstraAlgorithm da;
   da.exec();
 }

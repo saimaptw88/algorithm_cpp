@@ -1020,22 +1020,22 @@ src/CMakeFiles/my_app.dir/main.cpp.o: /cpp-dev/src/main.cpp \
   /usr/include/c++/7/bits/ostream.tcc \
   /usr/include/c++/7/istream \
   /usr/include/c++/7/bits/istream.tcc \
-  /usr/include/c++/7/vector \
+  /usr/include/c++/7/queue \
+  /usr/include/c++/7/deque \
   /usr/include/c++/7/bits/stl_construct.h \
   /usr/include/c++/7/bits/stl_uninitialized.h \
   /usr/include/c++/7/utility \
   /usr/include/c++/7/bits/stl_relops.h \
+  /usr/include/c++/7/bits/stl_deque.h \
+  /usr/include/c++/7/bits/deque.tcc \
+  /usr/include/c++/7/vector \
   /usr/include/c++/7/bits/stl_vector.h \
   /usr/include/c++/7/bits/stl_bvector.h \
   /usr/include/c++/7/bits/vector.tcc \
-  /cpp-dev/src/ch13/chapter13.h \
-  /usr/include/c++/7/queue \
-  /usr/include/c++/7/deque \
-  /usr/include/c++/7/bits/stl_deque.h \
-  /usr/include/c++/7/bits/deque.tcc \
   /usr/include/c++/7/bits/stl_heap.h \
   /usr/include/c++/7/bits/stl_queue.h \
   /usr/include/c++/7/bits/uses_allocator.h \
+  /cpp-dev/src/ch13/chapter13.h \
   /usr/include/c++/7/random \
   /usr/include/c++/7/cmath \
   /usr/include/math.h \
