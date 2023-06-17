@@ -1,4 +1,5 @@
 // Copyright 2023 saito
+#include <algorithm>
 #include <iostream>
 #include <queue>
 #include <utility>
@@ -239,6 +240,64 @@ class UpdatedDijkstraAlgorithm : public DijkstraAlgorithm{
         std::cout << dist[v] << std::endl;
       else
         std::cout << "INF" << std::endl;
+    }
+  }
+};
+
+class FloydWarshall {
+ private:
+  const int64_t kInf = INT64_MAX;
+
+ public:
+  void exec() {
+    int N, M;
+    std::cin >> N >> M;
+
+    std::vector<std::vector<int64_t>> dp;
+    dp.assign(N, std::vector<int64_t>(N, kInf));
+
+    for (int _ = 0; _ < M; ++_) {
+      int a, b;
+      int64_t w;
+      std::cin >> a >> b >> w;
+
+      dp[a][b] = w;
+    }
+
+    for (int v = 0; v < N; ++v) {
+      dp[v][v] = 0;
+    }
+
+    for (int k = 0; k < N; ++k) {
+      for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+          dp[i][j] = std::min(dp[i][j], dp[i][k]+dp[k][j]);
+        }
+      }
+    }
+
+    bool exist_negative_cycle = false;
+    for (int v = 0; v < N; ++v) {
+      if (dp[v][v] < 0)
+        exist_negative_cycle = true;
+    }
+
+    if (exist_negative_cycle) {
+      std::cout << "NEGETIVE CYCLE" << std::endl;
+      return;
+    }
+
+    for (int i = 0; i < N; ++i) {
+      for (int j = 0; j < N; ++j) {
+        if (j) std::cout << " ";
+
+        if (dp[i][j] < kInf / 2)
+          std::cout << dp[i][j];
+        else
+          std::cout << "INF";
+      }
+
+      std::cout << std::endl;
     }
   }
 };
