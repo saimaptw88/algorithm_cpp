@@ -309,6 +309,7 @@ class Question1 {
 
     Edge(int to, int w) : to_(to), w_(w) {}
   };
+
  private:
   std::vector<std::vector<Edge>> *G_;
 
@@ -319,19 +320,22 @@ class Question1 {
   std::vector<int> dist_;
 
   template<class T>
-  bool chmax(T &a, T b) {
-    if (a < b) {
+  bool chmin(T &a, T b) {
+    if (a > b) {
       a = b;
       return true;
     }
 
     return false;
   }
+
   void initialize();
   void bellman_ford_algo();
 
  public:
   Question1() : G_(nullptr) {}
+  ~Question1() {delete G_;}
+
   void exec();
 };
 }  // namespace chapter14
