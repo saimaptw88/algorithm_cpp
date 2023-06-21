@@ -11,7 +11,7 @@ void execute() {
 void Question1::initialize() {
   std::cin >> N_ >> M_ >> s_;
 
-  G_ = new std::vector<std::vector<Edge>>(N_);
+  G_ = std::make_unique<std::vector<std::vector<Edge>>>(N_);
 
   for (int _ = 0; _ < M_; ++_) {
     int a, b, w;

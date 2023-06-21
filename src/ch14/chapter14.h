@@ -1,6 +1,7 @@
 // Copyright 2023 saito
 #include <algorithm>
 #include <iostream>
+#include <memory>
 #include <queue>
 #include <utility>
 #include <vector>
@@ -311,7 +312,7 @@ class Question1 {
   };
 
  private:
-  std::vector<std::vector<Edge>> *G_;
+  std::unique_ptr<std::vector<std::vector<Edge>>> G_;
 
   int N_;  // 有向グラフG_の頂点の個数
   int M_;  // 有効グラフG_の変の個数
@@ -333,8 +334,11 @@ class Question1 {
   void bellman_ford_algo();
 
  public:
-  Question1() : G_(nullptr) {}
-  ~Question1() {delete G_;}
+  Question1() {}
+  ~Question1() {}
+
+  Question1(const Question1&) = delete;
+  Question1 &operator=(const Question1&) = delete;
 
   void exec();
 };
