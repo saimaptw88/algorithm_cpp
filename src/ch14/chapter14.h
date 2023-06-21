@@ -301,4 +301,37 @@ class FloydWarshall {
     }
   }
 };
+
+class Question1 {
+  struct Edge {
+    int to_;
+    int w_;
+
+    Edge(int to, int w) : to_(to), w_(w) {}
+  };
+ private:
+  std::vector<std::vector<Edge>> *G_;
+
+  int N_;  // 有向グラフG_の頂点の個数
+  int M_;  // 有効グラフG_の変の個数
+  int s_;  // 有向グラフG_の始点となる頂点
+
+  std::vector<int> dist_;
+
+  template<class T>
+  bool chmax(T &a, T b) {
+    if (a < b) {
+      a = b;
+      return true;
+    }
+
+    return false;
+  }
+  void initialize();
+  void bellman_ford_algo();
+
+ public:
+  Question1() : G_(nullptr) {}
+  void exec();
+};
 }  // namespace chapter14
