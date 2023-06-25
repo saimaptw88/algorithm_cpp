@@ -342,4 +342,37 @@ class Question1 {
 
   void exec();
 };
+class Question2 {
+ public:
+  void initialize();
+  void bellman_ford_algo();
+  void exec();
+
+  Question2 &operator=(const Question2&) = delete;
+  Question2(const Question2&) = delete;
+
+ private:
+  struct Node {
+    int to_;
+    int w_;
+
+    Node(int to, int w) : to_(to), w_(w) {}
+  };
+
+  std::unique_ptr<std::vector<std::vector<Node>>> G_;
+  std::unique_ptr<std::vector<int>> dist_;
+
+  int N_;
+  int M_;
+
+  template <class T>
+  bool chmin(T& a, T b) {
+    if (a > b) {
+      a = b;
+      return true;
+    }
+
+    return false;
+  }
+};
 }  // namespace chapter14
