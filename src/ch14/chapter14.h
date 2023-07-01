@@ -586,7 +586,6 @@ class Question3 : public Question {
     }
   }
 };
-
 class Question4 : public Question {
 /*
 10 10
@@ -661,7 +660,7 @@ class Question4 : public Question {
       }
     }
   }
-  inline void calculate() {
+  inline void calculate() override {
     std::queue<std::pair<int, int>> que;
     que.push(std::make_pair(0, 0));
 
@@ -703,6 +702,16 @@ class Question4 : public Question {
     const int x = g_.second;
     const int y = g_.first;
     std::cout << "dist_[" << y << "][" << x << "] = " << dist_[y][x] << std::endl;
+  }
+};
+class Question5 : public Question {
+ private:
+  int32_t K_;
+  inline void initialize() override {
+    std::cin >> K_;
+  }
+  inline void calculate() override {
+    std::cout << "Question4までで体力切れ" << std::endl;
   }
 };
 }  // namespace chapter14
