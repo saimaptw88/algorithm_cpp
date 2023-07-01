@@ -1,5 +1,6 @@
 // Copyright 2023 saito
 #include <algorithm>
+#include <climits>
 #include <iostream>
 #include <memory>
 #include <queue>
@@ -112,20 +113,133 @@ output:
 };
 
 class DijkstraAlgorithm {
- protected:
-  const int64_t kInf = INT64_MAX;
+ public:
+ /*
+ input:
+ 6 9 0
+ 0 1 3
+ 0 2 5
+ 1 2 4
+ 1 3 12
+ 2 3 9
+ 2 4 4
+ 3 5 2
+ 4 3 7
+ 4 5 8
+
+ output:
+ 0
+ 3
+ 5
+ 14
+ 9
+ 16
+ */
+  inline void exec() {
+    initialize();
+    dijkstra();
+  }
+
+ private:
+  int N_;
+  int M_;
+  int s_;
+
+  std::unique_ptr<std::vector<int>> dist_;
+  std::unique_ptr<std::vector<bool>> used_;
 
   struct Edge {
     int to_;
-    int64_t w_;
+    int w_;
 
-    Edge(int to, int64_t w): to_(to), w_(w) {}
+    Edge(int to, int w) : to_(to), w_(w) {}
+  };
+  using Graph = std::vector<std::vector<Edge>>;
+  std::unique_ptr<Graph> G_;
+
+  template<class T> bool chmin(T &a, T b) {
+    if (b < a) {
+      a = b;
+      return true;
+    }
+
+    return false;
+  }
+  inline void initialize() {
+    std::cin >> N_ >> M_ >> s_;
+
+    G_ = std::make_unique<Graph>(N_);
+
+    dist_ = std::make_unique<std::vector<int>>(N_, INT_MAX);
+    dist_->at(s_) = 0;
+
+    used_ = std::make_unique<std::vector<bool>>(N_, false);
+
+    for (int i = 0; i < M_; ++i) {
+      int from, to, w;
+      std::cin >> from >> to >> w;
+
+      G_->at(from).push_back(Edge(to, w));
+    }
+  }
+  inline void dijkstra() {
+    for (int itr = 0; itr < N_; ++itr) {
+      int min_dist = INT_MAX;
+      int min_v = -1;
+
+      for (int v = 0; v < N_; ++v) {
+        if (!used_->at(v) && dist_->at(v) < min_dist) {
+          min_dist = dist_->at(v);
+          min_v = v;
+        }
+      }
+
+      if (min_v == -1)
+        break;
+
+      for (auto e : G_->at(min_v)) {
+        chmin(dist_->at(e.to_), dist_->at(min_v)+e.w_);
+      }
+
+      used_->at(min_v) = true;
+    }
+
+    for (int v = 0; v < N_; ++v) {
+      if (dist_->at(v) < INT_MAX) {
+        std::cout << dist_->at(v) << std::endl;
+        continue;
+      }
+
+      std::cout << "INF" << std::endl;
+    }
+  }
+};
+
+class HeapDijkstraAlgorithm {
+ public:
+  inline void exec() {
+    initialize();
+    dijkistra();
+  }
+
+ private:
+  int N_;
+  int M_;
+  int s_;
+
+  struct Edge {
+    int to_;
+    int w_;
+
+    Edge(int to, int w) : to_(to), w_(w) {}
   };
 
   using Graph = std::vector<std::vector<Edge>>;
+  std::unique_ptr<Graph> G_;
 
-  template<class T>
-  bool chmin(T& a, T b) {
+  std::unique_ptr<std::vector<int>> dist_;
+
+  template <class T> bool chmin(T &a, T b) {
     if (a > b) {
       a = b;
       return true;
@@ -133,11 +247,57 @@ class DijkstraAlgorithm {
 
     return false;
   }
+  inline void initialize() {
+    std::cin >> N_ >> M_ >> s_;
 
+    G_ = std::make_unique<Graph>(N_);
+    dist_ = std::make_unique<std::vector<int>>(N_, INT_MAX);
+    dist_->at(s_) = 0;
+
+    for (int i = 0; i < M_; ++i) {
+      int a, b, w;
+      std::cin >> a >> b >> w;
+
+      G_->at(a).push_back(Edge(b, w));
+    }
+  }
+  inline void dijkistra() {
+    std::priority_queue<std::pair<int, int>,
+                        std::vector<std::pair<int, int>>,
+                        std::greater<std::pair<int, int>>> que;
+
+    que.push(std::make_pair(dist_->at(s_), s_));
+
+    while (!que.empty()) {
+      const int v = que.top().second;
+      const int d = que.top().first;
+      que.pop();
+
+      if (d > dist_->at(v))
+        continue;
+
+      for (auto e : G_->at(v)) {
+        if (chmin(dist_->at(e.to_), dist_->at(v)+e.w_)) {
+          que.push(std::make_pair(dist_->at(e.to_), e.to_));
+        }
+      }
+    }
+
+    for (int v = 0; v < N_; ++v) {
+      if (dist_->at(v) < INT_MAX) {
+        std::cout << dist_->at(v) << std::endl;
+        continue;
+      }
+
+      std::cout << "INF" << std::endl;
+    }
+  }
+};
+
+class FloydWarshall {
  public:
-  /*
-  input:
-  6 9 0
+ /*
+  6 9
   0 1 3
   0 2 5
   1 2 4
@@ -147,232 +307,99 @@ class DijkstraAlgorithm {
   3 5 2
   4 3 7
   4 5 8
-
-  output:
-  0 3 5 14 9 16
-  */
-  virtual void exec() {
-    int N, M, s;
-    std::cin >> N >> M >> s;
-
-    Graph G(N);
-    for (int i = 0; i < M; ++i) {
-      int a, b;
-      int64_t w;
-      std::cin >> a >> b >> w;
-
-      G[a].push_back(Edge(b, w));
-    }
-
-    std::vector<bool> used(N, false);
-    std::vector<int64_t> dist(N, kInf);
-    dist[0] = 0;
-
-    for (int itr = 0; itr < N; ++itr) {
-      int64_t min_dist = kInf;
-      int min_v = -1;
-
-      for (int v = 0; v < N; ++v) {
-        if (!used[v] && dist[v] < min_dist) {
-          min_dist = dist[v];
-          min_v = v;
-        }
-      }
-
-      if (min_v == -1) break;
-
-      for (auto e : G[min_v]) {
-        chmin(dist[e.to_], dist[min_v]+e.w_);
-      }
-
-      used[min_v] = true;
-    }
-
-    for (int v = 0; v < N; ++v) {
-      if (dist[v] < kInf)
-        std::cout << dist[v] << std::endl;
-      else
-        std::cout << "INF" << std::endl;
-    }
-  }
-};
-
-class UpdatedDijkstraAlgorithm : public DijkstraAlgorithm{
- public:
-  void exec() override {
-    int N, M, s;
-    std::cin >> N >> M >> s;
-
-    Graph G(N);
-    for (int i = 0; i < M; ++i) {
-      int a, b;
-      int64_t w;
-      std::cin >> a >> b >> w;
-
-      G[a].push_back(Edge(b, w));
-    }
-
-    std::vector<int64_t> dist(N, kInf);
-    dist[s] = 0;
-
-    using Pair = std::pair<int64_t, int>;
-    std::priority_queue<Pair,
-                        std::vector<Pair>,
-                        std::greater<Pair>> que;
-
-    que.push(std::make_pair(dist[s], s));
-
-    while (!que.empty()) {
-      const int v = que.top().second;
-      const int64_t d = que.top().first;
-      que.pop();
-
-      if (d > dist[v]) continue;
-
-      for (auto e : G[v]) {
-        if (chmin(dist[e.to_], dist[v]+e.w_)) {
-          que.push(std::make_pair(dist[e.to_], e.to_));
-        }
-      }
-    }
-
-    for (int v = 0; v < N; ++v) {
-      if (dist[v] < kInf)
-        std::cout << dist[v] << std::endl;
-      else
-        std::cout << "INF" << std::endl;
-    }
-  }
-};
-
-class FloydWarshall {
- private:
-  const int64_t kInf = INT64_MAX;
-
- public:
+ */
   void exec() {
     int N, M;
     std::cin >> N >> M;
 
-    std::vector<std::vector<int64_t>> dp;
-    dp.assign(N, std::vector<int64_t>(N, kInf));
+    std::vector<std::vector<int>> dp;
+    dp.assign(N, std::vector<int>(N, INT_MAX/2));
 
-    for (int _ = 0; _ < M; ++_) {
-      int a, b;
-      int64_t w;
+    for (int i = 0; i < M; ++i) {
+      int a, b, w;
       std::cin >> a >> b >> w;
 
       dp[a][b] = w;
     }
 
-    for (int v = 0; v < N; ++v) {
-      dp[v][v] = 0;
-    }
+    for (int i = 0; i < N; ++i)
+      dp[i][i] = 0;
 
-    for (int k = 0; k < N; ++k) {
-      for (int i = 0; i < N; ++i) {
-        for (int j = 0; j < N; ++j) {
+    for (int k = 0; k < N; ++k)
+      for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
           dp[i][j] = std::min(dp[i][j], dp[i][k]+dp[k][j]);
-        }
-      }
-    }
 
     bool exist_negative_cycle = false;
-    for (int v = 0; v < N; ++v) {
+
+    for (int v = 0; v < N; ++v)
       if (dp[v][v] < 0)
         exist_negative_cycle = true;
-    }
 
     if (exist_negative_cycle) {
-      std::cout << "NEGETIVE CYCLE" << std::endl;
+      std::cout << "NEGATIVE CYCLE" << std::endl;
       return;
     }
 
     for (int i = 0; i < N; ++i) {
       for (int j = 0; j < N; ++j) {
-        if (j) std::cout << " ";
+        if (j)
+          std::cout << " ";
 
-        if (dp[i][j] < kInf / 2)
+        if (dp[i][j] < INT_MAX / 3)
           std::cout << dp[i][j];
         else
           std::cout << "INF";
       }
-
       std::cout << std::endl;
     }
   }
 };
 
-class Question1 {
-  struct Edge {
-    int to_;
-    int w_;
+void question1() {
+  int N, M;
+  std::cin >> N >> M;
 
-    Edge(int to, int w) : to_(to), w_(w) {}
-  };
+  std::vector<std::vector<int64_t>> dp;
+  dp.assign(N, std::vector<int64_t>(N, INT32_MIN));
 
- private:
-  std::unique_ptr<std::vector<std::vector<Edge>>> G_;
+  for (int i = 0; i < M; ++i) {
+    int a, b;
+    int64_t w;
+    std::cin >> a >> b >> w;
 
-  int N_;  // 有向グラフG_の頂点の個数
-  int M_;  // 有効グラフG_の変の個数
-  int s_;  // 有向グラフG_の始点となる頂点
-
-  std::vector<int> dist_;
-
-  template<class T>
-  bool chmin(T &a, T b) {
-    if (a > b) {
-      a = b;
-      return true;
-    }
-
-    return false;
+    dp[a][b] = w;
   }
 
-  void initialize();
-  void bellman_ford_algo();
+  for (int i = 0; i < N; ++i)
+    dp[i][i] = 0;
 
- public:
-  Question1() {}
-  ~Question1() {}
+  for (int k = 0; k < N; ++k)
+    for (int i = 0; i < N; ++i)
+      for (int j = 0; j < N; ++j)
+        dp[i][j] = std::max(dp[i][j], dp[i][k]+dp[k][j]);
 
-  Question1(const Question1&) = delete;
-  Question1 &operator=(const Question1&) = delete;
+  for (int i = 0; i < N; ++i) {
+    if (dp[i][i] >= 0)
+      continue;
 
-  void exec();
-};
-class Question2 {
- public:
-  void initialize();
-  void bellman_ford_algo();
-  void exec();
-
-  Question2 &operator=(const Question2&) = delete;
-  Question2(const Question2&) = delete;
-
- private:
-  struct Node {
-    int to_;
-    int w_;
-
-    Node(int to, int w) : to_(to), w_(w) {}
-  };
-
-  std::unique_ptr<std::vector<std::vector<Node>>> G_;
-  std::unique_ptr<std::vector<int>> dist_;
-
-  int N_;
-  int M_;
-
-  template <class T>
-  bool chmin(T& a, T b) {
-    if (a > b) {
-      a = b;
-      return true;
-    }
-
-    return false;
+    std::cout << "NEGATIVE CYCLE" << std::endl;
+    return;
   }
-};
+
+  for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < N; ++j) {
+      std::cout << dp[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
+
+  int64_t max = INT64_MIN;
+  for (int i = 0; i < N; ++i)
+    for (int j = 0; j < N; ++j)
+      if (max < dp[i][j])
+        max = dp[i][j];
+
+  std::cout << max << std::endl;
+}
 }  // namespace chapter14
