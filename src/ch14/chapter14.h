@@ -402,4 +402,186 @@ void question1() {
 
   std::cout << max << std::endl;
 }
+
+class Question {
+ public:
+  void exec() {
+    initialize();
+    calculate();
+  }
+
+ protected:
+  int N_;
+  int M_;
+
+  virtual void initialize() = 0;
+  virtual void calculate() = 0;
+};
+
+class Question2 : public Question {
+ private:
+  int s_;
+
+  struct Edge {
+    int to_;
+    int64_t w_;
+
+    Edge(int to, int64_t w) : to_(to), w_(w) {}
+  };
+  using Graph = std::vector<std::vector<Edge>>;
+
+  std::unique_ptr<Graph> G_;
+  std::vector<int64_t> dist_;
+
+  template<class T> bool chmax(T &a, T b) {
+    if (a < b) {
+      a = b;
+      return true;
+    }
+
+    return false;
+  }
+  void initialize() override {
+    std::cin >> N_ >> M_ >> s_;
+
+    G_ = std::make_unique<Graph>(N_);
+
+    dist_.assign(N_, INT32_MIN);
+    dist_.at(s_) = 0;
+
+    for (int i = 0; i < M_; ++i) {
+      int a, b;
+      int64_t w;
+
+      std::cin >> a >> b >> w;
+      G_->at(a).push_back(Edge(b, w));
+    }
+  }
+  void calculate() override {
+    bool exist_positive_cycle = false;
+
+    for (int itr = 0; itr < N_; ++itr) {
+      bool is_updated = false;
+
+      for (int v = 0; v < N_; ++v) {
+        if (dist_.at(v) == INT32_MIN)
+          continue;
+
+        for (auto e : G_->at(v))
+          is_updated = chmax(dist_.at(e.to_), dist_.at(v)+e.w_);
+      }
+
+      if (!is_updated)
+        break;
+
+      if (itr == N_ && is_updated)
+        exist_positive_cycle = true;
+    }
+
+    if (exist_positive_cycle) {
+      std::cout << "INF" << std::endl;
+      return;
+    }
+
+    int64_t max = *std::max_element(dist_.begin(), dist_.end());
+    std::cout << max << std::endl;
+  }
+};
+class Question3 : public Question {
+/* input:
+ 6 9 0 5
+ 0 1 3
+ 0 2 5
+ 1 2 4
+ 1 3 12
+ 2 3 9
+ 2 4 4
+ 3 5 2
+ 4 3 7
+ 4 5 8
+
+ output:
+
+ */
+ private:
+  int s_, t_;
+
+  struct Edge {
+    int to_;
+    int64_t w_;
+
+    Edge(int to, int64_t w) : to_(to), w_(w) {}
+  };
+
+  using Graph = std::vector<std::vector<Edge>>;
+  std::unique_ptr<Graph> G_;
+  std::vector<std::vector<int64_t>> dist_;
+
+  template<class T> bool chmin(T &a, T b) {
+    if (a > b) {
+      a = b;
+      return true;
+    }
+
+    return false;
+  }
+  void initialize() override {
+    std::cin >> N_ >> M_ >> s_ >> t_;
+
+    dist_.assign(N_, std::vector<int64_t>());
+    dist_.at(s_).push_back(0);
+
+    G_ = std::make_unique<Graph>(N_);
+    for (int i = 0; i < M_; ++i) {
+      int a, b;
+      int64_t w;
+
+      std::cin >> a >> b >> w;
+      G_->at(a).push_back(Edge(b, w));
+    }
+  }
+  // TODO: Cycle判定を追加する
+  void calculate() override {
+    std::queue<std::pair<int64_t, int>> que;
+
+    que.push(std::make_pair(dist_[s_][0], s_));
+
+    while (!que.empty()) {
+      const int kV = que.front().second;
+      const int64_t kD = que.front().first;
+      que.pop();
+
+      // 距離を持たない頂点はパス
+      if (dist_[kV].empty())
+        continue;
+
+      for (auto e : G_->at(kV)) {
+        // 頂点vに至る経路全てから頂点e.to_への距離を全て求める
+        dist_[e.to_].push_back(kD + e.w_);
+        que.push(std::make_pair(kD + e.w_, e.to_));
+      }
+    }
+
+    for (int i = 0; i < N_; ++i) {
+      for (int j = 0; j < dist_[i].size(); ++j) {
+        std::cout << dist_[i][j] << " ";
+      }
+      std::cout << std::endl;
+    }
+
+    if (dist_[t_].empty()) {
+      std::cout << "NO PATH" << std::endl;
+      return;
+    }
+
+    std::sort(dist_[t_].begin(), dist_[t_].end());
+    for (const auto t : dist_[t_]) {
+      if (t % 3)
+        continue;
+
+      std::cout << t << std::endl;
+      return;
+    }
+  }
+};
 }  // namespace chapter14
