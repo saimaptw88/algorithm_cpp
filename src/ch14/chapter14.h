@@ -1,6 +1,7 @@
 // Copyright 2023 saito
 #include <algorithm>
 #include <climits>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <queue>
@@ -411,15 +412,14 @@ class Question {
   }
 
  protected:
-  int N_;
-  int M_;
-
   virtual void initialize() = 0;
   virtual void calculate() = 0;
 };
 
 class Question2 : public Question {
  private:
+  int N_;
+  int M_;
   int s_;
 
   struct Edge {
@@ -504,6 +504,8 @@ class Question3 : public Question {
 
  */
  private:
+  int N_;
+  int M_;
   int s_, t_;
 
   struct Edge {
@@ -582,6 +584,125 @@ class Question3 : public Question {
       std::cout << t << std::endl;
       return;
     }
+  }
+};
+
+class Question4 : public Question {
+/*
+10 10
+..........
+#########.
+#.......#.
+#..####.#.
+##....#.#.
+#####.#.#.
+.##.#.#.#.
+###.#.#.#.
+###.#.#.#.
+#.....#...
+
+*/
+ private:
+  int H_, W_;
+  std::pair<int, int> s_, g_;
+
+  struct Edge {
+    std::pair<int, int> to_;
+    int w_;
+
+    Edge(std::pair<int, int> to, int w) : to_(to), w_(w) {}
+  };
+
+  using Graph = std::vector<std::vector<std::vector<Edge>>>;
+  Graph G_;
+
+  std::vector<std::vector<int>> dist_;
+  std::vector<std::string> maze_;
+
+  inline void initialize() override {
+    s_ = std::make_pair(0, 0);
+    g_ = std::make_pair(6, 0);
+
+    std::cin >> H_ >> W_;
+
+    dist_.assign(H_, std::vector<int>(W_, 100));
+    dist_[0][0] = 0;
+
+    maze_.assign(H_, "");
+    for (int i = 0; i < H_; ++i)
+      std::cin >> maze_[i];
+
+    G_.assign(H_, std::vector<std::vector<Edge>>(W_, std::vector<Edge>()));
+
+    std::vector<std::pair<int, int>> calc;
+    calc.assign({{0, -1}, {-1, 0}, {0, 1}, {1, 0}});
+
+    for (int i = 0; i < H_; ++i) {
+      for (int j = 0; j < W_; ++j) {
+        for (const auto c : calc) {
+          const int kY = i + c.first;
+          const int kX = j + c.second;
+
+          if (kX < 0)  // 左端禁止
+            continue;
+          if (kX > W_ - 1) // 右端禁止
+            continue;
+
+          if (kY < 0)  // 上端禁止
+            continue;
+          if (kY > H_ - 1)  // 下端禁止
+            continue;
+
+          const auto kTo = std::make_pair(kY, kX);
+          const auto kW = (maze_[kY][kX] == '.') ? 0 : 1;
+
+          G_[i][j].push_back(Edge(kTo, kW));
+        }
+      }
+    }
+  }
+  inline void calculate() {
+    std::queue<std::pair<int, int>> que;
+    que.push(std::make_pair(0, 0));
+
+    std::function<bool(int&, int)> chmin;
+    chmin = [](int &a, int b) {
+      if (a > b) {
+        a = b;
+        return true;
+      }
+
+      return false;
+    };
+
+    while (!que.empty()) {
+      const auto kV = que.front();
+      que.pop();
+
+      bool is_updated = false;
+
+      for (const auto kE : G_[kV.first][kV.second]) {
+        const auto kY = kE.to_.first;
+        const auto kX = kE.to_.second;
+
+        is_updated = chmin(dist_[kY][kX], (dist_[kV.first][kV.second]+kE.w_));
+
+        if (is_updated)
+          que.push(std::make_pair(kY, kX));
+      }
+    }
+
+    std::cout << "*********" << std::endl;
+    for (int i = 0; i < H_; ++i) {
+      for (int j = 0; j < W_; ++j) {
+        std::cout << dist_[i][j] << " ";
+      }
+      std::cout << std::endl;
+    }
+
+    const int x = g_.second;
+    const int y = g_.first;
+    std::cout << "dist_[" << y << "][" << x << "] = " << dist_[y][x] << std::endl;
   }
 };
 }  // namespace chapter14

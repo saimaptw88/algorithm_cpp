@@ -4,7 +4,7 @@
 
 namespace chapter14 {
 void execute() {
-  Question *q = new Question3();
+  Question *q = new Question4();
   q->exec();
 }
 }  // namespace chapter14
