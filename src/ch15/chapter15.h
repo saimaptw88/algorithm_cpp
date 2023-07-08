@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <memory>
 #include <type_traits>
 #include <vector>
 
@@ -123,8 +124,22 @@ class Question2 {
     }
   }
 };
+class Question3 {
  public:
-  void exec();
+  void exec() {
+    init();
+    const auto ret = kruskal_algorithm();
+    assert(typeid(ret) == typeid(std::pair<int, int>));
+
+    std::vector<int> need_edge;
+    for (int i = 0; i < ret.second; ++i) {
+      init_edges(i);
+      const auto r = kruskal_algorithm();
+
+      if (r.first != ret.first)
+        need_edge.push_back(i);
+    }
+  }
 
  private:
   int N_;
@@ -150,24 +165,31 @@ class Question2 {
 
   void init_edges(const int e) {
     decltype(auto) edges = std::move(edges_);
-    std::type_info t = typeid(std::move(edges));
-    std::is_same<std::unique_ptr<std::vector<Edge>>, int>::value;
+    assert(typeid(edges) == typeid(std::unique_ptr<std::vector<Edge>>));
+    assert(edges_ == nullptr);
 
-    if (edges_)
-      edges_.reset();
+    for (int i = 0; i < M_ - 1; ++i) {
+      if (i == e)
+        continue;
 
+      const int w = edges->at(i).first;
+      const int u = edges->at(i).second.first;
+      const int v = edges->at(i).second.second;
 
+      edges_->push_back(Edge(w, std::make_pair(u, v)));
+    }
   }
 
-  int kruskal_algorithm(const std::vector<Edge>& edges) {
-    std::sort(edges.begin(), edges.end());
+  auto kruskal_algorithm() -> std::pair<int, int> {
+    std::sort(edges_->begin(), edges_->end());
 
     int weight = 0;
+    int count = 0;
 
-    for (int i = 0; i < edges.size(); ++i) {
-      const int w = edges.at(i).first;
-      const int u = edges.at(i).second.first;
-      const int v = edges.at(i).second.second;
+    for (int i = 0; i < edges_->size(); ++i) {
+      const int w = edges_->at(i).first;
+      const int u = edges_->at(i).second.first;
+      const int v = edges_->at(i).second.second;
 
       if (uf_->is_same(u, v))
         continue;
@@ -175,9 +197,10 @@ class Question2 {
       uf_->unite(u, v);
 
       weight += w;
+      count++;
     }
 
-    return weight;
+    return {weight, count};
   }
 };
 void execute();
