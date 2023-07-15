@@ -41,13 +41,17 @@ struct Graph {
   }
 };
 
-struct FordFulkerson {
-  static const int INF = 1 << 30;
+class FordFulkerson {
+ private:
+  const int INF = 1 << 30;
   std::vector<int> seen;
 
-  FordFulkerson() {}
 
+  // 残余グラフ上でs-tパスを見つける(深さ優先探索)
+  // 返り値はs-tパス上の容量の最小値(見つからなかったら0)
+  // f: sからvへ到達した過程の各辺の容量の最小値
   int fodfs(Graph &G, int v, int t, int f) {
+    // スタートとゴールが同じ値の場合
     if (v == t)
       return f;
 
@@ -87,22 +91,31 @@ struct FordFulkerson {
 
     return 0;
   }
+
+ public:
+  void execute() {
+    int N, M;
+    std::cin >> N >> M;
+
+    Graph G(N);
+    for (int i = 0; i < M; ++i) {
+      int u, v, c;
+      std::cin >> u >> v >> c;
+
+      G.addedge(u, v, c);
+    }
+
+    int s = 0, t = N - 1;
+    std::cout << solve(G, s, t) << std::endl;
+  }
+
+  FordFulkerson() {}
 };
 
 void execute() {
-  int N, M;
-  std::cin >> N >> M;
-
-  Graph G(N);
-  for (int i = 0; i < M; ++i) {
-    int u, v, c;
-    std::cin >> u >> v >> c;
-
-    G.addedge(u, v, c);
-  }
-
   FordFulkerson ff;
-  int s = 0, t = N - 1;
-  std::cout << ff.solve(G, s, t) << std::endl;
+  ff.execute();
 }
+
+
 };  // namespace chapter16
