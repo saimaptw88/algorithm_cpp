@@ -115,136 +115,130 @@ class FordFulkerson {
   FordFulkerson() {}
 };
 
-class Question1 {
- public:
-  void execute() {
-    FordFulkerson ff;
-    ff.execute();
+namespace Question1 {
+struct Edge {
+  int to_;
+  int from_;
+  int rev_;
+  int cap_;
+
+  Edge(int from, int to, int rev, int cap)
+    : from_(from), to_(to), rev_(rev), cap_(cap) {}
+};
+struct Graph {
+  std::vector<std::vector<Edge>> list_;
+
+  Graph(int N) : list_(N) {}
+
+  std::vector<Edge>& operator[] (int i) {
+    return list_[i];
   }
- private:
-  struct Edge {
-    int rev_;
-    int from_;
-    int to_;
-    int cap_;
 
-    Edge(int rev, int from, int to, int cap)
-      : rev_(rev), from_(from), to_(to), cap_(cap) {}
-  };
-  struct Graph {
-    std::vector<std::vector<Edge>> list_;
+  std::size_t size() const {
+    return list_.size();
+  }
 
-    Graph(int N) : list_(N) {};
+  Edge& rev_edge(const Edge& e) {
+    return list_[e.to_][e.rev_];
+  }
 
-    size_t size() {
-      return list_.size();
-    }
+  void add_edge(int from, int to, int cap) {
+    const auto kFromSize = static_cast<int>(list_[from].size());
+    const auto kToSize = static_cast<int>(list_[to].size());
 
-    std::vector<Edge>& operator[] (int i) {
-      return list_[i];
-    }
+    list_[from].push_back(Edge(from, to, kToSize, cap));
+    list_[to].push_back(Edge(to, from, kFromSize, 0));
+  }
 
-    Edge& redge(const Edge& e) {
-      return list_[e.to_][e.rev_];
-    }
-
-    void run_flow(Edge& e, int f) {
-      e.cap_ -= f;
-      redge(e).cap_ += f;
-    }
-
-    void add_edge(int from, int to, int cap) {
-      int fromrev = list_[from].size();
-      int torev = list_[to].size();
-
-      list_[from].push_back(Edge(torev, from, to, cap));
-      list_[to].push_back(Edge(fromrev, to, from, 0));
-    }
-  };
-
-  class FordFulkerson {
-   public:
-    void execute() {
-      init();
-      int res = solve(0, N_);
-      std::cout << res << std::endl;
-    }
-    FordFulkerson() {}
-
-   private:
-    std::shared_ptr<Graph> graph_;
-    std::vector<int> seen_, girls_;
-    int N_, G_, E_;
-
-    inline void init() {
-      std::cin >> N_ >> G_ >> E_;
-
-      graph_ = std::make_shared<Graph>(N_+1);
-      girls_ = std::vector<int>(G_);
-
-      for (int i = 0; i < G_; ++i) {
-        std::cin >> girls_[i];
-      }
-
-      for (int i = 0; i < E_; ++i) {
-        int u, v, c=1;
-        std::cin >> u >> v;
-
-        graph_->add_edge(u, v, c);
-      }
-
-      for (auto v : girls_) {
-        graph_->add_edge(v, N_, 1);
-      }
-    }
-
-    int fodfs(int v, int t, int f) {
-      if (v == t)
-        return f;
-
-      seen_[v] = true;
-
-      for (auto& e : (*graph_)[v]) {
-        if (seen_[e.to_])
-          continue;
-
-        if (!e.cap_)
-          continue;
-
-        int flow = fodfs(e.to_, t, std::min(f, e.cap_));
-
-        if (!flow)
-          continue;
-
-        graph_->run_flow(e, flow);
-
-        return flow;
-      }
-
-      return 0;
-    }
-
-    int solve(int s, int t) {
-      int res = 0;
-
-      for (;;) {
-        seen_.assign(graph_->size(), false);
-        int flow = fodfs(s, t, INT_MAX);
-
-        if (flow == 0)
-          return res;
-
-        res += flow;
-      }
-
-      return res;
-    }
-  };
+  void run_flow(Edge& e, int f) {
+    e.cap_ -= f;
+    rev_edge(e).cap_ += f;
+  }
 };
 
+class FordFulkerson {
+ public:
+  void exec() {
+    init();
+    std::cout << solve(0, N_) << std::endl;
+  }
+
+ private:
+  int N_, M_, girls_size_;
+  std::unique_ptr<Graph> G_;
+  std::vector<int> girls_;
+  std::vector<int> seen_;
+
+  void init() {
+    std::cin >> N_ >> girls_size_ >> M_;
+
+    seen_ = std::vector<int>(N_+1, false);
+    girls_ = std::vector<int>(girls_size_);
+    for (int i = 0; i < girls_size_; ++i) {
+      std::cin >> girls_[i];
+    }
+
+    G_ = std::make_unique<Graph>(N_+1);
+    for (int i = 0; i < M_; ++i) {
+      int u, v, cap=1;
+      std::cin >> u >> v;
+
+      G_->add_edge(u, v, cap);
+    }
+
+    for (const auto& e : girls_) {
+      G_->add_edge(e, N_, 1);
+    }
+  }
+  int fodfs(int v, int t, int f) {
+    if (v == t)
+      return f;
+
+    seen_[v] = true;
+
+    for (auto& e : (*G_)[v]) {
+      if (seen_[e.to_])
+        continue;
+
+      if (e.cap_ == 0)
+        continue;
+
+      const int min_flow = std::min(f, e.cap_);
+      const int flow = fodfs(e.to_, t, min_flow);
+
+      if (flow == 0)
+        continue;
+
+      G_->run_flow(e, flow);
+
+      return flow;
+    }
+
+    return 0;
+  }
+  int solve(int s, int t) {
+    int res = 0;
+
+    for (;;) {
+      seen_.assign(N_+1, false);
+
+      int flow = fodfs(s, t, INT_MAX);
+
+      if (flow == 0)
+        return res;
+
+      res += flow;
+    }
+
+    return 0;
+  }
+};
+
+};  // namespace Question1
+
 void execute() {
-  Question1 q1;
-  q1.execute();
+  Question1::FordFulkerson ff;
+  ff.exec();
 }
 
 
