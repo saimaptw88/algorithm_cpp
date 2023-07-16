@@ -233,13 +233,167 @@ class FordFulkerson {
     return 0;
   }
 };
-
 };  // namespace Question1
 
+namespace Question2 {
+struct Edge {
+  int from_;
+  int to_;
+  int rev_;
+  int cap_;
+
+  Edge(int from, int to, int rev, int cap)
+    : from_(from), to_(to), rev_(rev), cap_(cap) {}
+};
+
+struct Graph {
+  std::vector<std::vector<Edge>> list_;
+
+  Graph(int N) : list_(N) {};
+
+  std::vector<Edge>& operator[] (int i) {
+    return list_[i];
+  }
+
+  std::size_t size() const {
+    return list_.size();
+  }
+
+  Edge& rev_edge(const Edge& e) {
+    return list_[e.to_][e.rev_];
+  }
+
+  void add_edge(int from, int to, int cap) {
+    const auto from_rev = static_cast<int>(list_[from].size());
+    const auto to_rev = static_cast<int>(list_[to].size());
+
+    list_[from].push_back(Edge(from, to, to_rev, cap));
+    list_[to].push_back(Edge(to, from, from_rev, 0));
+  }
+
+  void run_flow(Edge& e, int f) {
+    e.cap_ -= f;
+    rev_edge(e).cap_ += f;
+  }
+};
+class FordFulkerson {
+ public:
+  FordFulkerson(int N, int M, std::unique_ptr<Graph> G)
+    : N_(N), M_(M), G_(std::move(G)), seen_(N) {}
+
+  int calc(int s, int t) {
+    int res = 0;
+
+    for (;;) {
+      seen_.assign(N_, false);
+
+      int flow = fodfs(s, t, INT_MAX);
+
+      if (flow == 0)
+        return res;
+
+      res += flow;
+    }
+
+    return 0;
+  }
+
+ private:
+  int N_, M_;
+  std::vector<int> seen_;
+  std::unique_ptr<Graph> G_;
+
+  int fodfs(int v, int t, int f) {
+    if (v == t)
+      return f;
+
+    seen_[v] = true;
+    for (auto &e : (*G_)[v]) {
+      if (seen_[e.to_])
+        continue;
+
+      if (e.cap_ == 0)
+        continue;
+
+      const int min_flow = std::min(f, e.cap_);
+      const int flow = fodfs(e.to_, t, min_flow);
+
+      if (flow == 0)
+        continue;
+
+      G_->run_flow(e, flow);
+
+      return flow;
+    }
+
+    return 0;
+  }
+};
+class FroidWarshal {
+ public:
+  FroidWarshal(int N, const std::vector<std::vector<int64_t>>& dist)
+    :N_(N), dp_({dist}) {}
+
+  std::vector<std::vector<int64_t>>* calc() {
+    for (int k = 0; k < N_; ++k) {
+      for (int i = 0; i < N_; ++i) {
+        for (int j = 0; j < N_; ++j) {
+          dp_[i][j] = std::min(dp_[i][j], dp_[i][k] + dp_[k][j]);
+        }
+      }
+    }
+    for (int i = 0; i < N_; ++i) {
+      if (dp_[i][i] < 0)
+        is_negative_cycle_exist_ = true;
+    }
+
+    return &dp_;
+  }
+
+ private:
+  std::vector<std::vector<int64_t>> dp_;
+  int N_, M_;
+  bool is_negative_cycle_exist_ = false;
+};
+
 void execute() {
-  Question1::FordFulkerson ff;
-  ff.exec();
+  int N, M, s, t;
+  std::cin >> N >> M >> s >> t;
+
+  std::vector<std::vector<int64_t>> dist, cap;
+  dist.assign(N, std::vector<int64_t>(N, INT64_MAX));
+  cap.assign(N, std::vector<int64_t>(N, INT64_MAX));
+
+  for (int i = 0; i < M; ++i) {
+    int64_t u, v, d, c;
+    std::cin >> u >> v >> d >> c;
+
+    dist[u][v] = d;
+    cap[u][v] = c;
+  }
+
+  FroidWarshal fw(N, dist);
+  decltype(auto) dp = fw.calc();
+
+  std::unique_ptr<Graph> G(new Graph(N));
+
+  for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < N; ++j) {
+      if (i == j)
+        continue;
+
+      if (dp->at(s)[i] + dist[i][j] + dp->at(j)[t] == dp->at(s)[t]) {
+        G->add_edge(i, j, cap[i][j]);
+      }
+    }
+  }
+
+  FordFulkerson ff(N, M, std::move(G));
+  std::cout << ff.calc(s, t) << std::endl;
 }
+};  // namespace Question2
 
-
+void execute() {
+  Question2::execute();
+}
 };  // namespace chapter16
