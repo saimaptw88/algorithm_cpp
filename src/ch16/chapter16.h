@@ -2,6 +2,7 @@
 #include <climits>
 #include <iostream>
 #include <memory>
+#include <queue>
 #include <vector>
 
 
@@ -393,6 +394,180 @@ void execute() {
 }
 };  // namespace Question2
 
+namespace Question3 {
+struct Edge {
+int to_;
+int from_;
+int rev_;
+int cap_;
+int icap_;
+
+Edge(int to, int from, int rev, int cap)
+  : to_(to), from_(from), rev_(rev), cap_(cap), icap_(cap) {}
+};
+
+struct Graph {
+  std::vector<std::vector<Edge>> list_;
+
+  Graph(int N = 0) : list_(N) {}
+
+  void add_edge(int to, int from, int cap) {
+    const auto from_count = static_cast<int>(list_[from].size());
+    const auto to_count = static_cast<int>(list_[to].size());
+
+    list_[from].push_back(Edge(to, from, to_count, cap));
+    list_[to].push_back(Edge(from, to, from_count, 0));
+  }
+
+  void run_flow(Edge& e, int f) {
+    e.cap_ -= f;
+    rev_edge(e).cap_ += f;
+  }
+
+  Edge& rev_edge(const Edge& e) {
+    return list_[e.to_][e.rev_];
+  }
+
+  std::vector<Edge>& at(int i) {
+    return list_[i];
+  }
+
+ private:
+  std::vector<Edge>& operator[] (int i) {
+    return list_[i];
+  }
+
+  std::size_t size() const {
+    return list_.size();
+  }
+};
+
+class FordFulkerson {
+ public:
+  FordFulkerson() {}
+  inline void exec() {
+    init();
+    const int flow = solve(s_, t_);
+
+    std::vector<int> S(N_, false), T(N_, false);
+    S[s_] = true;
+    T[t_] = true;
+
+    std::queue<int> que;
+
+    // sから到達可能な点の検索
+    que.push(s_);
+    while(!que.empty()) {
+      const auto v = que.front();
+      que.pop();
+
+      for (const auto& e : G_->at(v)) {
+        // from -> toへの容量が0以上
+        if (e.cap_ > 0 && !S[e.to_]) {
+          S[e.to_] = true;
+          que.push(e.to_);
+        }
+      }
+    }
+
+    // tへ到達可能な点の検索
+    que.push(t_);
+    while(!que.empty()) {
+      const auto v = que.front();
+      que.pop();
+
+      for (const auto& e : G_->at(v)) {
+        // to -> from への容量が0以上
+        if (G_->rev_edge(e).cap_ > 0 && !T[e.to_]) {
+          T[e.to_] = true;
+          que.push(e.to_);
+        }
+      }
+    }
+
+    int res = 0;
+    for (int v = 0; v < N_; ++v) {
+      // tへ到達可能な頂点のうち
+      if (T[v]) {
+        for (const auto& e : G_->at(v)) {
+          // sから到達可能でかつ容量が減っていないもの
+          if (e.cap_ > 0 && e.cap_ == e.icap_ && S[e.to_])
+            ++res;
+        }
+      }
+    }
+    // 多分S, Tの検索条件が逆
+
+    int ma (res ? flow : flow + 1);
+    std::cout << ma << " " << res << std::endl;
+  }
+  inline void init() {
+    std::cin >> N_ >> M_ >> s_ >> t_;
+
+    G_ = std::make_shared<Graph>(N_);
+    for (int i = 0; i < M_; ++i) {
+      int u, v, c;
+      std::cin >> u >> v >> c;
+
+      G_->add_edge(v, u, c);
+    }
+
+    seen_ = std::vector<int>(N_, false);
+  }
+
+ private:
+  int N_, M_, s_, t_;
+  std::shared_ptr<Graph> G_;
+
+  std::vector<int> seen_;
+
+  inline int fodfs(const int v, const int t, const int f) {
+    if (v == t)
+      return f;
+
+    seen_[v] = true;
+
+    for (auto& e : G_->at(v)) {
+      if (seen_[e.to_])
+        continue;
+
+      if (e.cap_ == 0)
+        continue;
+
+      const int min_flow = std::min(f, e.cap_);
+      const int flow = fodfs(e.to_, t, min_flow);
+
+      if (flow == 0)
+        continue;
+
+      G_->run_flow(e, flow);
+
+      return flow;
+    }
+    return 0;
+  }
+
+  inline int solve(const int s, const int t) {
+    int res = 0;
+
+    for (;;) {
+      seen_.assign(N_, false);
+
+      int flow = fodfs(s, t, INT_MAX);
+
+      if (flow == 0)
+        return res;
+
+      res += flow;
+    }
+
+    return 0;
+  }
+
+  FordFulkerson(const FordFulkerson&) = delete;
+  FordFulkerson& operator= (const FordFulkerson&) = delete;
+};
+};  // namespace Question3
 void execute() {
   Question2::execute();
 }
