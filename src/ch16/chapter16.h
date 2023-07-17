@@ -568,6 +568,9 @@ class FordFulkerson {
   FordFulkerson& operator= (const FordFulkerson&) = delete;
 };
 };  // namespace Question3
+
+// Question4以降はギブアップ
+
 void execute() {
   Question2::execute();
 }
