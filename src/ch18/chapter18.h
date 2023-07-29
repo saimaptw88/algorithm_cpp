@@ -110,4 +110,50 @@ void exec() {
   std::cout << res << std::endl;
 }
 };  // namespace Question1
+
+namespace Question2 {
+using Graph = std::vector<std::vector<int>>;
+
+const int MOD = 100000007;
+
+std::vector<int64_t> dp1, dp2;
+void rec(const Graph& G, int v, int p = -1) {
+  for (auto ch : G[v]) {
+    if (ch == p)
+      continue;
+
+    rec(G, ch, v);
+  }
+
+  for (auto ch : G[v]) {
+    if (ch == p)
+      continue;
+
+    dp1[v] = dp1[v] * (dp1[ch] + dp2[ch]) % MOD;
+    dp2[v] = dp2[v] * dp1[v] % MOD;
+  }
+}
+
+void exec() {
+  int N;
+  std::cin >> N;
+
+  Graph G(N);
+  for (int i = 0; i < N; ++i) {
+    int u, v;
+    std::cin >> u >> v;
+
+    --u, --v;
+    G[u].push_back(v);
+    G[v].push_back(u);
+  }
+
+  dp1.assign(N, 1);
+  dp2.assign(N, 1);
+
+  rec(G, 0);
+
+  std::cout << (dp1[0]+dp2[0]) % MOD << std::endl;
+}
+};  // namespace Question2
 };  // namespace chapter18
